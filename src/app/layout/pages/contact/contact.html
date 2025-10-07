@@ -1,0 +1,115 @@
+<section class="contact-section">
+  <div class="contact-container container">
+    <div class="contact-header">
+      <h1 class="contact-title">Contact Us</h1>
+      <p class="contact-subtitle">Get in touch with our team. We'd love to hear from you!</p>
+    </div>
+    
+    <div class="contact-content">
+      <div class="contact-info">
+        <h2>Get in Touch</h2>
+        <p>Accoladi has created an open-door policy in reference to connecting with prospective students. We invite you to contact us with any questions, feedback or even just to say hello. We read every email we receive.</p>
+        
+        <div class="contact-details">
+          <div class="contact-item">
+            <h3>Email</h3>
+            <p>info@accoladi.com</p>
+          </div>
+          <div class="contact-item">
+            <h3>Phone</h3>
+            <p>615-393-6116</p>
+          </div>
+          <div class="contact-item">
+            <h3>Address</h3>
+            <p>2557 Treetop Dr<br>Nashville, TN 37013</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-form-container">
+        <form class="contact-form" (ngSubmit)="onSubmit()" #contactForm="ngForm">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              [(ngModel)]="formData.name" 
+              required 
+              #name="ngModel"
+              class="form-input"
+              [class.error]="name.invalid && name.touched"
+            />
+            @if (name.invalid && name.touched) {
+            <div class="error-message">
+              Name is required
+            </div>
+        }
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              [(ngModel)]="formData.email" 
+              required 
+              email
+              #email="ngModel"
+              class="form-input"
+              [class.error]="email.invalid && email.touched"
+            />
+            @if (email.invalid && email.touched) {
+                <div class="error-message">
+                    @if (email.errors?.['required']) {
+                        <span>Email is required</span>
+                    }
+                    @if (email.errors?.['email']) {
+                        <span>Please enter a valid email</span>
+                    }
+                </div>
+            }
+        </div>
+            
+          
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              [(ngModel)]="formData.message" 
+              required 
+              #message="ngModel"
+              class="form-textarea"
+              [class.error]="message.invalid && message.touched"
+              rows="6"
+              placeholder="Tell us how we can help you..."
+            ></textarea>
+            @if (message.invalid && message.touched) {
+                <div class="error-message">
+                    Message is required
+                </div>
+            }
+          </div>
+          
+          <button 
+            type="submit" 
+            class="submit-btn"
+            [disabled]="contactForm.invalid || isSubmitting"
+          >
+            @if (!isSubmitting) {
+                <span>Send Message</span>
+            }
+            @if (isSubmitting) {
+                <span>Sending...</span>
+            }
+          </button>
+            @if (isSubmitting) {
+                <span>Sending...</span>
+            }
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

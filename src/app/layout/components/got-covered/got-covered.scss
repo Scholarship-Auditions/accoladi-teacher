@@ -1,0 +1,152 @@
+.got-covered {
+    padding: 6vw 0;
+
+    .got-covered-grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 1vw;
+        align-items: start;
+        background: var(--navy-800);
+
+        .sidebar {
+            padding: 4.5vw 3vw;
+            border-radius: 1.5vw;
+            color: var(--white-color);
+
+            .sidebar-title {
+                font-size: 2.8vw;
+                font-weight: 900;
+                color: var(--amber-color);
+                margin-bottom: 1vw;
+                line-height: 1.2;
+            }
+
+            .sidebar-subtitle {
+                font-size: 1.4vw;
+                font-weight: 700;
+                margin-bottom: 2vw;
+                opacity: 0.95;
+            }
+
+            .sidebar-description {
+                font-size: 1.1vw;
+                line-height: 1.8;
+                margin-bottom: 3vw;
+                opacity: 0.9;
+            }
+
+            .sidebar-logo img {
+                width: 12vw;
+                opacity: 0.8;
+            }
+        }
+
+        .articles-grid {
+            display: flex;
+            gap: 2vw;
+            overflow-x: auto;
+            padding: 2vw 0;
+            scroll-behavior: smooth;
+
+            &::-webkit-scrollbar {
+                height: 0.6vw;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: rgba(0, 0, 0, 0.1);
+                border-radius: 0.3vw;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: var(--amber-color);
+                border-radius: 0.3vw;
+            }
+
+            .article-card {
+                margin: 0 1vw;
+                background: var(--white-color);
+                border-radius: 1.2vw;
+                overflow: hidden;
+                box-shadow: 0 0.4vw 1.2vw rgba(0, 0, 0, 0.08);
+                transition: all 0.3s ease;
+                border: 0.1vw solid rgba(0, 0, 0, 0.06);
+                min-width: 24vw;
+                max-width: 24vw;
+                height: 41vw;
+                flex-shrink: 0;
+                flex: 0 0 auto;
+                display: flex;
+                flex-direction: column;
+
+                &:hover {
+                    transform: translateY(-0.4vw);
+                    box-shadow: 0 0.8vw 2vw rgba(0, 0, 0, 0.12);
+                }
+
+                .article-image {
+                    height: 20vw;
+                    overflow: hidden;
+                    background: linear-gradient(135deg, var(--navy-700) 0%, var(--blue-color) 100%);
+                    display: grid;
+                    place-items: center;
+                    color: var(--white-color);
+                    font-size: 1.2vw;
+                    font-weight: 600;
+                    position: relative;
+                    flex-shrink: 0;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                .article-content {
+                    padding: 1.5vw;
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                }
+
+                .article-title {
+                    font-size: 1.5vw;
+                    font-weight: 800;
+                    color: var(--navy-800);
+                    margin-bottom: 0.8vw;
+                    line-height: 1.3;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                }
+
+                .article-excerpt {
+                    font-size: 1vw;
+                    color: var(--navy-700);
+                    line-height: 1.4;
+                    margin-bottom: 1vw;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    flex: 1;
+                }
+
+                .read-more {
+                    color: var(--blue-color);
+                    font-size: 0.9vw;
+                    font-weight: 700;
+                    text-decoration: none;
+                    transition: color 0.3s ease;
+                    margin-top: auto;
+
+                    &:hover {
+                        color: var(--navy-800);
+                    }
+                }
+            }
+        }
+    }
+}

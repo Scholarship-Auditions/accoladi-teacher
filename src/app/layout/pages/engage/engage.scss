@@ -1,0 +1,230 @@
+.solo-plan-section {
+    background: var(--white-color);
+    padding: 6vw 0;
+    border: 0.2vw solid var(--navy-800);
+    border-radius: 2vw;
+    margin: 3vw auto;
+   
+
+    .solo-plan-content {
+        padding: 0 4vw;
+        text-align: center;
+    }
+
+    .solo-plan-header {
+        margin-bottom: 4vw;
+
+        .solo-plan-slogan {
+            font-size: 3.5vw;
+            font-weight: 900;
+            color: var(--amber-color);
+            margin-bottom: 1vw;
+            line-height: 1.1;
+        }
+
+        .solo-plan-title {
+            font-size: 2.8vw;
+            font-weight: 900;
+            color: var(--navy-800);
+            line-height: 1.2;
+        }
+    }
+
+    .solo-plan-intro {
+        margin-bottom: 4vw;
+        text-align: left;
+
+        .intro-text {
+            font-size: 1.3vw;
+            line-height: 1.7;
+            color: var(--navy-700);
+            margin-bottom: 2vw;
+            font-weight: 500;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .solo-benefits {
+        margin-bottom: 4vw;
+        text-align: left;
+
+        .benefits-title {
+            font-size: 2.2vw;
+            font-weight: 900;
+            color: var(--navy-800);
+            margin-bottom: 2.5vw;
+            text-align: center;
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            .benefit-item {
+                font-size: 1.2vw;
+                line-height: 1.6;
+                color: var(--navy-700);
+                margin-bottom: 2vw;
+                padding-left: 2vw;
+                position: relative;
+                font-weight: 500;
+
+                &::before {
+                    content: '•';
+                    color: var(--blue-color);
+                    font-weight: 900;
+                    font-size: 1.5vw;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                }
+
+                strong {
+                    color: var(--navy-800);
+                    font-weight: 700;
+                }
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    .solo-credibility {
+        margin-bottom: 4vw;
+        text-align: left;
+
+        .credibility-title {
+            font-size: 2.2vw;
+            font-weight: 900;
+            color: var(--navy-800);
+            margin-bottom: 1.5vw;
+            text-align: center;
+        }
+
+        .credibility-text {
+            font-size: 1.3vw;
+            line-height: 1.6;
+            color: var(--navy-700);
+            font-weight: 500;
+        }
+    }
+
+    .solo-cta {
+        margin-bottom: 4vw;
+        text-align: left;
+
+        .cta-title {
+            font-size: 2.2vw;
+            font-weight: 900;
+            color: var(--navy-800);
+            margin-bottom: 1.5vw;
+            text-align: center;
+        }
+
+        .cta-text {
+            font-size: 1.3vw;
+            line-height: 1.6;
+            color: var(--navy-700);
+            margin-bottom: 1.5vw;
+            font-weight: 500;
+        }
+
+        .cta-final {
+            font-size: 1.3vw;
+            line-height: 1.6;
+            color: var(--navy-800);
+            font-weight: 700;
+        }
+    }
+
+    .solo-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 2vw;
+        align-items: center;
+
+        .solo-plan-btn {
+            background: var(--blue-color);
+            color: var(--white-color);
+            border: none;
+            border-radius: 1.5vw;
+            padding: 2vw 4vw;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0.5vw 1.5vw rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 50vw;
+
+            &:hover {
+                background: var(--navy-800);
+                transform: translateY(-0.3vw);
+                box-shadow: 0 0.8vw 2vw rgba(0, 0, 0, 0.3);
+            }
+
+            .btn-main {
+                font-size: 2.5vw;
+                font-weight: 900;
+                margin-bottom: 0.5vw;
+                display: block;
+            }
+
+            .btn-subtitle {
+                font-size: 1.2vw;
+                font-weight: 600;
+                margin-bottom: 0.3vw;
+                display: block;
+            }
+
+            .btn-tagline {
+                font-size: 1.1vw;
+                font-weight: 500;
+                display: block;
+            }
+        }
+
+        .school-district-btn {
+            background: var(--amber-color);
+            color: var(--white-color);
+            border: none;
+            border-radius: 1.5vw;
+            padding: 2vw 4vw;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0.5vw 1.5vw rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 50vw;
+
+            &:hover {
+                background: var(--amber-color);
+                transform: translateY(-0.3vw);
+                box-shadow: 0 0.8vw 2vw rgba(0, 0, 0, 0.3);
+            }
+
+            .btn-main {
+                font-size: 2.5vw;
+                font-weight: 900;
+                margin-bottom: 0.5vw;
+                display: block;
+            }
+
+            .btn-subtitle {
+                font-size: 1.2vw;
+                font-weight: 600;
+                margin-bottom: 0.3vw;
+                display: block;
+            }
+
+            .btn-tagline {
+                font-size: 1.1vw;
+                font-weight: 500;
+                display: block;
+            }
+        }
+    }
+}

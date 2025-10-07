@@ -1,0 +1,108 @@
+.faq-section {
+  padding: 6vw 0;
+  background: var(--white-color);
+  
+  .faq-container {
+    margin: 0 auto;
+    padding: 0 2vw;
+    max-width: 80vw;
+  }
+  
+  .faq-title {
+    font-size: 3.5vw;
+    font-weight: 800;
+    color: var(--navy-800);
+    text-align: center;
+    margin-bottom: 1vw;
+    line-height: 1.2;
+  }
+  
+  .faq-subtitle {
+    font-size: 1.3vw;
+    color: var(--navy-700);
+    text-align: center;
+    margin-bottom: 4vw;
+    font-weight: 500;
+  }
+  
+  .faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+  }
+  
+  .faq-item {
+    border: 0.1vw solid #e2e8f0;
+    border-radius: 0.8vw;
+    overflow: hidden;
+    background: var(--white-color);
+    box-shadow: 0 0.2vw 0.5vw rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  .faq-question {
+    width: 100%;
+    padding: 2vw 2.5vw;
+    background: var(--white-color);
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2vw;
+    font-weight: 600;
+    color: var(--navy-800);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: #f8fafc;
+    }
+    
+    &.active {
+      background: var(--blue-color);
+      color: var(--white-color);
+    }
+    
+    .faq-icon {
+      font-size: 1.8vw;
+      font-weight: 300;
+      transition: transform 0.3s ease;
+      
+      &.rotated {
+        transform: rotate(45deg);
+      }
+    }
+  }
+  
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: #f8fafc;
+    
+    &.open {
+      max-height: 50vw;
+    }
+    
+    .faq-answer-content {
+      padding: 0 2.5vw 2vw 2.5vw;
+      
+      p {
+        font-size: 1.1vw;
+        line-height: 2vw;
+        color: var(--navy-700);
+        font-weight: 500;
+        margin-bottom: 1.5vw;
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

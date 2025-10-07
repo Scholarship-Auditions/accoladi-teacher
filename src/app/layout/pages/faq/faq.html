@@ -1,0 +1,24 @@
+<section class="faq-section">
+    <div class="faq-container container">
+        <h1 class="faq-title">Frequently Asked Questions</h1>
+        <p class="faq-subtitle">Find answers to common questions about Accoladi and our services</p>
+
+        <div class="faq-accordion">
+            @for (faq of faqs(); track $index; let index = $index) {
+            <div class="faq-item">
+                <button class="faq-question" (click)="toggleFaq(index)" [class.active]="faq.isOpen">
+                    <span>{{ faq.question }}</span>
+                    <span class="faq-icon" [class.rotated]="faq.isOpen">+</span>
+                </button>
+                <div class="faq-answer" [class.open]="faq.isOpen">
+                    <div class="faq-answer-content">
+                        @for (paragraph of faq.answer; track $index) {
+                        <p>{{ paragraph }}</p>
+                        }
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</section>

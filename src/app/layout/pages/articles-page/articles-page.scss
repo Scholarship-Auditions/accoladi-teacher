@@ -1,0 +1,411 @@
+.article-container {
+  margin: 0 auto;
+  padding: 2vw 1vw;
+  line-height: 1.6;
+  color: var(--navy-800);
+  background-color: var(--white-color);
+}
+
+// Loading State
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 25vw;
+  text-align: center;
+  
+  .spinner {
+    width: 2.5vw;
+    height: 2.5vw;
+    border: 0.25vw solid #f3f3f3;
+    border-top: 0.25vw solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1vw;
+  }
+  
+  p {
+    color: #666;
+    font-size: 1.1vw;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// Error State
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 25vw;
+  text-align: center;
+  padding: 2vw;
+  
+  .error-icon {
+    font-size: 3vw;
+    margin-bottom: 1vw;
+  }
+  
+  h2 {
+    color: #dc3545;
+    margin-bottom: 1vw;
+    font-size: 2vw;
+  }
+  
+  p {
+    color: #666;
+    margin-bottom: 2vw;
+    font-size: 1.1vw;
+  }
+}
+
+// Article Content
+.article-content {
+  overflow: hidden;
+}
+
+// Article Header
+.article-header {
+  padding: 2vw 0vw;
+  
+  .article-meta {
+    display: flex;
+    gap: 1vw;
+    margin-bottom: 1vw;
+    flex-wrap: wrap;
+    
+    .category {
+      background: #007bff;
+      color: var(--white-color);
+      padding: 0.25vw 0.75vw;
+      border-radius: 1vw;
+      font-size: 0.875vw;
+      font-weight: 500;
+    }
+    
+    .publish-date {
+      color: #666;
+      font-size: 0.875vw;
+    }
+  }
+  
+  .article-title {
+    font-size: 2.5vw;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 1vw 0;
+    color: var(--navy-800);
+  }
+  
+  .article-byline {
+    .author {
+      color: #666;
+      font-size: 1.1vw;
+      font-weight: 500;
+    }
+  }
+}
+
+// Article Image
+.article-image {
+  width: 100%;
+  margin: 0;
+  
+  img {
+    width: 100%;
+  }
+}
+
+// Article Highlight
+.article-highlight {
+  padding: 1.5vw 2vw;
+  border-left: 0.25vw solid #007bff;
+  margin: 0;
+  
+  h3 {
+    color: #007bff;
+    margin: 0 0 1vw 0;
+    font-size: 1.25vw;
+    font-weight: 600;
+  }
+  
+  p {
+    margin: 0;
+    font-size: 1.1vw;
+    line-height: 1.6;
+  }
+}
+
+// Article Body
+.article-body {
+  padding: 2vw 0vw;
+  
+  .content {
+    font-size: 1.1vw;
+    line-height: 1.8;
+    
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 2vw;
+      margin-bottom: 1vw;
+      color: var(--navy-800);
+    }
+    
+    p {
+      margin-bottom: 1.5vw;
+    }
+    
+    ul, ol {
+      margin-bottom: 1.5vw;
+      padding-left: 2vw;
+    }
+    
+    li {
+      margin-bottom: 0.5vw;
+    }
+    
+    blockquote {
+      border-left: 0.25vw solid #007bff;
+      padding-left: 1.5vw;
+      margin: 2vw 0;
+      font-style: italic;
+      color: #666;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.375vw;
+      margin: 1.5vw 0;
+    }
+  }
+}
+
+// Teaching Moments
+.teaching-moments {
+  padding: 2vw 0vw;
+  margin: 0;
+  
+  h3 {
+    color: #007bff;
+    margin: 0 0 1.5vw 0;
+    font-size: 1.5vw;
+    font-weight: 600;
+  }
+  
+  .teaching-section {
+    margin-bottom: 2vw;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+    
+    h4 {
+      color: #495057;
+      margin: 0 0 1vw 0;
+      font-size: 1.25vw;
+      font-weight: 600;
+    }
+    
+    div {
+      font-size: 1vw;
+      line-height: 1.6;
+    }
+  }
+}
+
+// Director Moments
+.director-moments {
+  padding: 2vw 0vw;
+  margin: 0;
+  
+  h3 {
+    color: #007bff;
+    margin: 0 0 1.5vw 0;
+    font-size: 1.5vw;
+    font-weight: 600;
+  }
+  
+  .director-section {
+    margin-bottom: 2vw;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+    
+    h4 {
+      color: #495057;
+      margin: 0 0 1vw 0;
+      font-size: 1.25vw;
+      font-weight: 600;
+    }
+    
+    div {
+      font-size: 1vw;
+      line-height: 1.6;
+    }
+  }
+}
+
+// Media Content
+.media-content {
+  padding: 2vw 0vw;
+  margin: 0;
+  
+  h3 {
+    color: #007bff;
+    margin: 0 0 1.5vw 0;
+    font-size: 1.5vw;
+    font-weight: 600;
+  }
+  
+  .media-item {
+    margin-bottom: 2vw;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+    
+    h4 {
+      color: #495057;
+      margin: 0 0 1vw 0;
+      font-size: 1.25vw;
+      font-weight: 600;
+    }
+    
+    div {
+      font-size: 1vw;
+      line-height: 1.6;
+    }
+  }
+}
+
+// Glossary
+.glossary {
+  padding: 2vw 0vw;
+  margin: 0;
+  
+  h3 {
+    color: #007bff;
+    margin: 0 0 1.5vw 0;
+    font-size: 1.5vw;
+    font-weight: 600;
+  }
+  
+  div {
+    font-size: 1vw;
+    line-height: 1.6;
+  }
+}
+
+// References
+.references {
+  padding: 2vw;
+  margin: 0;
+  
+  h3 {
+    color: #007bff;
+    margin: 0 0 1.5vw 0;
+    font-size: 1.5vw;
+    font-weight: 600;
+  }
+  
+  div {
+    font-size: 1vw;
+    line-height: 1.6;
+  }
+}
+
+// Suggested Reading
+.suggested-reading {
+  padding: 2vw 0vw;
+  margin: 0;
+  
+  h3 {
+    color: #007bff;
+    margin: 0 0 1.5vw 0;
+    font-size: 1.5vw;
+    font-weight: 600;
+  }
+  
+  div {
+    font-size: 1vw;
+    line-height: 1.6;
+  }
+}
+
+// Footnote
+.footnote {
+  padding: 2vw 0vw;
+  margin: 0;
+  
+  h3 {
+    color: #007bff;
+    margin: 0 0 1.5vw 0;
+    font-size: 1.5vw;
+    font-weight: 600;
+  }
+  
+  div {
+    font-size: 1vw;
+    line-height: 1.6;
+  }
+}
+
+// Article Footer
+.article-footer {
+  padding: 2vw 0vw;
+  
+  .article-dates {
+    p {
+      margin: 0.5vw 0;
+      color: #666;
+      font-size: 0.9vw;
+      
+      strong {
+        color: #495057;
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .article-container {
+    max-width: 95vw;
+    padding: 1vw 0.5vw;
+  }
+  
+  .article-header {
+    padding: 1.5vw 1vw 1vw;
+    
+    .article-title {
+      font-size: 2vw;
+    }
+    
+    .article-meta {
+      flex-direction: column;
+      gap: 0.5vw;
+    }
+  }
+  
+  .article-body,
+  .teaching-moments,
+  .director-moments,
+  .media-content,
+  .glossary,
+  .references,
+  .suggested-reading,
+  .footnote,
+  .article-footer {
+    padding: 1.5vw 1vw;
+  }
+  
+  .article-highlight {
+    padding: 1vw;
+  }
+}

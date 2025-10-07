@@ -1,0 +1,36 @@
+<section class="got-covered">
+
+    <div class="got-covered-grid">
+
+        <div class="sidebar">
+            <h2 class="sidebar-title">We've Got You Covered</h2>
+            <h3 class="sidebar-subtitle">Start your college journey with confidence!</h3>
+            <p class="sidebar-description">
+                Browse our library of helpful articles and directories made just for performing arts students and their
+                families. Whether you're choosing a school, planning campus visits, preparing for auditions, applying
+                for scholarships, or getting ready to submit applications—this is your go-to place for everything
+                college.
+            </p>
+            <div class="sidebar-logo">
+                <img src="/images/logo.png" alt="Accoladi logo">
+            </div>
+        </div>
+
+        <div class="articles-grid">
+
+            
+            @for (article of articles()?.results; track article.id) {
+                <article class="article-card">
+                    <div class="article-image">
+                        <img [src]="article.image" alt="Music student with brass instrument">
+                    </div>
+                    <div class="article-content">
+                        <h3 class="article-title">{{article.title}}</h3>
+                        <p class="article-excerpt">{{article.byline}}</p>
+                        <a [routerLink]="['/article', article.id]" class="read-more">Read More →</a>
+                    </div>
+                </article>
+            }
+        </div>
+    </div>
+</section>

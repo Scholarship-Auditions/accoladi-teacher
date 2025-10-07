@@ -1,0 +1,302 @@
+.aj-hero-section {
+    padding: 6vw 0;
+    background: var(--white-color);
+
+    .aj-hero-container {
+        text-align: center;
+        margin: auto;
+    }
+
+    h1 {
+        font-size: 3.5vw;
+        font-weight: 800;
+        color: var(--navy-800);
+        margin-bottom: 3vw;
+        line-height: 1.2;
+    }
+
+    .aj-hero-image {
+        width: 100%;
+        max-width: 80vw;
+        height: 40vw;
+        object-fit: cover;
+        border-radius: 1.5vw;
+        box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
+    }
+}
+
+.profile-section {
+    padding: 2vw 0;
+    background: var(--navy-800);
+
+    .profile-container {
+        display: flex;
+        justify-content: center;
+        margin: auto;
+    }
+
+    .profile-card {
+        border-radius: 1.5vw;
+        padding: 3vw;
+        max-width: 80vw;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 25vw 1fr;
+        gap: 3vw;
+        align-items: start;
+    }
+
+    .profile-image {
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 1vw;
+            box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    .profile-content {
+        color: var(--white-color);
+
+        .profile-name {
+            font-size: 3vw;
+            font-weight: 800;
+            color: var(--white-color);
+            margin-bottom: 2vw;
+            line-height: 1.2;
+        }
+
+        .profile-details {
+            margin-bottom: 3vw;
+
+            .detail-item {
+                display: flex;
+                margin-bottom: 1vw;
+
+                .detail-label {
+                    font-weight: 700;
+                    color: var(--white-color);
+                    margin-right: 1vw;
+                    min-width: 12vw;
+                    font-size: 1.2vw;
+                }
+
+                .detail-value {
+                    color: var(--white-color);
+                    font-size: 1.2vw;
+                    font-weight: 500;
+                }
+            }
+        }
+
+        .achievements {
+            h3 {
+                font-size: 2vw;
+                font-weight: 700;
+                color: var(--amber-color);
+                margin-bottom: 1.5vw;
+            }
+
+            .achievements-list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+
+                li {
+                    position: relative;
+                    padding-left: 2vw;
+                    margin-bottom: 0.8vw;
+                    font-size: 1.1vw;
+                    line-height: 1.6;
+                    color: var(--white-color);
+
+                    &:before {
+                        content: "•";
+                        position: absolute;
+                        left: 0;
+                        color: var(--amber-color);
+                        font-size: 1.5vw;
+                        line-height: 1.6;
+                    }
+                }
+            }
+        }
+    }
+
+    .aj-neubert-content {
+       margin: auto;
+
+        p {
+            font-size: 1.1vw;
+            color: var(--white-color);
+            margin-bottom: 1.5vw;
+        }
+    }
+}
+
+.aj-neubert-video {
+    padding: 2vw 0;
+    background: var(--white-color);
+
+    .video-container {
+        margin: auto;
+        width: 100%;
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 1vw;
+        }
+    }
+}
+
+.repertoire-section {
+    padding: 6vw 0;
+    background: var(--white-color);
+    
+    .repertoire-container {
+        display: flex;
+        justify-content: center;
+        margin: auto;
+    }
+    
+    .repertoire-card {
+        background: var(--navy-800);
+        border: 0.2vw solid var(--blue-color);
+        border-radius: 1.5vw;
+        padding: 3vw;
+        width: 100%;
+        box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
+    }
+    
+    .repertoire-title {
+        font-size: 2.5vw;
+        font-weight: 800;
+        color: var(--white-color);
+        text-align: center;
+        margin-bottom: 3vw;
+    }
+    
+    .repertoire-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2vw;
+    }
+    
+    .repertoire-column {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5vw;
+    }
+    
+    .repertoire-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8vw;
+        margin-bottom: 2vw;
+        
+        .piece {
+            font-size: 1.2vw;
+            color: var(--white-color);
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 0.5vw;
+        }
+        
+        .composer {
+            font-size: 1.1vw;
+            color: var(--white-color);
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.4;
+        }
+    }
+}
+
+.career-section {
+    padding: 2vw 0;
+    background: var(--white-color);
+    
+    .career-container {
+        margin: 0 auto;
+    }
+    
+    .career-content {
+        display: grid;
+        grid-template-columns: 30% 65%;
+        gap: 4vw;
+        align-items: start;
+    }
+    
+    .schools-box {
+        background: var(--blue-color);
+        border: 0.2vw solid var(--amber-color);
+        border-radius: 1.5vw;
+        padding: 2.5vw;
+        box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
+        
+        .schools-title {
+            font-size: 1.8vw;
+            font-weight: 800;
+            color: var(--white-color);
+            margin-bottom: 2vw;
+            text-align: center;
+        }
+        
+        .schools-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            
+            li {
+                position: relative;
+                padding-left: 2vw;
+                margin-bottom: 1.2vw;
+                font-size: 1.2vw;
+                line-height: 1.5;
+                color: var(--white-color);
+                font-weight: 500;
+                
+                &:before {
+                    content: "•";
+                    position: absolute;
+                    left: 0;
+                    color: var(--amber-color);
+                    font-size: 1.8vw;
+                    line-height: 1.5;
+                }
+                
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+    
+    .career-story {
+        .story-paragraph {
+            margin-bottom: 2.5vw;
+            
+            &:last-child {
+                margin-bottom: 0;
+            }
+            
+            p {
+                font-size: 1.1vw;
+                line-height: 2vw;
+                color: var(--navy-700);
+                font-weight: 500;
+                margin: 0;
+                text-align: justify;
+            }
+        }
+    }
+}

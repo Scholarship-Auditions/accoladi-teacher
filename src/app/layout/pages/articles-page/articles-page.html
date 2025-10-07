@@ -1,0 +1,168 @@
+<div class="article-container container">
+
+  <!-- Loading State -->
+   @if (loading()) {
+    <div class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading article...</p>
+      </div>
+   }
+
+   @if (error()) {
+    <div class="error-state">
+        <div class="error-icon">⚠️</div>
+        <h2>Oops! Something went wrong</h2>
+        <p>{{ error() }}</p>
+    </div>
+   }
+
+  
+  <!-- Article Content -->
+  @if (article() && !loading() && !error()) {
+    <article class="article-content">
+      <!-- Article Header -->
+      <header class="article-header">
+        <div class="article-meta">
+          <span class="category">{{ article()?.category?.name }}</span>
+          <span class="publish-date">{{ article()?.publishedAt | date:'longDate' }}</span>
+        </div>
+        
+        <h1 class="article-title">{{ article()?.title }}</h1>
+        
+        <div class="article-byline">
+          <span class="author">By {{ article()?.byline }}</span>
+        </div>
+      </header>
+
+      <!-- Article Image -->
+      @if (article()?.image) {
+        <div class="article-image">
+          <img [src]="article()?.image" [alt]="article()?.title" loading="lazy">
+        </div>
+      }
+
+      <!-- Article Highlight -->
+      @if (article()?.highlight) {
+        <div class="article-highlight">
+          <h3>Key Highlights</h3>
+          <p>{{ article()?.highlight }}</p>
+        </div>
+      }
+
+      <!-- Main Article Content -->
+      <div class="article-body">
+        <div class="content" [innerHTML]="article()?.content"></div>
+      </div>
+
+      <!-- Teaching Moments Section -->
+      @if (article()?.teachingMomentsHighschool || article()?.teachingMomentsMiddleschool) {
+        <div class="teaching-moments">
+          <h3>Teaching Moments</h3>
+          
+          @if (article()?.teachingMomentsHighschool) {
+            <div class="teaching-section">
+              <h4>High School</h4>
+              <div [innerHTML]="article()?.teachingMomentsHighschool"></div>
+            </div>
+          }
+          
+          @if (article()?.teachingMomentsMiddleschool) {
+            <div class="teaching-section">
+              <h4>Middle School</h4>
+              <div [innerHTML]="article()?.teachingMomentsMiddleschool"></div>
+            </div>
+          }
+        </div>
+      }
+
+      <!-- Director Moments Section -->
+      @if (article()?.directorMomentsHighschool || article()?.directorMomentsMiddleschool) {
+        <div class="director-moments">
+          <h3>Director Moments</h3>
+          
+          @if (article()?.directorMomentsHighschool) {
+            <div class="director-section">
+              <h4>High School</h4>
+              <div [innerHTML]="article()?.directorMomentsHighschool"></div>
+            </div>
+          }
+          
+          @if (article()?.directorMomentsMiddleschool) {
+            <div class="director-section">
+              <h4>Middle School</h4>
+              <div [innerHTML]="article()?.directorMomentsMiddleschool"></div>
+            </div>
+          }
+        </div>
+      }
+
+      <!-- Media Content -->
+      @if (article()?.directorPodcast || article()?.directorVlog) {
+        <div class="media-content">
+          <h3>Additional Media</h3>
+          
+          @if (article()?.directorPodcast) {
+            <div class="media-item">
+              <h4>Director Podcast</h4>
+              <div [innerHTML]="article()?.directorPodcast"></div>
+            </div>
+          }
+          
+          @if (article()?.directorVlog) {
+            <div class="media-item">
+              <h4>Director Vlog</h4>
+              <div [innerHTML]="article()?.directorVlog"></div>
+            </div>
+          }
+        </div>
+      }
+
+      <!-- Glossary -->
+      @if (article()?.glossary) {
+        <div class="glossary">
+          <h3>Glossary</h3>
+          <div [innerHTML]="article()?.glossary"></div>
+        </div>
+      }
+
+      <!-- References -->
+      @if (article()?.references) {
+        <div class="references">
+          <h3>References</h3>
+          <div [innerHTML]="article()?.references"></div>
+        </div>
+      }
+
+      <!-- Suggested Reading -->
+      @if (article()?.suggestedReading) {
+        <div class="suggested-reading">
+          <h3>Suggested Reading</h3>
+          <div [innerHTML]="article()?.suggestedReading"></div>
+        </div>
+      }
+
+      <!-- Footnote -->
+      @if (article()?.footnote) {
+        <div class="footnote">
+          <h3>Footnotes</h3>
+          <div [innerHTML]="article()?.footnote"></div>
+        </div>
+      }
+
+      <!-- Article Footer -->
+      <footer class="article-footer">
+        <div class="article-dates">
+          <p><strong>Published:</strong> {{ article()?.publishedAt | date:'longDate' }}</p>
+          @if (article()?.updatedAt !== article()?.publishedAt) {
+            <p>
+              <strong>Last Updated:</strong> {{ article()?.updatedAt | date:'longDate' }}
+            </p>
+          }
+        </div>
+      </footer>
+    </article>
+  }
+</div>
+
+
+<app-got-covered></app-got-covered>
