@@ -1,5 +1,5 @@
 {
-  "name": "accoladi-student",
+  "name": "accoladi-teacher",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:accoladi-student": "node dist/accoladi-student/server/server.mjs"
+    "serve:ssr:accoladi-teacher": "node dist/accoladi-teacher/server/server.mjs"
   },
   "prettier": {
     "overrides": [

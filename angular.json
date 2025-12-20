@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "accoladi-student": {
+    "accoladi-teacher": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -42,9 +42,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles.scss"],
             "server": "src/main.server.ts",
             "outputMode": "server",
             "ssr": {
@@ -79,10 +77,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "accoladi-student:build:production"
+              "buildTarget": "accoladi-teacher:build:production"
             },
             "development": {
-              "buildTarget": "accoladi-student:build:development"
+              "buildTarget": "accoladi-teacher:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -101,9 +99,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ]
+            "styles": ["src/styles.scss"]
           }
         }
       }
