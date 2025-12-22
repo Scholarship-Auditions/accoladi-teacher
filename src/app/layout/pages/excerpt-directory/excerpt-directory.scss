@@ -1,0 +1,281 @@
+.excerpt-directory-section {
+    width: 100vw;
+    padding: 4vw 0;
+    background: var(--white-color);
+
+    .excerpt-directory-container {
+        margin: 0 auto;
+
+        .excerpt-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4vw;
+            align-items: flex-start;
+
+            // Story Column (Left)
+            .story-column {
+                .story-title {
+                    font-size: 3.5vw;
+                    font-weight: 900;
+                    color: var(--navy-800);
+                    margin-bottom: 1vw;
+                    line-height: 1.2;
+                }
+
+                .story-subtitle {
+                    font-size: 2vw;
+                    font-weight: 700;
+                    color: var(--navy-800);
+                    margin-bottom: 0.5vw;
+                }
+
+                .story-role {
+                    font-size: 1.2vw;
+                    font-weight: 400;
+                    color: var(--navy-800);
+                    margin-bottom: 2vw;
+                }
+
+                .story-image {
+                    width: 100%;
+                    margin-bottom: 2vw;
+                    border-radius: 0.5vw;
+                    overflow: hidden;
+                    box-shadow: 0 0.5vw 1.5vw rgba(0, 0, 0, 0.1);
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                        display: block;
+                    }
+                }
+
+                .story-content {
+                    .story-paragraph {
+                        font-size: 1.1vw;
+                        line-height: 1.8;
+                        color: var(--navy-800);
+                        margin-bottom: 1.5vw;
+                        font-weight: 400;
+                    }
+                }
+            }
+
+            // Directory Column (Right)
+            .directory-column {
+                .directory-box {
+                    margin-top: 16vw;
+                    background: var(--amber-color);
+                    border: 0.3vw solid var(--navy-800);
+                    border-radius: 1.5vw;
+                    padding: 3vw;
+                    box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1);
+
+                    .directory-title {
+                        font-size: 2vw;
+                        font-weight: 800;
+                        color: var(--navy-800);
+                        margin-bottom: 2vw;
+                        text-align: center;
+                    }
+
+                    .conductor-icon {
+                        display: flex;
+                        justify-content: center;
+                        margin-bottom: 2vw;
+
+                        img {
+                            width: 4vw;
+                            height: 4vw;
+                        }
+                    }
+
+                    .instrument-families {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1vw;
+
+                        .instrument-family {
+                            .family-button {
+                                width: 100%;
+                                padding: 1.2vw 1.5vw;
+                                background: var(--navy-800);
+                                color: var(--white-color);
+                                font-size: 1.3vw;
+                                font-weight: 700;
+                                border: none;
+                                border-radius: 0.5vw;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                                text-align: left;
+                                position: relative;
+
+                                &:hover {
+                                    background: var(--blue-color);
+                                    transform: translateY(-0.1vw);
+                                }
+
+                                &.expanded {
+                                    background: var(--blue-color);
+                                }
+
+                                &::after {
+                                    content: '+';
+                                    position: absolute;
+                                    right: 1.5vw;
+                                    font-size: 1.5vw;
+                                    transition: transform 0.3s ease;
+                                }
+
+                                &.expanded::after {
+                                    content: '−';
+                                }
+                            }
+
+                            .instruments-list {
+                                display: flex;
+                                flex-wrap: wrap;
+                                gap: 0.8vw;
+                                margin-top: 1vw;
+                                padding: 1vw;
+                                background: rgba(255, 255, 255, 0.3);
+                                border-radius: 0.5vw;
+                                animation: slideDown 0.3s ease;
+
+                                @keyframes slideDown {
+                                    from {
+                                        opacity: 0;
+                                        transform: translateY(-1vw);
+                                    }
+
+                                    to {
+                                        opacity: 1;
+                                        transform: translateY(0);
+                                    }
+                                }
+
+                                .instrument-button {
+                                    padding: 0.8vw 1.5vw;
+                                    background: var(--blue-color);
+                                    color: var(--navy-800);
+                                    font-size: 1vw;
+                                    font-weight: 600;
+                                    border: 0.2vw solid var(--navy-800);
+                                    border-radius: 0.4vw;
+                                    cursor: pointer;
+                                    transition: all 0.3s ease;
+                                    white-space: nowrap;
+
+                                    &:hover {
+                                        background: var(--white-color);
+                                        transform: translateY(-0.1vw);
+                                        box-shadow: 0 0.3vw 0.8vw rgba(0, 0, 0, 0.15);
+                                    }
+
+                                    &.selected {
+                                        background: var(--navy-800);
+                                        color: var(--white-color);
+                                        border-color: var(--navy-800);
+                                        box-shadow: 0 0.3vw 0.8vw rgba(0, 0, 0, 0.2);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .story-description p {
+            font-size: 1.1vw;
+            color: var(--navy-800);
+            margin-bottom: 1.5vw;
+            font-weight: 400;
+        }
+    }
+}
+
+// New Section: Toscanini Photo with Story Text
+.toscanini-photo-section {
+    width: 100vw;
+    padding: 4vw 0;
+    background: var(--white-color);
+
+    .toscanini-container {
+        margin: 0 auto;
+
+        .toscanini-layout {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 4vw;
+            align-items: flex-start;
+
+            // Photo Column (Left)
+            .photo-column {
+                .photo-frame {
+                    border: 0.4vw solid var(--navy-800);
+                    border-radius: 1vw;
+                    overflow: hidden;
+                    background: var(--navy-800);
+                    position: relative;
+
+                    .photo-container {
+                        width: 100%;
+                        position: relative;
+
+                        img {
+                            width: 100%;
+                            height: auto;
+                            display: block;
+                        }
+                    }
+
+                    .photo-overlay {
+                        background: var(--navy-800);
+                        padding: 2vw;
+                        color: var(--white-color);
+
+                        .photo-name {
+                            font-size: 2.2vw;
+                            font-weight: 800;
+                            color: var(--white-color);
+                            margin-bottom: 0.5vw;
+                            line-height: 1.2;
+                        }
+
+                        .photo-dates {
+                            font-size: 1.3vw;
+                            font-weight: 400;
+                            color: var(--white-color);
+                            margin-bottom: 1.5vw;
+                        }
+
+                        .photo-bio {
+                            font-size: 1vw;
+                            line-height: 1.6;
+                            color: var(--white-color);
+                            font-weight: 400;
+                        }
+                    }
+                }
+            }
+
+            // Text Column (Right)
+            .text-column {
+                .story-text-content {
+                    p {
+                        font-size: 1.1vw;
+                        line-height: 1.8;
+                        color: var(--navy-800);
+                        margin-bottom: 1.5vw;
+                        font-weight: 400;
+
+                        em {
+                            font-style: italic;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,1 +1,332 @@
-<p>resources works!</p>
+<section class="resources-banner-section">
+  <div class="resources-banner container">
+    <div class="banner-content">
+      <div class="video-wrapper">
+        <video
+          src="https://www.dropbox.com/scl/fi/25rfjwc92gq7x2wq0ab55/Hero-Video-Resource-Paige-1.mp4?rlkey=k14f5ddh1rj6rbq9wz3msi5vq&amp;raw=1"
+          autoplay
+          muted
+          loop
+          playsinline
+        ></video>
+      </div>
+
+      <div class="banner-text">
+        <h1 class="resources-title">Resources</h1>
+        <p class="resources-description">
+          Bridging the gap between middle and high school performers and
+          collegiate opportunities, Accoladi.com's Resources section provides
+          the guidance you need to navigate the admissions journey. From
+          selecting the right school to preparing for auditions and securing
+          scholarships, our step-by-step tools and expert insights keep you on
+          track. With comprehensive directories and essential tips, students and
+          parents can make informed decisions with confidence. Whether you're
+          exploring options or finalizing decisions, we provide the tools to
+          help you stand out and succeed!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<section class="starting-point-section">
+  <div class="starting-point-banner container">
+    <h1 class="starting-point-title">STARTING POINT</h1>
+    <div class="starting-point-subtitle">
+      <p>College-bound, but you're unsure where to start?</p>
+      <p>This is the starting point!</p>
+      <p>
+        From choosing the right school to applying, we've got you covered. Let
+        us help you navigate the journey with confidence!
+      </p>
+    </div>
+  </div>
+
+  <div class="starting-point-content container">
+    <div class="step-content-grid">
+      <div class="step-info-column">
+        <div class="step-header">
+          <span class="step-label">STEP {{ currentStep.stepNumber }}</span>
+        </div>
+        <h2 class="step-title">{{ currentStep.title }}</h2>
+        <p class="step-description">{{ currentStep.description }}</p>
+
+        <div class="related-articles">
+          <div class="related-articles-header">
+            <span class="article-icon">📚</span>
+            <h3 class="related-articles-title">Related Articles</h3>
+          </div>
+          <ul class="article-links">
+            @for (article of currentStep.relatedArticles; track $index) {
+            <li>
+              <a [href]="article.url" class="article-link">{{
+                article.title
+              }}</a>
+            </li>
+            }
+          </ul>
+        </div>
+
+        <div class="step-navigation">
+          <div class="nav-arrows">
+            <button
+              class="nav-arrow prev-arrow"
+              (click)="previousStep()"
+              [disabled]="currentStepIndex() === 0"
+            >
+              <span>←</span>
+            </button>
+            <button
+              class="nav-arrow next-arrow"
+              (click)="nextStep()"
+              [disabled]="currentStepIndex() === steps.length - 1"
+            >
+              <span>→</span>
+            </button>
+          </div>
+          <div class="step-indicators">
+            @for (item of steps; track $index) {
+            <div
+              class="step-indicator"
+              [class.active]="$index === currentStepIndex()"
+              (click)="goToStep($index)"
+            >
+              <span class="indicator-number">{{ $index + 1 }}</span>
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="step-image-column">
+        <img
+          [src]="currentStep.image"
+          [alt]="currentStep.title"
+          class="step-image"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="resource-info-section">
+  <img src="/images/resource-section-3.png" alt="Resource Info Section" />
+
+  <div class="resource-info-wrapper container">
+    <div class="resource-info-flex-1">
+      <div class="container-1">
+        <div class="title">College Directory for Music Majors</div>
+      </div>
+      <div class="container-2"></div>
+    </div>
+
+    <div class="resource-info-flex-2"></div>
+
+    <div class="resource-info-flex-3"></div>
+  </div>
+</section>
+
+<div class="marquee-container">
+  <div class="marquee-content">
+    Accoladi ... Research That Works. Results That Matter. &nbsp; &nbsp; &nbsp;
+    Accoladi ... Research That Works. Results That Matter.
+  </div>
+</div>
+
+<section class="lets-talk-money-section">
+  <div class="money-content-wrapper container">
+    <div class="money-content-box">
+      <div class="money-left-section">
+        <h2 class="money-title">Let's Talk Money</h2>
+        <p class="money-description">
+          College is a significant investment, often the largest expense for
+          many families in the United States. However, there are plenty of
+          opportunities to ease the financial burden, and here you'll gain a
+          clear understanding of how grants, financial aid, and both
+          institutional and non-institutional scholarships can help make college
+          more affordable.
+        </p>
+        <div class="money-navigation">
+          <button
+            class="money-nav-btn"
+            (click)="previousMoneySlide()"
+            [disabled]="currentMoneySlideIndex() === 0"
+          >
+            <span>▲</span>
+          </button>
+          <span class="money-page-counter"
+            >{{ currentMoneySlideIndex() + 1 }} of
+            {{ moneySlides.length }}</span
+          >
+          <button
+            class="money-nav-btn"
+            (click)="nextMoneySlide()"
+            [disabled]="currentMoneySlideIndex() === moneySlides.length - 1"
+          >
+            <span>▼</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="money-right-section">
+        <h3 class="money-right-title">{{ currentMoneySlide.title }}</h3>
+        <div class="money-media-container">
+          @if (currentMoneySlide.type === 'video') { @if (iframeVisible()) {
+          <iframe
+            [src]="currentVideoUrl"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen=""
+            class="money-media"
+          >
+          </iframe>
+          } } @else {
+          <img
+            [src]="currentMoneySlide.media"
+            [alt]="currentMoneySlide.title"
+            class="money-media"
+          />
+          }
+        </div>
+        <div class="money-article-link">
+          <p class="helpful-article-label">Helpful Article Below</p>
+          <a
+            [href]="currentMoneySlide.articleUrl"
+            class="money-article-title"
+            >{{ currentMoneySlide.articleTitle }}</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="audition-requirements-section">
+  <div class="audition-requirements-wrapper container">
+    <div class="audition-background">
+      <img
+        src="/images/resource-bg.jpg"
+        alt="Audition Requirements Background"
+        class="audition-bg-image"
+      />
+    </div>
+
+    <div class="audition-content container">
+      <div class="audition-header">
+        <h1 class="audition-title">
+          <span class="audition-word">AUDITION</span>
+          <span class="requirements-word">REQUIREMENTS</span>
+        </h1>
+        <p class="audition-description">
+          The audition requirements of any collegiate institution reflect its
+          personality, academic standards, and performance expectations. The
+          Accoladi Research Team has analyzed audition criteria from over 400
+          institutions, categorizing them into three distinct levels.
+        </p>
+      </div>
+
+      <div class="audition-panels">
+        <div class="audition-panel">
+          <div class="panel-image-container">
+            <img
+              src="/images/audition-1.jpg"
+              alt="Standard Audition"
+              class="panel-image"
+            />
+          </div>
+          <div class="panel-label">Standard Audition</div>
+        </div>
+
+        <div class="audition-panel">
+          <div class="panel-image-container">
+            <img
+              src="/images/audition-2.jpg"
+              alt="Premier Audition"
+              class="panel-image"
+            />
+          </div>
+          <div class="panel-label">Premier Audition</div>
+        </div>
+
+        <div class="audition-panel">
+          <div class="panel-image-container">
+            <img
+              src="/images/audition-3.jpg"
+              alt="Contrasting Audition"
+              class="panel-image"
+            />
+          </div>
+          <div class="panel-label">Contrasting Audition</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-container-audition">
+  <div class="marquee-content">
+    From auditions to scholarships, double majors to drum corps – Accoladi is
+    your trusted source every step of the journey... this is your guidebook for
+    navigating the complexities of college music admissions with
+    confidence...transforms dedication into opportunity - with actionable advice
+    on auditions, scholarships, and college decisions. &nbsp; &nbsp; &nbsp; From
+    auditions to scholarships, double majors to drum corps – Accoladi is your
+    trusted source every step of the journey... this is your guidebook for
+    navigating the complexities of college music admissions with
+    confidence...transforms dedication into opportunity - with actionable advice
+    on auditions, scholarships, and college decisions.
+  </div>
+</div>
+
+<section class="entrance-exam-section">
+  <div class="entrance-exam-background">
+    <img
+      src="/images/entrance-exam-bg.png"
+      alt="Entrance Exam Background"
+      class="entrance-exam-bg-image"
+    />
+  </div>
+
+  <div class="entrance-exam-content container">
+    <div class="entrance-exam-header">
+      <h1 class="entrance-exam-title">ENTRANCE EXAM</h1>
+      <p class="entrance-exam-description">
+        Most colleges and universities require students to complete an entrance
+        exam as part of the audition process. To help you prepare, Accoladi
+        offers twelve authentic practice entrance exams, featuring real
+        questions pulled from actual collegiate entrance exams. Click each title
+        to see more information.
+      </p>
+    </div>
+
+    <div class="entrance-exam-grid">
+      @for (card of entranceExamCards; track $index) {
+      <div class="exam-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-front-image card-front-{{ $index + 1 }}">
+              <h3 class="card-title">{{ card.title }}</h3>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-back-content">
+              <p class="card-back-description">{{ card.description }}</p>
+              @if (card.buttonText && card.buttonUrl) {
+              <a [href]="card.buttonUrl" class="card-button">{{
+                card.buttonText
+              }}</a>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section>
+  <app-got-covered></app-got-covered>
+</section>

@@ -1,38 +1,56 @@
 <footer class="site-footer">
-    <div class="container footer-grid">
-        <div>
-            <a class="brand-link" routerLink="/">
-                <img src="/images/logo.png" alt="Accoladi logo" class="brand-logo">
-            </a>
-            <address class="footer-address under-logo">
-                <p>2557 Treetop Dr</p>
-                <p>Nashville, TN 37013</p>
-                <p>615-393-6116</p>
-            </address>
-        </div>
-
-        <div class="footer-links">
-            <h4 class="footer-title">Quick Links</h4>
-            <ul>
-                <li><a routerLink="/">Contact us</a></li>
-                <li><a routerLink="/about">Price Calculator</a></li>
-                <li><a routerLink="/resources">Terms and Conditions</a></li>
-                <li><a routerLink="/purpose">FAQ</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-links">
-            <h4 class="footer-title">Network Links</h4>
-            <ul>
-                <li><a href="https://www.accoladirecruiter.com/" target="_blank">Accoladi Recruiter</a></li>
-                <li><a href="https://www.accoladifineartsdirector.com/" target="_blank">Accoladi Fine Arts Director</a></li>
-                <li><a href="https://www.accoladiteacher.com/" target="_blank">Accoladi Teacher</a></li>
-            </ul>
-        </div>
-        
+  <div class="container footer-grid">
+    <div>
+      <a class="brand-link" routerLink="/">
+        <img src="/images/logo.png" alt="Accoladi logo" class="brand-logo" />
+      </a>
+      <address class="footer-address under-logo">
+        <p>2557 Treetop Dr</p>
+        <p>Nashville, TN 37013</p>
+        <p>615-393-6116</p>
+      </address>
     </div>
 
-    <div class="footer-bottom container">
-        <p>© {{ currentYear() }} Accoladi. All rights reserved.</p>
+    <div class="footer-links">
+      <h4 class="footer-title">Quick Links</h4>
+      <ul>
+        <li><a routerLink="/contact">Contact us</a></li>
+
+        <li>
+          <a
+            href="https://cdn.prod.website-files.com/6817b051f69dc64dbdb788c6/6817b051f69dc64dbdb78976_Acoladi%20Terms%20of%20Use%20(1).pdf"
+            target="_blank"
+            >Terms and Conditions</a
+          >
+        </li>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a routerLink="/faq">FAQ</a></li>
+      </ul>
     </div>
+
+    <div class="footer-links">
+      <h4 class="footer-title">Network Links</h4>
+      <ul>
+        <li>
+          <a href="https://www.accoladirecruiter.com/" target="_blank"
+            >Accoladi Recruiter</a
+          >
+        </li>
+        <li>
+          <a href="https://www.accoladifineartsdirector.com/" target="_blank"
+            >Accoladi Fine Arts Director</a
+          >
+        </li>
+        <li>
+          <a href="https://www.accoladiteacher.com/" target="_blank"
+            >Accoladi Teacher</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom container">
+    <p>© {{ currentYear() }} Accoladi. All rights reserved.</p>
+  </div>
 </footer>

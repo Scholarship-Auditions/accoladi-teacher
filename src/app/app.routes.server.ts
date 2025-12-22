@@ -1,60 +1,64 @@
-import { RenderMode, ServerRoute } from '@angular/ssr';
+import { RenderMode, ServerRoute } from "@angular/ssr";
 
 export const serverRoutes: ServerRoute[] = [
   {
-    path: '',
+    path: "",
     renderMode: RenderMode.Prerender,
   },
   {
-    path: 'about',
+    path: "about",
     renderMode: RenderMode.Prerender,
   },
   {
-    path: 'engage',
+    path: "engage",
     renderMode: RenderMode.Prerender,
   },
   {
-    path: 'purpose',
+    path: "purpose",
     renderMode: RenderMode.Prerender,
   },
   {
-    path: 'resources',
+    path: "resources",
     renderMode: RenderMode.Prerender,
   },
   {
-    path: 'faq',
+    path: "faq",
     renderMode: RenderMode.Prerender,
   },
   {
-    path: 'contact',
+    path: "contact",
     renderMode: RenderMode.Prerender,
   },
   {
-    path: 'aj-neubert',
+    path: "aj-neubert",
     renderMode: RenderMode.Prerender,
   },
   {
-    path: 'articles',
+    path: "articles",
     renderMode: RenderMode.Client,
   },
   {
-    path: 'article/:id',
+    path: "article/:id",
     renderMode: RenderMode.Client,
   },
   {
-    path: 'directories/non-institutional-scholarships-directory',
+    path: "directories/non-institutional-scholarships-directory",
     renderMode: RenderMode.Prerender,
   },
   {
-    path: 'directories/marching-band-directory',
+    path: "directories/marching-band-directory",
     renderMode: RenderMode.Prerender,
   },
   {
-    path: 'directories/college-directory',
+    path: "directories/college-directory",
     renderMode: RenderMode.Prerender,
   },
   {
-    path: '**',
+    path: "directories/excerpt-directory",
+    renderMode: RenderMode.Prerender,
+  },
+  {
+    path: "**",
     renderMode: RenderMode.Prerender,
   },
 ];

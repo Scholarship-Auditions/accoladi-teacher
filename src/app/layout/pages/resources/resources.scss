@@ -1,0 +1,823 @@
+.resources-banner-section {
+  width: 100vw;
+  padding: 6vw 0;
+
+  .resources-banner {
+    margin: 0 auto;
+    background: var(--blue-color);
+    border: 0.3vw solid var(--navy-800);
+    border-radius: 1.5vw;
+    overflow: hidden;
+    box-shadow: 0 1vw 3vw rgba(0, 0, 0, 0.15);
+
+    .banner-content {
+      min-height: 45vw;
+      max-height: 45vw;
+      position: relative;
+      overflow: hidden;
+
+      .video-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+
+        video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .banner-text {
+        position: absolute;
+        right: 2vw;
+        width: 50%;
+        height: auto;
+        padding: 4vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        z-index: 2;
+
+        .resources-title {
+          position: relative;
+          z-index: 1;
+          font-size: 4.5vw;
+          font-weight: 900;
+          color: var(--amber-color);
+          margin-bottom: 2vw;
+          line-height: 1.1;
+          text-shadow: 0.2vw 0.2vw 0.6vw rgba(0, 0, 0, 0.5);
+        }
+
+        .resources-description {
+          position: relative;
+          z-index: 1;
+          font-size: 1.2vw;
+          line-height: 1.8;
+          color: var(--white-color);
+          font-weight: 500;
+          text-align: left;
+          max-width: 90%;
+          text-shadow: 0.1vw 0.1vw 0.3vw rgba(0, 0, 0, 0.5);
+        }
+      }
+    }
+  }
+}
+
+// Starting Point Section
+.starting-point-section {
+  width: 100vw;
+  padding: 2vw 0;
+  background: var(--white-color);
+
+  .starting-point-banner {
+    text-align: center;
+    padding: 2vw 0;
+    margin: 0 auto;
+
+    .starting-point-title {
+      font-size: 8vw;
+      font-weight: 900;
+      color: var(--amber-color);
+      letter-spacing: 0.3vw;
+    }
+
+    .starting-point-subtitle {
+      p {
+        font-size: 1.4vw;
+        color: var(--navy-700);
+        font-weight: 500;
+        margin-bottom: 1vw;
+        line-height: 1.6;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .starting-point-content {
+    margin: 3vw auto 0 auto;
+
+    .step-content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      min-height: 50vw;
+
+      .step-info-column {
+        background: var(--navy-800);
+        padding: 4vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .step-header {
+          margin-bottom: 2vw;
+
+          .step-label {
+            font-size: 1.2vw;
+            font-weight: 800;
+            color: var(--amber-color);
+            letter-spacing: 0.1vw;
+          }
+        }
+
+        .step-title {
+          font-size: 3.5vw;
+          font-weight: 900;
+          color: var(--white-color);
+          margin-bottom: 2vw;
+          line-height: 1.2;
+        }
+
+        .step-description {
+          font-size: 1.3vw;
+          color: var(--white-color);
+          line-height: 1.8;
+          margin-bottom: 3vw;
+          font-weight: 400;
+        }
+
+        .related-articles {
+          margin-bottom: 3vw;
+
+          .related-articles-header {
+            display: flex;
+            align-items: center;
+            gap: 1vw;
+            margin-bottom: 1.5vw;
+
+            .article-icon {
+              font-size: 1.5vw;
+            }
+
+            .related-articles-title {
+              font-size: 1.4vw;
+              font-weight: 800;
+              color: var(--amber-color);
+            }
+          }
+
+          .article-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+              margin-bottom: 1vw;
+
+              .article-link {
+                font-size: 1.1vw;
+                color: var(--white-color);
+                text-decoration: underline;
+                font-weight: 400;
+                transition: color 0.3s ease;
+
+                &:hover {
+                  color: var(--amber-color);
+                }
+              }
+            }
+          }
+        }
+
+        .step-navigation {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5vw;
+
+          .nav-arrows {
+            display: flex;
+            gap: 1vw;
+            justify-content: center;
+
+            .nav-arrow {
+              width: 3.5vw;
+              height: 3.5vw;
+              border-radius: 50%;
+              background: var(--blue-color);
+              border: 0.2vw solid var(--white-color);
+              color: var(--white-color);
+              font-size: 1.5vw;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              transition: all 0.3s ease;
+
+              &:hover:not(:disabled) {
+                background: var(--amber-color);
+                transform: scale(1.1);
+              }
+
+              &:disabled {
+                opacity: 0.4;
+                cursor: not-allowed;
+              }
+
+              span {
+                font-weight: 900;
+              }
+            }
+          }
+
+          .step-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 1vw;
+            padding-top: 1vw;
+            border-top: 0.1vw solid rgba(255, 255, 255, 0.2);
+
+            .step-indicator {
+              width: 2.5vw;
+              height: 2.5vw;
+              border-radius: 50%;
+              border: 0.2vw solid var(--white-color);
+              background: transparent;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              cursor: pointer;
+              transition: all 0.3s ease;
+
+              &.active {
+                background: var(--amber-color);
+                border-color: var(--amber-color);
+              }
+
+              &:hover {
+                transform: scale(1.1);
+              }
+
+              .indicator-number {
+                font-size: 1vw;
+                font-weight: 800;
+                color: var(--white-color);
+              }
+            }
+          }
+        }
+      }
+
+      .step-image-column {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+
+        .step-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
+
+.resource-info-section {
+  width: 100%;
+  padding: 2vw 0;
+
+  img {
+    width: 100%;
+  }
+
+  .resource-info-wrapper {
+  }
+}
+
+.marquee-container {
+  overflow: hidden;
+  padding: 1vw 0;
+  white-space: nowrap;
+  background: var(--amber-color);
+
+  .marquee-content {
+    display: inline-block;
+    color: var(--blue-color);
+    font-size: 5vw;
+    font-weight: 700;
+    animation: marquee 15s linear infinite;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+// Let's Talk Money Section
+.lets-talk-money-section {
+  margin-top: 3vw;
+  width: 100vw;
+  padding: 6vw 0;
+  position: relative;
+  background-image: url("/images/money-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  .money-content-wrapper {
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+
+    .money-content-box {
+      background: var(--white-color);
+      border: 0.3vw solid var(--blue-color);
+      border-radius: 1.5vw;
+      padding: 4vw;
+      display: flex;
+      gap: 4vw;
+      box-shadow: 0 2vw 4vw rgba(0, 0, 0, 0.15);
+
+      .money-left-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .money-title {
+          font-size: 3.5vw;
+          font-weight: 800;
+          color: var(--navy-800);
+          margin-bottom: 2vw;
+          line-height: 1.2;
+        }
+
+        .money-description {
+          font-size: 1.3vw;
+          line-height: 1.8;
+          color: #4a4a4a;
+          font-weight: 400;
+          margin-bottom: 3vw;
+        }
+
+        .money-navigation {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 1vw;
+
+          .money-nav-btn {
+            width: 4vw;
+            height: 4vw;
+            border-radius: 50%;
+            background: var(--amber-color);
+            border: 0.2vw solid var(--navy-800);
+            color: var(--navy-800);
+            font-size: 1.5vw;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+
+            &:hover:not(:disabled) {
+              background: var(--blue-color);
+              color: var(--white-color);
+              transform: scale(1.1);
+            }
+
+            &:disabled {
+              opacity: 0.4;
+              cursor: not-allowed;
+            }
+
+            span {
+              font-weight: 900;
+            }
+          }
+
+          .money-page-counter {
+            font-size: 1.2vw;
+            font-weight: 700;
+            color: var(--navy-800);
+          }
+        }
+      }
+
+      .money-right-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        .money-right-title {
+          font-size: 2.5vw;
+          font-weight: 800;
+          color: var(--navy-800);
+          margin-bottom: 2vw;
+          line-height: 1.2;
+        }
+
+        .money-media-container {
+          aspect-ratio: 462 / 258;
+          width: 100%;
+          border-radius: 1vw;
+          overflow: hidden;
+          margin-bottom: 2vw;
+          border: 0.2vw solid rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0.5vw 1.5vw rgba(0, 0, 0, 0.1);
+
+          .money-media {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .money-article-link {
+          .helpful-article-label {
+            font-size: 1.1vw;
+            color: var(--blue-color);
+            margin-bottom: 0.5vw;
+            font-weight: 500;
+          }
+
+          .money-article-title {
+            font-size: 1.3vw;
+            font-weight: 700;
+            color: var(--navy-800);
+            text-decoration: none;
+            line-height: 1.5;
+            display: block;
+            transition: color 0.3s ease;
+
+            &:hover {
+              color: var(--blue-color);
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Audition Requirements Section
+.audition-requirements-section {
+  width: 100vw;
+  padding: 3vw 0;
+  position: relative;
+  margin-top: 3vw;
+
+  .audition-requirements-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 60vw;
+    margin: 0 auto;
+
+    .audition-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+
+      .audition-bg-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .audition-content {
+      position: relative;
+      z-index: 1;
+      padding: 2vw 0;
+      margin: auto;
+
+      .audition-header {
+        text-align: center;
+        margin-bottom: 4vw;
+
+        .audition-title {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 2vw;
+          position: relative;
+
+          .audition-word {
+            font-size: 5vw;
+            font-weight: 900;
+            color: var(--navy-800);
+            line-height: 1;
+            margin-bottom: 0.5vw;
+            position: relative;
+            z-index: 2;
+          }
+
+          .requirements-word {
+            font-size: 6.5vw;
+            font-weight: 900;
+            color: var(--navy-800);
+            line-height: 1;
+            position: relative;
+            z-index: 2;
+          }
+        }
+
+        .audition-description {
+          font-size: 1.3vw;
+          line-height: 1.8;
+          color: var(--navy-800);
+          font-weight: 400;
+          max-width: 90%;
+          margin: 0 auto;
+          text-align: left;
+        }
+      }
+
+      .audition-panels {
+        display: flex;
+        gap: 2vw;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        margin-top: 3vw;
+
+        .audition-panel {
+          flex: 1;
+          min-width: 25vw;
+          max-width: 30vw;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .panel-image-container {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            border-radius: 0.5vw;
+            overflow: hidden;
+            border: 0.3vw solid var(--amber-color);
+            margin-bottom: 1vw;
+            box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.15);
+
+            .panel-image {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+
+          .panel-label {
+            background: var(--navy-800);
+            color: var(--white-color);
+            padding: 0.8vw 2vw;
+            font-size: 1.2vw;
+            font-weight: 700;
+            text-align: center;
+            border-radius: 0.3vw;
+            width: 100%;
+            box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.1);
+          }
+        }
+      }
+    }
+  }
+}
+
+.marquee-container-audition {
+  overflow: hidden;
+  padding: 1vw 0;
+  white-space: nowrap;
+  background: var(--amber-color);
+
+  .marquee-content {
+    display: inline-block;
+    color: var(--blue-color);
+    font-size: 5vw;
+    font-weight: 700;
+    animation: marquee 80s linear infinite;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+// Entrance Exam Section
+.entrance-exam-section {
+  width: 100vw;
+  padding: 3vw 0;
+  position: relative;
+  margin-top: 3vw;
+
+  .entrance-exam-background {
+    position: absolute;
+    top: 5%;
+    left: 0;
+    width: 100%;
+    z-index: 0;
+
+    .entrance-exam-bg-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .entrance-exam-content {
+    position: relative;
+    z-index: 1;
+    padding: 0vw 0;
+    margin: 0 auto;
+
+    .entrance-exam-header {
+      text-align: center;
+      margin: 0 auto 4vw auto;
+
+      .entrance-exam-title {
+        font-size: 1.5vw;
+        font-weight: 700;
+        color: var(--navy-700);
+        margin-bottom: 1vw;
+        text-shadow: 0 0.2vw 0.5vw rgba(0, 0, 0, 0.1);
+      }
+
+      .entrance-exam-description {
+        font-size: 1vw;
+        color: var(--navy-800);
+        font-weight: 400;
+        max-width: 85%;
+        margin: 0 auto;
+      }
+    }
+
+    .entrance-exam-grid {
+      justify-content: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1vw;
+
+      .exam-card {
+        width: 18vw;
+        height: 15vw;
+        perspective: 1000px;
+        cursor: pointer;
+
+        .card-inner {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          transition: transform 0.6s;
+          transform-style: preserve-3d;
+
+          .card-front,
+          .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 1vw;
+            overflow: hidden;
+            box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.15);
+          }
+
+          .card-front {
+            .card-front-1 {
+              background-position: 0% 0%;
+            }
+
+            .card-front-2 {
+              background-position: 33.33% 0%;
+            }
+
+            .card-front-3 {
+              background-position: 66.66% 0%;
+            }
+
+            .card-front-4 {
+              background-position: 100% 0%;
+            }
+
+            .card-front-5 {
+              background-position: 0% 50%;
+            }
+
+            .card-front-6 {
+              background-position: 33.33% 50%;
+            }
+
+            .card-front-7 {
+              background-position: 66.66% 50%;
+            }
+
+            .card-front-8 {
+              background-position: 100% 50%;
+            }
+
+            .card-front-9 {
+              background-position: 0% 100%;
+            }
+
+            .card-front-10 {
+              background-position: 33.33% 100%;
+            }
+
+            .card-front-11 {
+              background-position: 66.66% 100%;
+            }
+
+            .card-front-12 {
+              background-position: 100% 100%;
+            }
+
+            .card-front-image {
+              width: 100%;
+              height: 100%;
+              background-size: 400% 300%;
+              background-repeat: no-repeat;
+              position: relative;
+              background-image: url("/images/exam-writing.jpg");
+
+              .card-title {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--white-color);
+                font-size: 1vw;
+                font-weight: 700;
+                text-align: center;
+                z-index: 2;
+                text-shadow: 0 0.2vw 0.5vw rgba(0, 0, 0, 0.5);
+                padding: 0 1vw;
+              }
+            }
+          }
+
+          .card-back {
+            transform: rotateY(180deg);
+            background: var(--navy-800);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2vw;
+
+            .card-back-content {
+              text-align: center;
+              width: 100%;
+
+              .card-back-description {
+                font-size: 0.8vw;
+                line-height: 1.6;
+                color: var(--white-color);
+                margin-bottom: 2vw;
+              }
+
+              .card-button {
+                display: inline-block;
+                padding: 1vw;
+                background: var(--amber-color);
+                color: var(--navy-800);
+                font-size: 0.8vw;
+                font-weight: 700;
+                text-decoration: none;
+                border-radius: 0.5vw;
+                transition: all 0.3s ease;
+                box-shadow: 0 0.3vw 0.8vw rgba(0, 0, 0, 0.15);
+
+                &:hover {
+                  background: var(--blue-color);
+                  color: var(--white-color);
+                  transform: translateY(-0.2vw);
+                  box-shadow: 0 0.5vw 1.2vw rgba(0, 0, 0, 0.2);
+                }
+              }
+            }
+          }
+        }
+
+        &:hover .card-inner {
+          transform: rotateY(180deg);
+        }
+      }
+    }
+  }
+}
