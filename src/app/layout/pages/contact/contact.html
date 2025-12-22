@@ -1,113 +1,176 @@
 <section class="contact-section">
-  <div class="contact-container container">
+  <div class="contact-container">
     <div class="contact-header">
       <h1 class="contact-title">Contact Us</h1>
-      <p class="contact-subtitle">Get in touch with our team. We'd love to hear from you!</p>
+      <p class="contact-subtitle">
+        Experiencing an issue or have a question? Send us a note and our support
+        team will reach out to help.
+      </p>
     </div>
-    
-    <div class="contact-content">
-      <div class="contact-info">
-        <h2>Get in Touch</h2>
-        <p>Accoladi has created an open-door policy in reference to connecting with prospective students. We invite you to contact us with any questions, feedback or even just to say hello. We read every email we receive.</p>
-        
-        <div class="contact-details">
-          <div class="contact-item">
+    <div class="contact-wrapper">
+      <div class="image-column">
+        <img
+          src="https://cdn.prod.website-files.com/6817b051f69dc64dbdb788c6/68d4b336f933282a742a2deb_iStock-2222900612.jpg"
+          alt="Contact Support"
+          class="bg-image"
+        />
+
+        <div class="image-footer">
+          <div class="footer-item">
             <h3>Email</h3>
             <p>info@accoladi.com</p>
           </div>
-          <div class="contact-item">
+          <div class="footer-divider"></div>
+          <div class="footer-item">
             <h3>Phone</h3>
             <p>615-393-6116</p>
           </div>
-          <div class="contact-item">
+          <div class="footer-divider"></div>
+          <div class="footer-item">
             <h3>Address</h3>
-            <p>2557 Treetop Dr<br>Nashville, TN 37013</p>
+            <p>2557 Treetop Dr<br />Nashville, TN 37013</p>
           </div>
         </div>
       </div>
-      
-      <div class="contact-form-container">
-        <form class="contact-form" (ngSubmit)="onSubmit()" #contactForm="ngForm">
+
+      <div class="form-column">
+        <div class="form-intro">
+          <h2>Get in Touch</h2>
+          <p>
+            Accoladi has created an open-door policy. We invite you to contact
+            us with any questions, feedback, or just to say hello.
+          </p>
+        </div>
+
+        <form
+          class="contact-form"
+          (ngSubmit)="onSubmit(contactForm)"
+          #contactForm="ngForm"
+        >
           <div class="form-group">
             <label for="name">Full Name *</label>
-            <input 
-              type="text" 
-              id="name" 
-              name="name" 
-              [(ngModel)]="formData.name" 
-              required 
+            <input
+              type="text"
+              id="name"
+              name="name"
+              [(ngModel)]="formData.name"
+              required
               #name="ngModel"
               class="form-input"
               [class.error]="name.invalid && name.touched"
+              placeholder="John Doe"
             />
             @if (name.invalid && name.touched) {
-            <div class="error-message">
-              Name is required
-            </div>
-        }
+            <div class="error-message">Name is required</div>
+            }
           </div>
-          
+
           <div class="form-group">
             <label for="email">Email Address *</label>
-            <input 
-              type="email" 
-              id="email" 
-              name="email" 
-              [(ngModel)]="formData.email" 
-              required 
+            <input
+              type="email"
+              id="email"
+              name="email"
+              [(ngModel)]="formData.email"
+              required
               email
               #email="ngModel"
               class="form-input"
               [class.error]="email.invalid && email.touched"
+              placeholder="you@example.com"
             />
             @if (email.invalid && email.touched) {
-                <div class="error-message">
-                    @if (email.errors?.['required']) {
-                        <span>Email is required</span>
-                    }
-                    @if (email.errors?.['email']) {
-                        <span>Please enter a valid email</span>
-                    }
-                </div>
+            <div class="error-message">Valid email is required</div>
             }
-        </div>
-            
-          
+          </div>
+
           <div class="form-group">
             <label for="message">Message *</label>
-            <textarea 
-              id="message" 
-              name="message" 
-              [(ngModel)]="formData.message" 
-              required 
+            <textarea
+              id="message"
+              name="message"
+              [(ngModel)]="formData.message"
+              required
               #message="ngModel"
               class="form-textarea"
               [class.error]="message.invalid && message.touched"
-              rows="6"
+              rows="5"
               placeholder="Tell us how we can help you..."
             ></textarea>
             @if (message.invalid && message.touched) {
-                <div class="error-message">
-                    Message is required
-                </div>
+            <div class="error-message">Message is required</div>
             }
           </div>
-          
-          <button 
-            type="submit" 
+
+          <div class="file-upload-section">
+            <label class="file-label"
+              >Attachments <span class="optional">(Optional)</span></label
+            >
+
+            <div
+              class="drop-zone"
+              [class.dragover]="isDragOver"
+              (click)="triggerFileUpload()"
+              (dragover)="onDragOver($event)"
+              (dragleave)="onDragLeave($event)"
+              (drop)="onDrop($event)"
+            >
+              <input
+                type="file"
+                id="attachment"
+                (change)="onFileSelected($event)"
+                hidden
+                multiple
+              />
+
+              <div class="upload-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"
+                  />
+                </svg>
+              </div>
+              <p class="upload-text">Click to upload or drag and drop</p>
+              <p class="upload-subtext">PDF, DOC, JPG, PNG (MAX 5MB)</p>
+
+              <div class="file-list" *ngIf="selectedFiles.length > 0">
+                <div
+                  class="file-item"
+                  *ngFor="let file of selectedFiles; let i = index"
+                >
+                  <span class="file-name"
+                    >{{ file.name }} ({{ getFileSize(file.size) }})</span
+                  >
+                  <button
+                    type="button"
+                    class="remove-btn"
+                    (click)="removeFile(i, $event)"
+                  >
+                    ×
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="submit"
             class="submit-btn"
             [disabled]="contactForm.invalid || isSubmitting"
           >
-            @if (!isSubmitting) {
-                <span>Send Message</span>
-            }
-            @if (isSubmitting) {
-                <span>Sending...</span>
-            }
+            {{ isSubmitting ? "Sending..." : "Send Message" }}
           </button>
-            @if (isSubmitting) {
-                <span>Sending...</span>
-            }
+
+          @if (showSuccess) {
+          <div class="success-banner">✓ Message sent successfully!</div>
+          } @if (errorMessage) {
+          <div class="error-banner">{{ errorMessage }}</div>
+          }
         </form>
       </div>
     </div>

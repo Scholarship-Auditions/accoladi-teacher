@@ -1,160 +1,305 @@
+// Variables matching your theme
+$navy-800: #00274c;
+$navy-700: #1a3c5e;
+$blue-color: #0895ca;
+$white-color: #ffffff;
+$yellow-color: #ffcb05;
+$light-bg: #f8f9fa;
+$border-color: #cbd5e0;
+
 .contact-section {
-  padding: 6vw 0;
-  background: var(--white-color);
-  
+  padding: 5vw 0;
+  background: $white-color;
+
   .contact-container {
+    width: 90vw;
     margin: 0 auto;
-    padding: 0 2vw;
   }
-  
+
   .contact-header {
     text-align: center;
-    margin-bottom: 4vw;
-    
+    margin-bottom: 3vw;
+
     .contact-title {
       font-size: 3.5vw;
       font-weight: 800;
-      color: var(--navy-800);
-      margin-bottom: 1vw;
+      color: $navy-800;
+      margin-bottom: 0.8vw;
       line-height: 1.2;
     }
-    
+
     .contact-subtitle {
-      font-size: 1.3vw;
-      color: var(--navy-700);
+      font-size: 1.2vw;
+      color: $navy-700;
       font-weight: 500;
     }
   }
-  
-  .contact-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4vw;
-    align-items: start;
+
+  .contact-wrapper {
+    display: flex;
+    background: $white-color;
+    border-radius: 1vw;
+    overflow: hidden;
+    box-shadow: 0 1vw 3vw rgba(0, 0, 0, 0.1);
+    min-height: 40vw; // Ensure substantial height for the image
   }
-  
-  .contact-info {
-    h2 {
-      font-size: 2.2vw;
-      font-weight: 700;
-      color: var(--navy-800);
-      margin-bottom: 1.5vw;
+
+  // --- LEFT COLUMN: Image & Footer Info ---
+  .image-column {
+    flex: 0 0 40%; // Takes 40% width
+    position: relative;
+    background-color: $navy-800;
+    display: flex;
+    flex-direction: column;
+
+    .bg-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
-    
-    p {
-      font-size: 1.1vw;
-      line-height: 2vw;
-      color: var(--navy-700);
-      font-weight: 500;
-      margin-bottom: 3vw;
-    }
-    
-    .contact-details {
+
+    // The Footer Overlay
+    .image-footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 39, 76, 0.95); // Navy with slight transparency
+      padding: 1.5vw 2vw;
       display: flex;
-      flex-direction: column;
-      gap: 2vw;
-      
-      .contact-item {
+      flex-direction: row; // Horizontal layout
+      justify-content: space-between;
+      align-items: flex-start;
+      backdrop-filter: blur(0.5vw);
+      box-sizing: border-box;
+
+      .footer-item {
+        flex: 1;
+
         h3 {
-          font-size: 1.3vw;
-          font-weight: 700;
-          color: var(--blue-color);
+          font-size: 0.9vw;
+          color: $yellow-color;
+          margin-bottom: 0.3vw;
+          text-transform: uppercase;
+          letter-spacing: 0.05vw;
+        }
+
+        p {
+          font-size: 0.9vw;
+          color: $white-color;
+          margin: 0;
+          line-height: 1.4;
+        }
+      }
+
+      .footer-divider {
+        width: 0.1vw;
+        height: 3vw;
+        background-color: rgba(255, 255, 255, 0.2);
+        margin: 0 1.5vw;
+      }
+    }
+  }
+
+  // --- RIGHT COLUMN: Form ---
+  .form-column {
+    flex: 1; // Takes remaining width (60%)
+    padding: 4vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .form-intro {
+      margin-bottom: 2vw;
+
+      h2 {
+        font-size: 2.2vw;
+        font-weight: 800;
+        color: $navy-800;
+        margin-bottom: 0.8vw;
+      }
+
+      p {
+        font-size: 1.1vw;
+        color: $navy-700;
+        line-height: 1.6;
+      }
+    }
+
+    .contact-form {
+      .form-group {
+        margin-bottom: 1.5vw;
+
+        label {
+          display: block;
+          font-size: 1vw;
+          font-weight: 600;
+          color: $navy-800;
           margin-bottom: 0.5vw;
         }
-        
-        p {
-          font-size: 1.1vw;
-          color: var(--navy-700);
-          font-weight: 500;
-          margin: 0;
-          line-height: 1.6;
+
+        .form-input,
+        .form-textarea {
+          width: 100%;
+          box-sizing: border-box;
+          padding: 1vw;
+          border: 0.1vw solid $border-color;
+          border-radius: 0.5vw;
+          font-size: 1vw;
+          font-family: inherit;
+          transition: all 0.3s ease;
+
+          &:focus {
+            outline: none;
+            border-color: $blue-color;
+            box-shadow: 0 0 0 0.2vw rgba(8, 149, 202, 0.15);
+          }
+
+          &.error {
+            border-color: #e53e3e;
+            background-color: #fff5f5;
+          }
+        }
+
+        .error-message {
+          color: #e53e3e;
+          font-size: 0.8vw;
+          margin-top: 0.3vw;
         }
       }
-    }
-  }
-  
-  .contact-form-container {
-    background: var(--white-color);
-    padding: 3vw;
-    border-radius: 1vw;
-    box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.1);
-  }
-  
-  .contact-form {
-    .form-group {
-      margin-bottom: 2vw;
-      
-      label {
-        display: block;
+
+      // --- File Upload Styles ---
+      .file-upload-section {
+        margin-bottom: 2vw;
+
+        .file-label {
+          display: block;
+          font-size: 1vw;
+          font-weight: 600;
+          color: $navy-800;
+          margin-bottom: 0.5vw;
+
+          .optional {
+            font-weight: 400;
+            color: $blue-color;
+            font-style: italic;
+          }
+        }
+
+        .drop-zone {
+          border: 0.15vw dashed #b8e7f2;
+          background: #d4eef7;
+          border-radius: 0.8vw;
+          padding: 2vw;
+          text-align: center;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover,
+          &.dragover {
+            border-color: $blue-color;
+            background: #c3e6f5;
+          }
+
+          .upload-icon {
+            color: $navy-800;
+            width: 2.5vw;
+            height: 2.5vw;
+            margin: 0 auto 0.5vw;
+
+            svg {
+              width: 100%;
+              height: 100%;
+            }
+          }
+
+          .upload-text {
+            font-size: 1vw;
+            color: $navy-800;
+            font-weight: 600;
+            margin-bottom: 0.2vw;
+          }
+
+          .upload-subtext {
+            font-size: 0.8vw;
+            color: $navy-700;
+            opacity: 0.7;
+          }
+
+          .file-list {
+            margin-top: 1vw;
+            text-align: left;
+
+            .file-item {
+              background: $white-color;
+              padding: 0.5vw 1vw;
+              border-radius: 0.4vw;
+              margin-bottom: 0.4vw;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              font-size: 0.9vw;
+              color: $navy-800;
+              border: 1px solid $border-color;
+
+              .remove-btn {
+                background: none;
+                border: none;
+                color: #e53e3e;
+                font-size: 1.2vw;
+                cursor: pointer;
+                padding: 0 0.3vw;
+                line-height: 1;
+              }
+            }
+          }
+        }
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 1.2vw;
+        background: $navy-800;
+        color: $white-color;
+        border: none;
+        border-radius: 2vw; // Rounded pill shape like original
         font-size: 1.1vw;
         font-weight: 600;
-        color: var(--navy-800);
-        margin-bottom: 0.5vw;
-      }
-      
-      .form-input,
-      .form-textarea {
-        width: 100%;
-        padding: 1vw 1.5vw;
-        border: 0.1vw solid var(--navy-800);
-        border-radius: 0.5vw;
-        font-size: 1vw;
-        font-family: inherit;
+        cursor: pointer;
         transition: all 0.3s ease;
-        background: var(--white-color);
-        
-        &:focus {
-          outline: none;
-          border-color: var(--blue-color);
-          box-shadow: 0 0 0 0.2vw rgba(8, 149, 202, 0.2);
+
+        &:hover:not(:disabled) {
+          background: $blue-color;
+          transform: translateY(-0.1vw);
+          box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.2);
         }
-        
-        &.error {
-          border-color: #e53e3e;
-          box-shadow: 0 0 0 0.2vw rgba(229, 62, 62, 0.2);
-        }
-        
-        &::placeholder {
-          color: #a0aec0;
+
+        &:disabled {
+          background: #a0aec0;
+          cursor: not-allowed;
         }
       }
-      
-      .form-textarea {
-        resize: vertical;
-        min-height: 8vw;
+
+      .success-banner {
+        margin-top: 1.5vw;
+        padding: 1vw;
+        background-color: #e6fffa;
+        color: #2c7a7b;
+        border-radius: 0.5vw;
+        text-align: center;
+        font-size: 1vw;
+        font-weight: 600;
       }
-      
-      .error-message {
-        color: #e53e3e;
-        font-size: 0.9vw;
-        margin-top: 0.5vw;
-        font-weight: 500;
-      }
-    }
-    
-    .submit-btn {
-      width: 100%;
-      padding: 1.2vw 2vw;
-      background: var(--blue-color);
-      color: var(--white-color);
-      border: none;
-      border-radius: 0.5vw;
-      font-size: 1.1vw;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      
-      &:hover:not(:disabled) {
-        background: var(--navy-800);
-        transform: translateY(-0.1vw);
-        box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.2);
-      }
-      
-      &:disabled {
-        background: #a0aec0;
-        cursor: not-allowed;
-        transform: none;
-        box-shadow: none;
+
+      .error-banner {
+        margin-top: 1.5vw;
+        padding: 1vw;
+        background-color: #fff5f5;
+        color: #c53030;
+        border-radius: 0.5vw;
+        text-align: center;
+        font-size: 1vw;
       }
     }
   }

@@ -1,49 +1,130 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-
-interface ContactFormData {
-  name: string;
-  email: string;
-  message: string;
-}
+import { Component } from "@angular/core";
+import { FormsModule, NgForm } from "@angular/forms";
+import { HttpClient } from "@angular/common/http";
+import { CommonModule } from "@angular/common";
 
 @Component({
-  selector: 'app-contact',
-  imports: [FormsModule],
-  templateUrl: './contact.html',
-  styleUrl: './contact.scss'
+  selector: "app-contact",
+  standalone: true,
+  imports: [FormsModule, CommonModule],
+  templateUrl: "./contact.html",
+  styleUrls: ["./contact.scss"],
 })
 export class Contact {
-
-  formData: ContactFormData = {
-    name: '',
-    email: '',
-    message: ''
+  formData = {
+    name: "",
+    email: "",
+    message: "",
   };
 
-  isSubmitting = false;
-  isSubmitted = false;
+  // File Upload State
+  selectedFiles: File[] = [];
+  isDragOver = false;
 
-  onSubmit(): void {
-    if (this.isSubmitting) return;
-    
+  // Submission State
+  isSubmitting = false;
+  showSuccess = false;
+  errorMessage = "";
+
+  constructor(private http: HttpClient) {}
+
+  // --- File Upload Methods ---
+
+  triggerFileUpload() {
+    const fileInput = document.getElementById("attachment") as HTMLInputElement;
+    fileInput.click();
+  }
+
+  onFileSelected(event: any) {
+    const files = event.target.files;
+    this.handleFiles(files);
+  }
+
+  onDragOver(event: DragEvent) {
+    event.preventDefault();
+    this.isDragOver = true;
+  }
+
+  onDragLeave(event: DragEvent) {
+    event.preventDefault();
+    this.isDragOver = false;
+  }
+
+  onDrop(event: DragEvent) {
+    event.preventDefault();
+    this.isDragOver = false;
+    if (event.dataTransfer?.files) {
+      this.handleFiles(event.dataTransfer.files);
+    }
+  }
+
+  handleFiles(files: FileList) {
+    const maxBytes = 5 * 1024 * 1024; // 5MB limit
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      if (file.size > maxBytes) {
+        alert(`File "${file.name}" is too large. Maximum size is 5MB.`);
+        continue;
+      }
+      // Avoid duplicates
+      if (!this.selectedFiles.some((f) => f.name === file.name)) {
+        this.selectedFiles.push(file);
+      }
+    }
+  }
+
+  removeFile(index: number, event: Event) {
+    event.stopPropagation();
+    this.selectedFiles.splice(index, 1);
+  }
+
+  getFileSize(size: number): string {
+    if (size < 1024 * 1024) {
+      return (size / 1024).toFixed(2) + " KB";
+    }
+    return (size / (1024 * 1024)).toFixed(2) + " MB";
+  }
+
+  // --- Submission ---
+
+  onSubmit(form: NgForm): void {
+    if (form.invalid || this.isSubmitting) return;
+
     this.isSubmitting = true;
-    
-    // Simulate form submission
-    setTimeout(() => {
-      console.log('Form submitted:', this.formData);
-      this.isSubmitted = true;
-      this.isSubmitting = false;
-      
-      // Reset form after successful submission
-      this.formData = {
-        name: '',
-        email: '',
-        message: ''
-      };
-      
-      // Show success message (you can implement a toast notification here)
-      alert('Thank you for your message! We\'ll get back to you soon.');
-    }, 2000);
+    this.errorMessage = "";
+
+    const apiData = new FormData();
+    apiData.append("contactName", this.formData.name);
+    apiData.append("contactEmail", this.formData.email);
+    apiData.append("description", this.formData.message);
+
+    // Append all selected files
+    this.selectedFiles.forEach((file) => {
+      apiData.append("attachment", file);
+    });
+
+    const apiUrl = "https://platform.accoladi.com/api/support/tickets/";
+
+    this.http.post(apiUrl, apiData).subscribe({
+      next: (response) => {
+        console.log("Success:", response);
+        this.isSubmitting = false;
+        this.showSuccess = true;
+        this.selectedFiles = []; // Clear files
+        this.formData = { name: "", email: "", message: "" }; // Clear text
+        form.resetForm();
+
+        setTimeout(() => {
+          this.showSuccess = false;
+        }, 5000);
+      },
+      error: (error) => {
+        console.error("Error:", error);
+        this.isSubmitting = false;
+        this.errorMessage =
+          error.error?.message || "Something went wrong. Please try again.";
+      },
+    });
   }
 }
