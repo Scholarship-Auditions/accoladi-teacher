@@ -1,0 +1,222 @@
+// Variables
+$navy-color: #00274c;
+$white-color: #ffffff;
+$off-white: #fffbe6;
+$yellow-color: #ffcb05;
+$blue-accent: #0895ca;
+$light-yellow-bg: #fff3b0;
+
+:host {
+  font-family: "Poppins", sans-serif;
+  display: block;
+  background-color: $white-color;
+  padding: 3vw 0;
+}
+
+// 1. Intro Box Styles (Top)
+.intro-box {
+  background-color: $off-white;
+  border-left: 0.6vw solid $yellow-color; // converted 8px
+  padding: 2vw; // converted 30px
+  border-radius: 1.2vw; // converted 16px
+  width: 65vw; // converted max-width 900px
+  margin: 3vw auto;
+  color: $navy-color;
+  box-shadow: 0 0.3vw 0.7vw rgba(0, 0, 0, 0.05);
+
+  h2 {
+    color: $navy-color;
+    font-size: 2vw; // converted 2rem
+    margin-bottom: 1vw;
+    font-weight: 700;
+  }
+
+  p {
+    margin-bottom: 1.2vw;
+    font-size: 1.1vw;
+    line-height: 1.6;
+
+    &.no-margin {
+      margin-bottom: 0;
+    }
+  }
+
+  ol {
+    padding-left: 1.5vw;
+    margin-bottom: 1.2vw;
+    font-size: 1.1vw;
+
+    li {
+      margin-bottom: 0.5vw;
+    }
+  }
+}
+
+// 2. Main Panel Styles
+.showcase-panel {
+  background-color: $off-white;
+  border: 0.25vw solid $navy-color; // converted 3px
+  padding: 3vw; // converted 40px
+  border-radius: 1.5vw; // converted 20px
+  width: 65vw;
+  margin: 3vw auto;
+  color: $navy-color;
+
+  .panel-header {
+    h2 {
+      color: $navy-color;
+      font-size: 2.5vw; // converted 2.5rem
+      margin-bottom: 0.8vw;
+      font-weight: 700;
+    }
+
+    h3 {
+      color: $blue-accent;
+      font-size: 1.5vw; // converted 1.5rem
+      margin-bottom: 2vw;
+      line-height: 1.4;
+    }
+
+    .availability {
+      font-size: 1.1vw;
+      margin-bottom: 1.5vw;
+      font-weight: 600;
+
+      a {
+        color: $blue-accent;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .panel-content {
+    h3 {
+      color: $blue-accent;
+      font-size: 1.5vw;
+      margin-top: 3vw;
+      margin-bottom: 1vw;
+      font-weight: 700;
+    }
+
+    h4 {
+      color: $navy-color;
+      font-size: 1.2vw;
+      font-weight: 700;
+      margin-top: 1.5vw;
+      margin-bottom: 0.5vw;
+    }
+
+    ul {
+      padding-left: 1.5vw;
+      margin-bottom: 1.5vw;
+      font-size: 1.1vw;
+      line-height: 1.6;
+
+      li {
+        margin-bottom: 0.5vw;
+      }
+    }
+
+    .separator {
+      height: 0.1vw;
+      background-color: rgba($navy-color, 0.1);
+      margin: 3vw 0;
+    }
+
+    // Re-use availability class inside content
+    .availability {
+      font-size: 1.1vw;
+      margin-bottom: 1.5vw;
+      font-weight: 600;
+      a {
+        color: $blue-accent;
+        text-decoration: none;
+      }
+    }
+  }
+
+  // 3. Cost Box
+  .cost-box {
+    background-color: $light-yellow-bg;
+    padding: 1.5vw;
+    border-radius: 0.8vw;
+    margin-top: 2vw;
+
+    h4 {
+      color: $navy-color;
+      font-size: 1.2vw;
+      font-weight: 700;
+      margin-bottom: 0.5vw;
+    }
+
+    p {
+      font-size: 1.1vw;
+      margin-bottom: 1vw;
+    }
+
+    ul {
+      padding-left: 1.5vw;
+      font-size: 1.1vw;
+      margin-bottom: 1vw;
+
+      li {
+        margin-bottom: 0.3vw;
+        font-weight: 600;
+      }
+    }
+
+    .note {
+      margin-top: 0.7vw;
+      font-style: italic;
+    }
+  }
+
+  // 4. Buttons
+  .action-buttons {
+    margin-top: 3vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5vw;
+    justify-content: center;
+
+    .primary-btn {
+      background-color: $blue-accent;
+      color: $white-color;
+      padding: 1vw 2.2vw;
+      border-radius: 0.6vw;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2vw;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+      text-align: center;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+
+    .email-btn {
+      background-color: $navy-color; // Specific request for this button
+      color: $yellow-color; // Specific request for this button
+      padding: 1vw 2.2vw;
+      border-radius: 0.6vw;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2vw;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+      text-align: center;
+      display: inline-block;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+}

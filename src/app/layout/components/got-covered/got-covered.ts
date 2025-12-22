@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { HttpClient } from "@angular/common/http";
+import { Component, OnInit, signal } from "@angular/core";
+import { RouterLink } from "@angular/router";
 
 export interface ArticleResponse {
   count: number;
@@ -27,8 +27,8 @@ export interface Article {
   directorVlog: string | null;
   glossary: string | null;
   category: Category;
-  createdAt: string;  // ISO datetime string
-  updatedAt: string;  // ISO datetime string
+  createdAt: string; // ISO datetime string
+  updatedAt: string; // ISO datetime string
   publishedAt: string; // ISO datetime string
 }
 
@@ -37,24 +37,22 @@ export interface Category {
   name: string;
 }
 
-
 @Component({
-  selector: 'app-got-covered',
+  selector: "app-got-covered",
   imports: [RouterLink],
-  templateUrl: './got-covered.html',
-  styleUrl: './got-covered.scss'
+  templateUrl: "./got-covered.html",
+  styleUrl: "./got-covered.scss",
 })
-
 export class GotCovered implements OnInit {
-
   articles = signal<ArticleResponse | null>(null);
 
-  constructor(private readonly http: HttpClient){}
+  constructor(private readonly http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get('https://platform.accoladi.com/api/content/public/articles/').subscribe((response) => {
-      this.articles.set(response as ArticleResponse);
-    });
+    this.http
+      .get("https://dev-platform.accoladi.com/api/content/articles/")
+      .subscribe((response) => {
+        this.articles.set(response as ArticleResponse);
+      });
   }
-
 }

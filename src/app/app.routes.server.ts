@@ -14,6 +14,18 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Prerender,
   },
   {
+    path: "plans/marquee-plan",
+    renderMode: RenderMode.Prerender,
+  },
+  {
+    path: "plans/showcase-plan",
+    renderMode: RenderMode.Prerender,
+  },
+  {
+    path: "plans/centerstage-plan",
+    renderMode: RenderMode.Prerender,
+  },
+  {
     path: "purpose",
     renderMode: RenderMode.Prerender,
   },

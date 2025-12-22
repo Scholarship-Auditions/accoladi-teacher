@@ -1,230 +1,181 @@
-.solo-plan-section {
-    background: var(--white-color);
-    padding: 6vw 0;
-    border: 0.2vw solid var(--navy-800);
-    border-radius: 2vw;
-    margin: 3vw auto;
-   
+// Variables matching your previous component style
+$navy-color: #00274c;
+$white-color: #ffffff;
+$yellow-color: #ffcb05;
+$blue-accent: #0895ca;
 
-    .solo-plan-content {
-        padding: 0 4vw;
-        text-align: center;
+:host {
+  font-family: "Poppins", sans-serif;
+  display: block;
+  background-color: $white-color;
+}
+
+// Keyframes
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(2vw);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-2vw);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.engage-hero {
+  background-color: $navy-color;
+  color: $white-color;
+  padding: 5vw 5vw 2.5vw; // converted 80px 40px
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  animation: fadeInDown 1s ease;
+
+  h1 {
+    font-size: 3.5vw; // converted 3rem
+    margin-bottom: 1.5vw;
+    color: $yellow-color;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 2vw; // converted 1.75rem
+    font-weight: 400;
+    margin-bottom: 2.5vw;
+    line-height: 1.4;
+  }
+}
+
+.engage-body {
+  width: 60vw; // converted max-width 1000px
+  margin: 0 auto;
+  padding: 3vw 0;
+  font-size: 1.2vw; // converted 1.15rem
+  line-height: 1.8;
+  color: $navy-color;
+  animation: fadeIn 1.2s ease;
+
+  .engage-section {
+    margin-bottom: 3vw; // converted 48px
+    animation: fadeInUp 0.8s ease;
+
+    h3 {
+      font-size: 1.8vw; // converted 1.5rem
+      color: $blue-accent;
+      margin-bottom: 1vw;
+      font-weight: 700;
     }
 
-    .solo-plan-header {
-        margin-bottom: 4vw;
+    p {
+      margin-bottom: 1.5vw;
 
-        .solo-plan-slogan {
-            font-size: 3.5vw;
-            font-weight: 900;
-            color: var(--amber-color);
-            margin-bottom: 1vw;
-            line-height: 1.1;
-        }
+      strong {
+        font-weight: 700;
+      }
 
-        .solo-plan-title {
-            font-size: 2.8vw;
-            font-weight: 900;
-            color: var(--navy-800);
-            line-height: 1.2;
-        }
+      em {
+        font-style: italic;
+        display: block;
+        margin-top: 1vw;
+        font-weight: 600;
+      }
     }
 
-    .solo-plan-intro {
-        margin-bottom: 4vw;
-        text-align: left;
+    a {
+      color: $blue-accent;
+      text-decoration: none;
 
-        .intro-text {
-            font-size: 1.3vw;
-            line-height: 1.7;
-            color: var(--navy-700);
-            margin-bottom: 2vw;
-            font-weight: 500;
-
-            &:last-child {
-                margin-bottom: 0;
-            }
-        }
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
-    .solo-benefits {
-        margin-bottom: 4vw;
-        text-align: left;
+    ul {
+      margin-bottom: 1.5vw;
+      padding-left: 2vw;
 
-        .benefits-title {
-            font-size: 2.2vw;
-            font-weight: 900;
-            color: var(--navy-800);
-            margin-bottom: 2.5vw;
-            text-align: center;
-        }
-
-        .benefits-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-
-            .benefit-item {
-                font-size: 1.2vw;
-                line-height: 1.6;
-                color: var(--navy-700);
-                margin-bottom: 2vw;
-                padding-left: 2vw;
-                position: relative;
-                font-weight: 500;
-
-                &::before {
-                    content: '•';
-                    color: var(--blue-color);
-                    font-weight: 900;
-                    font-size: 1.5vw;
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                }
-
-                strong {
-                    color: var(--navy-800);
-                    font-weight: 700;
-                }
-
-                &:last-child {
-                    margin-bottom: 0;
-                }
-            }
-        }
+      li {
+        margin-bottom: 0.5vw;
+      }
     }
 
-    .solo-credibility {
-        margin-bottom: 4vw;
-        text-align: left;
-
-        .credibility-title {
-            font-size: 2.2vw;
-            font-weight: 900;
-            color: var(--navy-800);
-            margin-bottom: 1.5vw;
-            text-align: center;
-        }
-
-        .credibility-text {
-            font-size: 1.3vw;
-            line-height: 1.6;
-            color: var(--navy-700);
-            font-weight: 500;
-        }
+    // Image styling
+    .intro-image {
+      float: left;
+      margin-right: 1.5vw; // converted 15px
+      width: 14vw; // converted 200px
+      height: auto;
+      margin-bottom: 0.5vw;
     }
+  }
+}
 
-    .solo-cta {
-        margin-bottom: 4vw;
-        text-align: left;
+.engage-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); // keeps 2 columns
+  gap: 1.5vw; // converted 24px
+  margin-top: 3vw;
+  margin-bottom: 5vw;
+  padding: 0 5vw; // Add side padding to match hero alignment if needed, or keep inside body
+}
 
-        .cta-title {
-            font-size: 2.2vw;
-            font-weight: 900;
-            color: var(--navy-800);
-            margin-bottom: 1.5vw;
-            text-align: center;
-        }
+.engage-card {
+  border: 0.15vw solid $yellow-color; // converted 2px
+  border-radius: 1vw; // converted 16px
+  padding: 1.5vw; // converted 24px
+  background-color: $white-color;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  animation: fadeInZoom 0.9s ease;
 
-        .cta-text {
-            font-size: 1.3vw;
-            line-height: 1.6;
-            color: var(--navy-700);
-            margin-bottom: 1.5vw;
-            font-weight: 500;
-        }
+  h4 {
+    font-size: 1.4vw; // converted 1.25rem
+    color: $navy-color;
+    margin-bottom: 0.8vw;
+    font-weight: 700;
+  }
 
-        .cta-final {
-            font-size: 1.3vw;
-            line-height: 1.6;
-            color: var(--navy-800);
-            font-weight: 700;
-        }
-    }
+  p {
+    font-size: 1.1vw;
+    line-height: 1.5;
+    margin: 0;
+  }
 
-    .solo-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 2vw;
-        align-items: center;
-
-        .solo-plan-btn {
-            background: var(--blue-color);
-            color: var(--white-color);
-            border: none;
-            border-radius: 1.5vw;
-            padding: 2vw 4vw;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0.5vw 1.5vw rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 50vw;
-
-            &:hover {
-                background: var(--navy-800);
-                transform: translateY(-0.3vw);
-                box-shadow: 0 0.8vw 2vw rgba(0, 0, 0, 0.3);
-            }
-
-            .btn-main {
-                font-size: 2.5vw;
-                font-weight: 900;
-                margin-bottom: 0.5vw;
-                display: block;
-            }
-
-            .btn-subtitle {
-                font-size: 1.2vw;
-                font-weight: 600;
-                margin-bottom: 0.3vw;
-                display: block;
-            }
-
-            .btn-tagline {
-                font-size: 1.1vw;
-                font-weight: 500;
-                display: block;
-            }
-        }
-
-        .school-district-btn {
-            background: var(--amber-color);
-            color: var(--white-color);
-            border: none;
-            border-radius: 1.5vw;
-            padding: 2vw 4vw;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0.5vw 1.5vw rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 50vw;
-
-            &:hover {
-                background: var(--amber-color);
-                transform: translateY(-0.3vw);
-                box-shadow: 0 0.8vw 2vw rgba(0, 0, 0, 0.3);
-            }
-
-            .btn-main {
-                font-size: 2.5vw;
-                font-weight: 900;
-                margin-bottom: 0.5vw;
-                display: block;
-            }
-
-            .btn-subtitle {
-                font-size: 1.2vw;
-                font-weight: 600;
-                margin-bottom: 0.3vw;
-                display: block;
-            }
-
-            .btn-tagline {
-                font-size: 1.1vw;
-                font-weight: 500;
-                display: block;
-            }
-        }
-    }
+  &:hover {
+    transform: translateY(-0.3vw);
+    box-shadow: 0 0.5vw 1.2vw rgba(0, 0, 0, 0.1);
+  }
 }

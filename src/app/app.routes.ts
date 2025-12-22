@@ -92,6 +92,32 @@ export const routes: Routes = [
     ],
   },
   {
+    path: "plans",
+    children: [
+      {
+        path: "marquee-plan",
+        loadComponent: () =>
+          import("./layout/pages/engage/plans/marquee-plan/marquee-plan").then(
+            (m) => m.MarqueePlanComponent
+          ),
+      },
+      {
+        path: "showcase-plan",
+        loadComponent: () =>
+          import(
+            "./layout/pages/engage/plans/showcase-plan/showcase-plan"
+          ).then((m) => m.ShowcasePlanComponent),
+      },
+      {
+        path: "centerstage-plan",
+        loadComponent: () =>
+          import(
+            "./layout/pages/engage/plans/centerstage-plan/centerstage-plan"
+          ).then((m) => m.CenterstagePlanComponent),
+      },
+    ],
+  },
+  {
     path: "**",
     redirectTo: "",
   },

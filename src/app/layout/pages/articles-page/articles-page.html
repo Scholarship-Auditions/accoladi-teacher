@@ -1,168 +1,210 @@
 <div class="article-container container">
-
-  <!-- Loading State -->
-   @if (loading()) {
-    <div class="loading-state">
-        <div class="spinner"></div>
-        <p>Loading article...</p>
+  @if (loading()) {
+  <div class="loading-state">
+    <div class="spinner"></div>
+    <p>Loading article...</p>
+  </div>
+  } @if (error()) {
+  <div class="error-state">
+    <div class="error-icon">⚠️</div>
+    <h2>Oops! Something went wrong</h2>
+    <p>{{ error() }}</p>
+  </div>
+  } @if (article() && !loading() && !error()) {
+  <article class="article-content">
+    <header class="article-header">
+      @if (article()?.image) {
+      <div class="article-image-container">
+        <img [src]="article()?.image" [alt]="article()?.title" loading="lazy" />
       </div>
-   }
-
-   @if (error()) {
-    <div class="error-state">
-        <div class="error-icon">⚠️</div>
-        <h2>Oops! Something went wrong</h2>
-        <p>{{ error() }}</p>
-    </div>
-   }
-
-  
-  <!-- Article Content -->
-  @if (article() && !loading() && !error()) {
-    <article class="article-content">
-      <!-- Article Header -->
-      <header class="article-header">
+      }
+      <div class="article-title-box">
         <div class="article-meta">
           <span class="category">{{ article()?.category?.name }}</span>
-          <span class="publish-date">{{ article()?.publishedAt | date:'longDate' }}</span>
+          <span class="publish-date">{{
+            article()?.publishedAt | date : "longDate"
+          }}</span>
         </div>
-        
         <h1 class="article-title">{{ article()?.title }}</h1>
-        
         <div class="article-byline">
-          <span class="author">By {{ article()?.byline }}</span>
+          <span class="author">{{ article()?.byline }}</span>
         </div>
-      </header>
+      </div>
+    </header>
 
-      <!-- Article Image -->
-      @if (article()?.image) {
-        <div class="article-image">
-          <img [src]="article()?.image" [alt]="article()?.title" loading="lazy">
-        </div>
+    @if (article()?.highlight) {
+    <div class="section-buttons top-section">
+      <button
+        class="content-btn highlight-btn"
+        (click)="openModal('Article Highlight', article()?.highlight)"
+      >
+        View Article Highlight
+      </button>
+    </div>
+    }
+
+    <div class="article-body">
+      <div class="content" [innerHTML]="getSafeHtml(article()?.content)"></div>
+    </div>
+
+    @if (article()?.teachingMomentsHighschool ||
+    article()?.teachingMomentsMiddleschool ||
+    article()?.directorMomentsHighschool ||
+    article()?.directorMomentsMiddleschool || article()?.directorPodcast ||
+    article()?.directorVlog) {
+
+    <div class="moments-grid">
+      @if (article()?.teachingMomentsHighschool) {
+      <button
+        class="grid-btn"
+        (click)="
+          openModal(
+            'Teaching Moment - High School',
+            article()?.teachingMomentsHighschool
+          )
+        "
+      >
+        Teaching Moment<br /><span>High School</span>
+      </button>
+      } @else {
+      <div class="empty-cell"></div>
+      } @if (article()?.teachingMomentsMiddleschool) {
+      <button
+        class="grid-btn"
+        (click)="
+          openModal(
+            'Teaching Moment - Middle School',
+            article()?.teachingMomentsMiddleschool
+          )
+        "
+      >
+        Teaching Moment<br /><span>Middle School</span>
+      </button>
+      } @else {
+      <div class="empty-cell"></div>
+      } @if (article()?.directorMomentsHighschool) {
+      <button
+        class="grid-btn director-btn"
+        (click)="
+          openModal(
+            'Director’s Blog - High School',
+            article()?.directorMomentsHighschool
+          )
+        "
+      >
+        Director Moment<br /><span>High School</span>
+      </button>
+      } @else {
+      <div class="empty-cell"></div>
+      } @if (article()?.directorMomentsMiddleschool) {
+      <button
+        class="grid-btn director-btn"
+        (click)="
+          openModal(
+            'Director’s Blog - Middle School',
+            article()?.directorMomentsMiddleschool
+          )
+        "
+      >
+        Director Moment<br /><span>Middle School</span>
+      </button>
+      } @else {
+      <div class="empty-cell"></div>
+      } @if (article()?.directorPodcast) {
+      <button
+        class="grid-btn media-btn"
+        (click)="openModal('Director Podcast', article()?.directorPodcast)"
+      >
+        Director<br /><span>Podcast</span>
+      </button>
+      } @else {
+      <div class="empty-cell"></div>
+      } @if (article()?.directorVlog) {
+      <button
+        class="grid-btn media-btn"
+        (click)="openModal('Director Vlog', article()?.directorVlog)"
+      >
+        Director<br /><span>Vlog</span>
+      </button>
+      } @else {
+      <div class="empty-cell"></div>
       }
+    </div>
+    }
 
-      <!-- Article Highlight -->
-      @if (article()?.highlight) {
-        <div class="article-highlight">
-          <h3>Key Highlights</h3>
-          <p>{{ article()?.highlight }}</p>
-        </div>
+    <div class="section-buttons footer-buttons">
+      @if (article()?.glossary) {
+      <button
+        class="content-btn"
+        (click)="openModal('Glossary', article()?.glossary)"
+      >
+        Glossary
+      </button>
+      } @if (article()?.references) {
+      <button
+        class="content-btn"
+        (click)="openModal('References', article()?.references)"
+      >
+        References
+      </button>
+      } @if (article()?.suggestedReading) {
+      <button
+        class="content-btn"
+        (click)="openModal('Suggested Reading', article()?.suggestedReading)"
+      >
+        Suggested Reading
+      </button>
+      } @if (article()?.footnote) {
+      <button
+        class="content-btn"
+        (click)="openModal('Footnotes', article()?.footnote)"
+      >
+        Footnotes
+      </button>
       }
+    </div>
 
-      <!-- Main Article Content -->
-      <div class="article-body">
-        <div class="content" [innerHTML]="article()?.content"></div>
+    <footer class="article-footer">
+      <div class="article-dates">
+        <p>
+          <strong>Published:</strong>
+          {{ article()?.publishedAt | date : "longDate" }}
+        </p>
+        @if (article()?.updatedAt !== article()?.publishedAt) {
+        <p>
+          <strong>Last Updated:</strong>
+          {{ article()?.updatedAt | date : "longDate" }}
+        </p>
+        }
+      </div>
+    </footer>
+  </article>
+  } @if (showModal) {
+  <div class="modal-overlay" (click)="closeModal()">
+    <div class="modal-container" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2>{{ activeModalTitle }}</h2>
+        <button class="close-btn" (click)="closeModal()">&times;</button>
       </div>
 
-      <!-- Teaching Moments Section -->
-      @if (article()?.teachingMomentsHighschool || article()?.teachingMomentsMiddleschool) {
-        <div class="teaching-moments">
-          <h3>Teaching Moments</h3>
-          
-          @if (article()?.teachingMomentsHighschool) {
-            <div class="teaching-section">
-              <h4>High School</h4>
-              <div [innerHTML]="article()?.teachingMomentsHighschool"></div>
-            </div>
-          }
-          
-          @if (article()?.teachingMomentsMiddleschool) {
-            <div class="teaching-section">
-              <h4>Middle School</h4>
-              <div [innerHTML]="article()?.teachingMomentsMiddleschool"></div>
-            </div>
-          }
-        </div>
-      }
+      <div class="modal-body">
+        <div [innerHTML]="activeModalContent"></div>
+      </div>
 
-      <!-- Director Moments Section -->
-      @if (article()?.directorMomentsHighschool || article()?.directorMomentsMiddleschool) {
-        <div class="director-moments">
-          <h3>Director Moments</h3>
-          
-          @if (article()?.directorMomentsHighschool) {
-            <div class="director-section">
-              <h4>High School</h4>
-              <div [innerHTML]="article()?.directorMomentsHighschool"></div>
-            </div>
-          }
-          
-          @if (article()?.directorMomentsMiddleschool) {
-            <div class="director-section">
-              <h4>Middle School</h4>
-              <div [innerHTML]="article()?.directorMomentsMiddleschool"></div>
-            </div>
-          }
-        </div>
-      }
-
-      <!-- Media Content -->
-      @if (article()?.directorPodcast || article()?.directorVlog) {
-        <div class="media-content">
-          <h3>Additional Media</h3>
-          
-          @if (article()?.directorPodcast) {
-            <div class="media-item">
-              <h4>Director Podcast</h4>
-              <div [innerHTML]="article()?.directorPodcast"></div>
-            </div>
-          }
-          
-          @if (article()?.directorVlog) {
-            <div class="media-item">
-              <h4>Director Vlog</h4>
-              <div [innerHTML]="article()?.directorVlog"></div>
-            </div>
-          }
-        </div>
-      }
-
-      <!-- Glossary -->
-      @if (article()?.glossary) {
-        <div class="glossary">
-          <h3>Glossary</h3>
-          <div [innerHTML]="article()?.glossary"></div>
-        </div>
-      }
-
-      <!-- References -->
-      @if (article()?.references) {
-        <div class="references">
-          <h3>References</h3>
-          <div [innerHTML]="article()?.references"></div>
-        </div>
-      }
-
-      <!-- Suggested Reading -->
-      @if (article()?.suggestedReading) {
-        <div class="suggested-reading">
-          <h3>Suggested Reading</h3>
-          <div [innerHTML]="article()?.suggestedReading"></div>
-        </div>
-      }
-
-      <!-- Footnote -->
-      @if (article()?.footnote) {
-        <div class="footnote">
-          <h3>Footnotes</h3>
-          <div [innerHTML]="article()?.footnote"></div>
-        </div>
-      }
-
-      <!-- Article Footer -->
-      <footer class="article-footer">
-        <div class="article-dates">
-          <p><strong>Published:</strong> {{ article()?.publishedAt | date:'longDate' }}</p>
-          @if (article()?.updatedAt !== article()?.publishedAt) {
-            <p>
-              <strong>Last Updated:</strong> {{ article()?.updatedAt | date:'longDate' }}
-            </p>
-          }
-        </div>
-      </footer>
-    </article>
+      <div class="modal-footer">
+        <button class="action-btn doc-btn" (click)="downloadAsDocx()">
+          Download as DOCX
+        </button>
+        <button class="action-btn pdf-btn" (click)="downloadAsPdf()">
+          Download as PDF
+        </button>
+        <button class="action-btn close-action-btn" (click)="closeModal()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
   }
 </div>
-
 
 <app-got-covered></app-got-covered>

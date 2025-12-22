@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-engage',
+  selector: "app-engage",
   imports: [],
-  templateUrl: './engage.html',
-  styleUrl: './engage.scss'
+  templateUrl: "./engage.html",
+  styleUrl: "./engage.scss",
 })
 export class Engage {
-
+  navigateTo(url: string): void {
+    window.open(url, "_blank");
+  }
 }
