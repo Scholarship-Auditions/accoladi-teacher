@@ -1,15 +1,13 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 import { Footer } from "./components/footer/footer";
-import { Navbar } from './components/navbar/navbar';
-import { RouterOutlet } from '@angular/router';
+import { Navbar } from "./components/navbar/navbar";
+import { RouterOutlet } from "@angular/router";
+import { CookieBanner } from "./components/cookie-banner/cookie-banner";
 
 @Component({
-  selector: 'app-layout',
-  imports: [Footer, Navbar, RouterOutlet],
-  templateUrl: './layout.html',
-  styleUrl: './layout.scss'
+  selector: "app-layout",
+  imports: [Footer, Navbar, RouterOutlet, CookieBanner],
+  templateUrl: "./layout.html",
+  styleUrl: "./layout.scss",
 })
-
-export class Layout {
-
-}
+export class Layout {}

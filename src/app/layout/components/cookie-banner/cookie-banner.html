@@ -1,0 +1,18 @@
+@if (isVisible) {
+<div class="cookie-banner">
+  <div class="banner-content">
+    <div class="text-section">
+      <h3>We use cookies</h3>
+      <p>
+        We use cookies to analyze our traffic, understand how you interact with
+        our content, and provide a better experience. By clicking "Accept", you
+        consent to our use of these technologies.
+      </p>
+    </div>
+    <div class="button-section">
+      <button class="btn-decline" (click)="decline()">Decline</button>
+      <button class="btn-accept" (click)="accept()">Accept Cookies</button>
+    </div>
+  </div>
+</div>
+}

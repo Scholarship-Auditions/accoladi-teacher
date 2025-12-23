@@ -2,21 +2,23 @@ import { HttpClient } from "@angular/common/http";
 import {
   Component,
   OnInit,
+  OnDestroy,
   signal,
   ViewEncapsulation,
   Inject,
   PLATFORM_ID,
+  HostListener,
 } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { DatePipe, isPlatformBrowser } from "@angular/common";
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import { GotCovered } from "../../components/got-covered/got-covered";
-
-// --- FIXED IMPORTS ---
 import { saveAs } from "file-saver";
-// We import as 'any' to bypass the "no call signatures" error
 import * as html2pdfPkg from "html2pdf.js";
 import { asBlob } from "html-docx-js-typescript";
+
+// IMPORT YOUR ANALYTICS SERVICE
+import { AnalyticsService } from "../../../services/analytics";
 
 export interface ArticleCategory {
   id: number;
@@ -53,10 +55,14 @@ export interface Article {
   styleUrl: "./articles-page.scss",
   encapsulation: ViewEncapsulation.None,
 })
-export class ArticlesPage implements OnInit {
+export class ArticlesPage implements OnInit, OnDestroy {
   article = signal<Article | null>(null);
   loading = signal<boolean>(true);
   error = signal<string | null>(null);
+
+  // Analytics State
+  private startTime: number = 0;
+  private hasTrackedTime = false;
 
   // Modal State
   activeModalContent: SafeHtml | null = null;
@@ -67,6 +73,7 @@ export class ArticlesPage implements OnInit {
     private route: ActivatedRoute,
     private http: HttpClient,
     private sanitizer: DomSanitizer,
+    private analytics: AnalyticsService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
@@ -85,18 +92,61 @@ export class ArticlesPage implements OnInit {
             next: (response) => {
               this.article.set(response);
               this.loading.set(false);
+
+              // 1. START TIMER & TRACK VIEW
+              if (isPlatformBrowser(this.platformId)) {
+                this.startTime = Date.now();
+                this.hasTrackedTime = false;
+
+                // Optional: Track that a specific article was loaded
+                this.analytics.trackEvent("view_item", {
+                  item_id: response.id,
+                  item_name: response.title,
+                  content_type: "article",
+                  item_category: response.category?.name,
+                });
+              }
             },
             error: (err) => {
               this.error.set("Failed to load article. Please try again.");
               this.loading.set(false);
-              console.error("Error loading article:", err);
             },
           });
-      } else {
-        this.error.set("Invalid article ID");
-        this.loading.set(false);
       }
     });
+  }
+
+  // 2. TRACK TIME ON EXIT (Navigation)
+  ngOnDestroy(): void {
+    this.sendReadingTime();
+  }
+
+  // 3. TRACK TIME ON EXIT (Tab Close/Refresh)
+  @HostListener("window:beforeunload")
+  onWindowClose() {
+    this.sendReadingTime();
+  }
+
+  private sendReadingTime() {
+    if (
+      !isPlatformBrowser(this.platformId) ||
+      this.hasTrackedTime ||
+      !this.article()
+    )
+      return;
+
+    const duration = Math.round((Date.now() - this.startTime) / 1000); // Seconds
+
+    // Only track if they stayed at least 5 seconds (filters accidental clicks)
+    if (duration > 5) {
+      this.analytics.trackEvent("read_article_time", {
+        article_id: this.article()?.id,
+        article_title: this.article()?.title,
+        duration_seconds: duration,
+      });
+    }
+
+    this.hasTrackedTime = true;
   }
 
   private scrollToTop(): void {
@@ -110,16 +160,25 @@ export class ArticlesPage implements OnInit {
     return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 
-  // --- MODAL LOGIC ---
+  // --- MODAL LOGIC (Updated with Tracking) ---
 
   openModal(title: string, contentHtml: string | null | undefined) {
     if (!contentHtml) return;
+
     this.activeModalTitle = title;
     this.activeModalContent = this.getSafeHtml(contentHtml);
     this.showModal = true;
 
     if (isPlatformBrowser(this.platformId)) {
       document.body.style.overflow = "hidden";
+
+      // 4. TRACK SECTION INTERACTION
+      // Use standard naming "select_content" or custom "view_section"
+      this.analytics.trackEvent("view_section", {
+        section_name: title, // e.g. "Teaching Moment - High School"
+        article_title: this.article()?.title,
+        article_id: this.article()?.id,
+      });
     }
   }
 
@@ -131,10 +190,13 @@ export class ArticlesPage implements OnInit {
     }
   }
 
-  // --- FIXED DOWNLOAD LOGIC ---
+  // --- DOWNLOAD LOGIC (Updated with Tracking) ---
 
   downloadAsDocx() {
     if (!isPlatformBrowser(this.platformId)) return;
+
+    // 5. TRACK DOWNLOAD
+    this.trackDownload("docx");
 
     const contentElement = document.querySelector(".modal-body");
     if (!contentElement) return;
@@ -149,7 +211,6 @@ export class ArticlesPage implements OnInit {
         </body>
       </html>`;
 
-    // FIX 1: Type 'data' as 'any' to resolve the Blob|Buffer mismatch
     asBlob(htmlContent).then((data: any) => {
       saveAs(
         data as Blob,
@@ -160,6 +221,9 @@ export class ArticlesPage implements OnInit {
 
   downloadAsPdf() {
     if (!isPlatformBrowser(this.platformId)) return;
+
+    // 5. TRACK DOWNLOAD
+    this.trackDownload("pdf");
 
     const contentElement = document.querySelector(".modal-body") as HTMLElement;
     if (!contentElement) return;
@@ -172,8 +236,17 @@ export class ArticlesPage implements OnInit {
       jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
     };
 
-    // FIX 2: Cast html2pdfPkg to 'any' to make it callable
     const html2pdf = html2pdfPkg as any;
     html2pdf().set(opt).from(contentElement).save();
+  }
+
+  // Helper for tracking downloads
+  private trackDownload(fileType: string) {
+    this.analytics.trackEvent("file_download", {
+      file_extension: fileType,
+      file_name: this.activeModalTitle,
+      link_text: `Download as ${fileType.toUpperCase()}`,
+      article_title: this.article()?.title,
+    });
   }
 }
