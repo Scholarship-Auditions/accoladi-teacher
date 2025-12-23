@@ -179,7 +179,10 @@
   </div>
 
   <div class="engage-grid">
-    <div class="engage-card" (click)="navigateTo('/plans/showcase-plan/')">
+    <div
+      class="engage-card"
+      (click)="selectPlan('Showcase Plan', '/plans/showcase-plan/')"
+    >
       <h4>Showcase Plan</h4>
       <p>
         A focused solution for all performing arts students at select high
@@ -187,7 +190,10 @@
       </p>
     </div>
 
-    <div class="engage-card" (click)="navigateTo('/plans/marquee-plan/')">
+    <div
+      class="engage-card"
+      (click)="selectPlan('Marquee Plan', '/plans/marquee-plan/')"
+    >
       <h4>Marquee Plan</h4>
       <p>
         Targeted support for individual high school programs committed to
@@ -195,7 +201,10 @@
       </p>
     </div>
 
-    <div class="engage-card" (click)="navigateTo('/plans/centerstage-plan/')">
+    <div
+      class="engage-card"
+      (click)="selectPlan('Centerstage Plan', '/plans/centerstage-plan/')"
+    >
       <h4>Centerstage Plan</h4>
       <p>Designed for Private Teachers and Music Academies</p>
     </div>

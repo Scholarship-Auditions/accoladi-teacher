@@ -1,24 +1,49 @@
 <nav>
   <div class="navbar-container container">
-    <a class="navbar-logo" routerLink="">
+    <a class="navbar-logo" routerLink="" (click)="trackNavClick('Logo - Home')">
       <img src="/images/logo.png" alt="logo" />
     </a>
 
     <ul class="navbar-menu">
-      <li><a routerLink="/about">About us</a></li>
-      <li><a routerLink="/resources">Resources</a></li>
-      <li><a routerLink="/articles">Articles</a></li>
-      <li><a routerLink="/engage">Subscribe</a></li>
-      <li><a routerLink="/purpose">Purpose</a></li>
       <li>
-        <a class="btn" href="https://my.accoladi.com/auth/teacher-login"
-          >Sign In</a
+        <a routerLink="/about" (click)="trackNavClick('About us')">About us</a>
+      </li>
+      <li>
+        <a routerLink="/resources" (click)="trackNavClick('Resources')"
+          >Resources</a
         >
       </li>
       <li>
-        <a class="reg-link" href="https://my.accoladi.com/auth/register/teacher"
-          >Need an account? Register</a
+        <a routerLink="/articles" (click)="trackNavClick('Articles')"
+          >Articles</a
         >
+      </li>
+      <li>
+        <a routerLink="/engage" (click)="trackNavClick('Subscribe')"
+          >Subscribe</a
+        >
+      </li>
+      <li>
+        <a routerLink="/purpose" (click)="trackNavClick('Purpose')">Purpose</a>
+      </li>
+
+      <li>
+        <a
+          class="btn"
+          href="https://my.accoladi.com/auth/teacher-login"
+          (click)="trackNavClick('Sign In')"
+        >
+          Sign In
+        </a>
+      </li>
+      <li>
+        <a
+          class="reg-link"
+          href="https://my.accoladi.com/auth/register/teacher"
+          (click)="trackNavClick('Register')"
+        >
+          Need an account? Register
+        </a>
       </li>
     </ul>
   </div>
