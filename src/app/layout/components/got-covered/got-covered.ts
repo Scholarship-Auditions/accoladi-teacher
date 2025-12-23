@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit, signal } from "@angular/core";
 import { RouterLink } from "@angular/router";
+import { AnalyticsService } from "../../../services/analytics";
 
 export interface ArticleResponse {
   count: number;
@@ -46,7 +47,19 @@ export interface Category {
 export class GotCovered implements OnInit {
   articles = signal<ArticleResponse | null>(null);
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(
+    private readonly http: HttpClient,
+    private analytics: AnalyticsService
+  ) {}
+
+  onReadMore(article: any) {
+    // Send the event to Google Analytics
+    this.analytics.trackEvent("select_content", {
+      content_type: "article",
+      item_id: article.id,
+      item_name: article.title, // Tracking the title is very helpful for reports!
+    });
+  }
 
   ngOnInit(): void {
     this.http
