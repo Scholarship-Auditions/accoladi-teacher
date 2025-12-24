@@ -3,12 +3,12 @@
   position: relative;
   display: grid;
   place-items: center;
-  min-height: 45vw;
 
-  video {
+  .video {
     width: 100vw;
-    height: 50vw;
+    height: 55vw;
     object-fit: cover;
+    background-color: var(--white-color);
   }
 
   .hero-overlay {
