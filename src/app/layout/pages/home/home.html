@@ -12,6 +12,8 @@
 </section>
 
 <section class="welcome-section">
+  <div class="accoladi-dotted-top"></div>
+
   <div class="container welcome-grid">
     <div class="welcome-content">
       <h2 class="welcome-title">Welcome to Accoladi</h2>
@@ -38,6 +40,7 @@
       ></video>
     </div>
   </div>
+  <div class="accoladi-dotted-connector"></div>
 </section>
 
 <section class="how-section">
@@ -76,38 +79,9 @@
   </div>
 </section>
 
-<section class="resources-section">
-  <div class="container resources-data">
-    <h2 class="resources-title">Resources</h2>
-
-    <p>
-      At Accoladi, we believe that preparation isn't just about practice—it's
-      about having the right tools, the right information, and the right
-      strategy. That's why our Resources section is designed to meet you at
-      every stage of your journey, whether you're just beginning to explore your
-      options or you're deep in the audition and application process.
-    </p>
-
-    <p>
-      From step-by-step guides that break down complex tasks to expert-written
-      articles that offer real-world insights, our content is built for action
-      and clarity. You'll find curated directories of music and performing arts
-      programs, how-to checklists for every milestone, scholarship search
-      strategies, mock entrance exams, and performance prep tools—all developed
-      to help you move forward with confidence.
-    </p>
-
-    <p>
-      No fluff. No guesswork. Just the resources you need to make informed
-      decisions, stand out in auditions, and turn your passion into opportunity.
-      Whether you're navigating college applications, building your artistic
-      résumé, or exploring scholarship opportunities, everything you need is
-      right here—organized, accessible, and designed with your success in mind.
-    </p>
-  </div>
-
-  <div class="rise-cards container">
-    <article class="info-card">
+<section class="resource container">
+  <div class="cards-flex">
+    <article class="info-card" routerLink="">
       <div class="card-media">
         <p>Discover College Marching Bands: A State-By-State Guide</p>
         <img src="/images/college-marching.png" alt="What We Do" />
@@ -117,7 +91,7 @@
       </div>
     </article>
 
-    <article class="info-card">
+    <article class="info-card" routerLink="">
       <div class="card-media">
         <p>
           Discover College Music Departments, University Schools of Music, and
@@ -130,7 +104,7 @@
       </div>
     </article>
 
-    <article class="info-card">
+    <article class="info-card" routerLink="">
       <div class="card-media">
         <p>
           Discover Your Path: A Guide to Nineteen Specialized Music Major Areas
@@ -143,7 +117,7 @@
       </div>
     </article>
 
-    <article class="info-card">
+    <article class="info-card" routerLink="">
       <div class="card-media">
         <p>
           Discover a National Repertoire Directory by Music Grade Levels and
@@ -156,6 +130,32 @@
       </div>
     </article>
   </div>
+
+  <div class="resource-content">
+    <div class="title">Resources</div>
+    <p>
+      At Accoladi, we believe that preparation isn’t just about practice—it’s
+      about having the right tools, the right information, and the right
+      strategy. That’s why our Resources section is designed to meet you at
+      every stage of your journey, whether you're just beginning to explore your
+      options or you're deep in the audition and application process.
+    </p>
+    <p>
+      From step-by-step guides that break down complex tasks to expert-written
+      articles that offer real-world insights, our content is built for action
+      and clarity. You’ll find curated directories of music and performing arts
+      programs, how-to checklists for every milestone, scholarship search
+      strategies, mock entrance exams, and performance prep tools—all developed
+      to help you move forward with confidence.
+    </p>
+    <p>
+      No fluff. No guesswork. Just the resources you need to make informed
+      decisions, stand out in auditions, and turn your passion into opportunity.
+      Whether you're navigating college applications, building your artistic
+      résumé, or exploring scholarship opportunities, everything you need is
+      right here—organized, accessible, and designed with your success in mind.
+    </p>
+  </div>
 </section>
 
 <section class="aj-testimonial">
@@ -166,20 +166,31 @@
 
       <h2 class="testimonial-title">A.J. Neubert's Journey</h2>
       <p class="testimonial-text">
-        Despite having a strong musical résumé, A.J. struggled to find college
-        opportunities that matched his talent and aspirations. That's when
-        Accoladi stepped in, opening doors he never thought possible.
+        I dreamed big. I worked hard. By the time I was a senior at Kenmore East
+        High School in Tonawanda, New York, I had built a strong résumé—filled
+        with performances, hours of practice, and everything I thought I needed.
+        But when it came to turning that effort into college opportunities, I
+        didn’t know where to start. I had no roadmap. No connections. Just
+        questions.
       </p>
       <p class="testimonial-text">
-        Through our platform, A.J. discovered scholarships, connected with
-        prestigious institutions like Oberlin Conservatory and the Colburn
-        School, and received invaluable guidance throughout his application
-        process.
+        That’s when I found Accoladi. Through their platform, I was finally able
+        to see what was out there—scholarships I’d never heard of, schools that
+        matched my goals, and tools that helped me pull everything together.
+        They even took my calls when I had questions, and that meant more than
+        they know.
       </p>
       <p class="testimonial-text">
-        Today, A.J. serves as Principal Bassoonist with the Charlotte Symphony,
-        living proof that with the right support, dreams do come true. And for
-        him, Accoladi helped make that possible.
+        With Accoladi’s guidance, my hard work had direction. My dream had a
+        plan. And I had a way forward.
+      </p>
+      <p class="testimonial-text">
+        Today, I’m proud to say I studied at both Oberlin Conservatory and the
+        Colburn School—two of the most respected music institutions in the
+        country.
+        <br />
+        Yes, dreams do come true. And for me, Accoladi helped make that
+        possible.
       </p>
     </div>
 
@@ -190,7 +201,7 @@
       <div class="profile-info">
         <h3 class="profile-name">A.J. Neubert</h3>
         <p class="profile-title">Principal Bassoonist - Charlotte Symphony</p>
-        <button class="profile-btn" routerLink="'/aj-neubert'">
+        <button class="profile-btn" [routerLink]="['/aj-neubert']">
           See A.J.'s Profile
         </button>
       </div>
