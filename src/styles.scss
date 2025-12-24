@@ -1,31 +1,31 @@
 :root {
-    --white-color: #fff;
-    --amber-color: rgb(247, 205, 70);
-    --blue-color: #0895CA;
-    --navy-800: #0f3153; /* dark heading */
-    --navy-700: #173a57; /* body text */
+  --white-color: #fff;
+  --amber-color: rgb(247, 205, 70);
+  --blue-color: #0895ca;
+  --navy-800: #0f3153; /* dark heading */
+  --navy-700: #173a57; /* body text */
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-    font-style: normal;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 .container {
-    max-width: 90%;
+  max-width: 90%;
 }
 
 .btn {
-    padding: .5vw 1.2vw;
-    border: none;
-    outline: none;
-    border-radius: .2vw;
-    cursor: pointer;
+  padding: 0.5vw 1.2vw;
+  border: none;
+  outline: none;
+  border-radius: 0.2vw;
+  cursor: pointer;
 }
