@@ -284,12 +284,79 @@
 .resource-info-section {
   width: 100%;
   padding: 2vw 0;
+  position: relative;
 
   img {
     width: 100%;
   }
 
   .resource-info-wrapper {
+    margin: -20vw auto 0 auto;
+    width: 80%;
+
+    .resource-card {
+      border: 0.3vw solid var(--navy-800);
+      padding: 1.5vw;
+      border-radius: 1vw;
+      background-image: url("/images/abstract-background.jpeg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      h3 {
+        font-size: 1.8vw;
+        margin-bottom: 0.5vw;
+      }
+
+      p,
+      ul > li {
+        font-size: 1vw;
+      }
+    }
+
+    .resource-info-row-1 {
+      display: flex;
+      column-gap: 1vw;
+
+      .college-directory {
+        width: 60%;
+      }
+
+      .col-1 {
+        display: flex;
+        flex-direction: column;
+        width: 35%;
+        row-gap: 1vw;
+      }
+    }
+  }
+
+  .resource-info-row-2 {
+    display: flex;
+    column-gap: 1vw;
+    margin-top: 1vw;
+
+    .majors-directory {
+      width: 60%;
+    }
+
+    .non-institutional-scholarship-directory {
+      width: 35%;
+    }
+  }
+
+  .resource-info-row-3 {
+    display: flex;
+    column-gap: 1vw;
+    margin-top: 1vw;
+
+    .terms-directory {
+      width: 35%;
+    }
+
+    .band-directory {
+      width: 60%;
+    }
   }
 }
 

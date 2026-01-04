@@ -1,1 +1,52 @@
-<p>articles works!</p>
+<section class="articles-section">
+    <div class="header">
+        <img src="/images/knowledge-central.png" alt="Knowledge Center">
+    </div>
+
+    <div class="content-section">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <h2 class="sidebar-title">Top 7 Questions Parents Ask About Majoring in Music</h2>
+
+                <div class="faq-accordion">
+                    @for (faq of faqs(); track $index; let index = $index) {
+                    <div class="faq-item">
+                        <button class="faq-question" (click)="toggleFaq(index)" [class.active]="faq.isOpen">
+                            <span>{{ faq.question }}</span>
+                            <span class="faq-icon">{{ faq.isOpen ? '×' : '+' }}</span>
+                        </button>
+                        <div class="faq-answer" [class.open]="faq.isOpen">
+                            <div class="faq-answer-content">
+                                <p>{{ faq.answer }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </aside>
+
+        <div class="articles-grid">
+            @for (article of articles(); track article.id) {
+            <div class="article-card">
+                <div class="article-image">
+                    <img [src]="article.image" [alt]="article.title">
+                </div>
+                <div class="article-content">
+                    <h3 class="article-title">{{ article.title }}</h3>
+                    <div class="article-description">
+                        <p>{{ article.byline }}</p>
+                    </div>
+                    <div class="category-badge">
+                        <span>{{ article.category.name }}</span>
+                    </div>
+                    <div class="read-more-btn">
+                        <a [routerLink]="['/article', article.id]" class="read-more-btn">{{ 'READ MORE' }}</a>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</section>

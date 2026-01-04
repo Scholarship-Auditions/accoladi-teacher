@@ -6,17 +6,21 @@
         <h1 class="story-title">The Reason for the Excerpts</h1>
         <h2 class="story-subtitle">A Story Told by Arturo Toscanini</h2>
         <p class="story-role">Conductor of the New York Philharmonic (1926-1936)</p>
-        
+
         <div class="story-image">
           <img src="/images/arturo-toscanini.png" alt="Arturo Toscanini" />
         </div>
-        
+
         <div class="story-content">
           <p class="story-paragraph">
-            I was asked to meet with the son of one of my favorite violinists from the Philharmonic—a fine boy, preparing for his audition at Juilliard. I wasn’t with the New York Philharmonic anymore; I was now conducting the NBC Symphony Orchestra. But I wanted to honor his dad. The two of us still catch a bagel and coffee now and then at the Wellington Diner on 7th and 55th.
+            I was asked to meet with the son of one of my favorite violinists from the Philharmonic—a fine boy,
+            preparing for his audition at Juilliard. I wasn’t with the New York Philharmonic anymore; I was now
+            conducting the NBC Symphony Orchestra. But I wanted to honor his dad. The two of us still catch a bagel and
+            coffee now and then at the Wellington Diner on 7th and 55th.
           </p>
           <p class="story-paragraph">
-            So I slipped into Carnegie Hall, quietly, just before rehearsal. The people there—they know me. They let me take a seat on the back row of the first balcony.
+            So I slipped into Carnegie Hall, quietly, just before rehearsal. The people there—they know me. They let me
+            take a seat on the back row of the first balcony.
           </p>
         </div>
       </div>
@@ -25,50 +29,55 @@
       <div class="directory-column">
         <div class="directory-box">
           <h2 class="directory-title">Accoladi Orchestral Excerpt Directory</h2>
-          
+
           <div class="conductor-icon">
             <img src="/images/artist-logo.png" alt="Conductor">
           </div>
 
           <div class="instrument-families">
-            @for (family of instrumentFamilies; track family.name) {
-              <div class="instrument-family">
-                <button 
-                  class="family-button"
-                  [class.expanded]="isExpanded(family.name)"
-                  (click)="toggleFamily(family.name)">
-                  {{ family.name }}
+            @for (family of instrumentFamilies(); track family.name) {
+            <div class="instrument-family">
+              <button class="family-button" [class.expanded]="isExpanded(family.name)"
+                (click)="toggleFamily(family.name)">
+                {{ family.name }}
+              </button>
+
+              @if (isExpanded(family.name) && family.instruments.length > 0) {
+              <div class="instruments-list">
+                @for (instrument of family.instruments; track instrument) {
+                <button class="instrument-button" [class.selected]="isSelected(instrument)"
+                  (click)="selectInstrument(instrument)">
+                  {{ instrument }}
                 </button>
-                
-                @if (isExpanded(family.name) && family.instruments.length > 0) {
-                  <div class="instruments-list">
-                    @for (instrument of family.instruments; track instrument) {
-                      <button 
-                        class="instrument-button"
-                        [class.selected]="isSelected(instrument)"
-                        (click)="selectInstrument(instrument)">
-                        {{ instrument }}
-                      </button>
-                    }
-                  </div>
                 }
               </div>
+              }
+            </div>
             }
           </div>
         </div>
       </div>
     </div>
-    <div class="story-description"> 
+    <div class="story-description">
 
-      <p>The air smelled faintly of wood polish and old programs. Far below, the orchestra tuned—soft, fragmented, like memory.</p>
+      <p>The air smelled faintly of wood polish and old programs. Far below, the orchestra tuned—soft, fragmented, like
+        memory.</p>
 
-      <p>Bernstein was downstairs on the podium, beginning rehearsal. And there I was, sitting beside this young man—nervous and wide-eyed, with his violin case at his feet.</p>
-      <p>"Your dad said you're worried about your upcoming audition at Juilliard." He nodded and handed me a sheet listing his audition requirements. I took notice.</p>
-      <p>So I gave him a few pointers—about tone, presence, phrasing. But before we parted, I told him something else. Something more personal: "I'm the reason you'll be playing orchestral excerpts at your audition."</p>
+      <p>Bernstein was downstairs on the podium, beginning rehearsal. And there I was, sitting beside this young
+        man—nervous and wide-eyed, with his violin case at his feet.</p>
+      <p>"Your dad said you're worried about your upcoming audition at Juilliard." He nodded and handed me a sheet
+        listing his audition requirements. I took notice.</p>
+      <p>So I gave him a few pointers—about tone, presence, phrasing. But before we parted, I told him something else.
+        Something more personal: "I'm the reason you'll be playing orchestral excerpts at your audition."</p>
       <p>He looked at me, puzzled. So I told him the story.</p>
-      <p>They call me difficult. I'm sure your dad has called me difficult once or twice—or maybe even a few other names.</p>
-      <p>You see, when you lead a great orchestra, you're not looking for pretty playing—you're looking for truth. And truth lives in the details.</p>
-      <p>I'd been at the Philharmonic maybe two years when a young violinist came here to audition—he was probably just five or six years older than you are now. He played the Mendelssohn Concerto—beautifully. Then, for some strange reason—and the truth is, I'm not even sure why—I asked him to play the scherzo from A Midsummer Night's Dream.</p>
+      <p>They call me difficult. I'm sure your dad has called me difficult once or twice—or maybe even a few other
+        names.</p>
+      <p>You see, when you lead a great orchestra, you're not looking for pretty playing—you're looking for truth. And
+        truth lives in the details.</p>
+      <p>I'd been at the Philharmonic maybe two years when a young violinist came here to audition—he was probably just
+        five or six years older than you are now. He played the Mendelssohn Concerto—beautifully. Then, for some strange
+        reason—and the truth is, I'm not even sure why—I asked him to play the scherzo from A Midsummer Night's Dream.
+      </p>
       <p>Disaster. The rhythm fell apart. I was stunned.</p>
 
     </div>
@@ -89,7 +98,12 @@
             <h2 class="photo-name">Arturo Toscanini</h2>
             <p class="photo-dates">1867-1957</p>
             <p class="photo-bio">
-              Arturo Toscanini was an Italian conductor renowned for his passion, precision, and unwavering commitment to musical integrity. Over his illustrious career, he led some of the world's most prestigious orchestras, including La Scala in Milan, the Metropolitan Opera, the New York Philharmonic, and the NBC Symphony Orchestra. His exacting standards and revolutionary approach to orchestral performance not only elevated the art of conducting but also fundamentally shaped the modern audition process, establishing orchestral excerpts as essential components of musician evaluations.
+              Arturo Toscanini was an Italian conductor renowned for his passion, precision, and unwavering commitment
+              to musical integrity. Over his illustrious career, he led some of the world's most prestigious orchestras,
+              including La Scala in Milan, the Metropolitan Opera, the New York Philharmonic, and the NBC Symphony
+              Orchestra. His exacting standards and revolutionary approach to orchestral performance not only elevated
+              the art of conducting but also fundamentally shaped the modern audition process, establishing orchestral
+              excerpts as essential components of musician evaluations.
             </p>
           </div>
         </div>
@@ -99,28 +113,39 @@
       <div class="text-column">
         <div class="story-text-content">
           <p>
-            It wasn’t nerves. This was something deeper. That young man had mastered the spotlight—but faltered in the shadows. And it hit me: virtuosity is not enough. In the orchestra, you’re not the star. You’re part of a powerful, unified voice.
+            It wasn’t nerves. This was something deeper. That young man had mastered the spotlight—but faltered in the
+            shadows. And it hit me: virtuosity is not enough. In the orchestra, you’re not the star. You’re part of a
+            powerful, unified voice.
           </p>
           <p>
             That’s when I knew.
           </p>
           <p>
-            I started asking for orchestral excerpts—not because they were easier, but because they showed me more. When a flutist plays the solo from Daphnis et Chloé by Ravel—a soaring, delicate passage that demands both breath control and musical expression—I hear everything: phrasing, timing, character.
+            I started asking for orchestral excerpts—not because they were easier, but because they showed me more. When
+            a flutist plays the solo from Daphnis et Chloé by Ravel—a soaring, delicate passage that demands both breath
+            control and musical expression—I hear everything: phrasing, timing, character.
           </p>
-          <p>Excerpts aren’t tricks. They’re windows into the soul of a musician. They reveal who’s ready to serve the music—not just themselves.</p>
-          <p>Soon, conductors everywhere adopted the practice—from Chicago to Vienna. And I encouraged young Lenny down there to carry the tradition forward. He’s done more than that—he built a full directory of excerpts for the Philharmonic. Says it helps players prepare, and judges compare fairly.</p>
-          <p>And now here you are—with your audition list in your hand, and there it is: Brahms – Symphony No. 4, Movement IV, measures 33–80, and of course, Mendelssohn – A Midsummer Night’s Dream Scherzo, measures 17–99.</p>
-          <p>And you want to know why?          </p>
-          <p>Because the music deserves it.          </p>
-          <p>And someday, you might find yourself in the back row of Carnegie, passing this story along to someone else.          </p>
-          <p>That, my young friend, is the legacy.          </p>
-          <p>With that, I patted him on the knee and slipped out.          </p>
-          <p>Three weeks later, I was having coffee with his father. He told me his son played the fire—well, maybe fire wasn’t the word he used, it might’ve been something more colorful—out of the Mendelssohn. And he’d be starting Juilliard in the fall.</p>
-          <p>And me? I’m confident that little talk we had is part of the reason why. Not because I told him how to play. But because I helped him understand why we play and sing at all.</p>
+          <p>Excerpts aren’t tricks. They’re windows into the soul of a musician. They reveal who’s ready to serve the
+            music—not just themselves.</p>
+          <p>Soon, conductors everywhere adopted the practice—from Chicago to Vienna. And I encouraged young Lenny down
+            there to carry the tradition forward. He’s done more than that—he built a full directory of excerpts for the
+            Philharmonic. Says it helps players prepare, and judges compare fairly.</p>
+          <p>And now here you are—with your audition list in your hand, and there it is: Brahms – Symphony No. 4,
+            Movement IV, measures 33–80, and of course, Mendelssohn – A Midsummer Night’s Dream Scherzo, measures 17–99.
+          </p>
+          <p>And you want to know why? </p>
+          <p>Because the music deserves it. </p>
+          <p>And someday, you might find yourself in the back row of Carnegie, passing this story along to someone else.
+          </p>
+          <p>That, my young friend, is the legacy. </p>
+          <p>With that, I patted him on the knee and slipped out. </p>
+          <p>Three weeks later, I was having coffee with his father. He told me his son played the fire—well, maybe fire
+            wasn’t the word he used, it might’ve been something more colorful—out of the Mendelssohn. And he’d be
+            starting Juilliard in the fall.</p>
+          <p>And me? I’m confident that little talk we had is part of the reason why. Not because I told him how to
+            play. But because I helped him understand why we play and sing at all.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-

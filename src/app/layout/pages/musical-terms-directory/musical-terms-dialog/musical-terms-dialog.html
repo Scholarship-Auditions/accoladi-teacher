@@ -1,0 +1,28 @@
+<div class="dialog-container">
+    <div class="header">
+        <h2>{{ title }}</h2>
+        <button mat-icon-button mat-dialog-close class="close-btn">
+            <span class="material-icons">close</span>
+        </button>
+    </div>
+
+    <button class="print-btn" (click)="printTerms()">
+        Print Terms
+    </button>
+
+    <div class="terms-grid">
+        @for (item of termGroups; track $index) {
+        <div class="term-group">
+            <h3>{{ item.letter }}</h3>
+            <hr>
+            <ul>
+                @for (term of item.terms; track $index) {
+                <li>
+                    <strong>{{ term.term }}</strong> – {{ term.definition }}
+                </li>
+                }
+            </ul>
+        </div>
+        }
+    </div>
+</div>

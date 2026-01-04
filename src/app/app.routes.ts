@@ -89,6 +89,27 @@ export const routes: Routes = [
             (m) => m.ExcerptDirectory
           ),
       },
+      {
+        path: "musical-terms-directory",
+        loadComponent: () =>
+          import(
+            "./layout/pages/musical-terms-directory/musical-terms-directory"
+          ).then((m) => m.MusicalTermsDirectory),
+      },
+      {
+        path: "majors",
+        loadComponent: () =>
+          import("./layout/pages/majors-directory/majors-directory").then(
+            (m) => m.MajorsDirectory
+          ),
+      },
+      {
+        path: "summer-camp-directory",
+        loadComponent: () =>
+          import(
+            "./layout/pages/summer-camp-directory/summer-camp-directory"
+          ).then((m) => m.SummerCampDirectory),
+      },
     ],
   },
   {

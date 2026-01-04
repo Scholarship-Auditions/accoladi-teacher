@@ -1,0 +1,101 @@
+<section class="musical-terms-directory">
+    <div class="header">
+        <img src="/images/musical-terms-directory.png" alt="Knowledge Center">
+    </div>
+
+    <div class="intro-section container">
+        <div class="intro-content">
+            <h1 class="intro-title">Master the Language of Music</h1>
+
+            <div class="intro-grid">
+                <div class="intro-text">
+                    <p>Musical terms are woven into every part of your audition journey. They appear on entrance exams,
+                        guide your sightreading, shape your solo interpretation, and may even be part of your solo’s
+                        title. That’s why a confident understanding of musical terminology isn’t just helpful—it’s
+                        essential.</p>
+
+                    <p>To create the Accoladi Musical Terms Directory, our research team reviewed more than 500 music
+                        school entrance exams, 100 sightreading excerpts, and hundreds of required solos and orchestral
+                        excerpts. From this comprehensive analysis, we identified 470 core musical terms.</p>
+
+                    <p>Each term in this directory has been categorized into five levels of difficulty, based on how
+                        frequently they appear and the selectivity of the institutions that use them. Whether you're
+                        just starting out or preparing for a conservatory audition, this tool helps you focus your study
+                        and speak the universal language of music with confidence.</p>
+                </div>
+
+                <div class="levels-box">
+                    <div class="level-item">
+                        <h3 class="level-title">LEVEL I</h3>
+                        <p class="level-desc">Common to 52%<br>of researched institutions</p>
+                    </div>
+                    <div class="level-item">
+                        <h3 class="level-title">LEVEL II</h3>
+                        <p class="level-desc">Common to an additional 21%<br>of researched Institutions</p>
+                    </div>
+                    <div class="level-item">
+                        <h3 class="level-title">LEVEL III</h3>
+                        <p class="level-desc">Common to an additional 12%<br>of researched Institutions</p>
+                    </div>
+                    <div class="level-item">
+                        <h3 class="level-title">LEVEL IV</h3>
+                        <p class="level-desc">Common to an additional 9%<br>of researched Institutions</p>
+                    </div>
+                    <div class="level-item">
+                        <h3 class="level-title">LEVEL V</h3>
+                        <p class="level-desc">Common to an additional 6%<br>of researched Institutions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="marquee-container">
+    <div class="marquee-content">
+        Origins and Languages of Musical Terms – Italian, French, German, Latin, English, Spanish, Portuguese, Russian,
+        Hungarian, Slavic, and Greek.
+        &nbsp; &nbsp; &nbsp;
+        Origins and Languages of Musical Terms – Italian, French, German, Latin, English, Spanish, Portuguese, Russian,
+        Hungarian, Slavic, and Greek.
+    </div>
+</div>
+
+<section class="term-levels-section container">
+    <div class="term-levels-grid">
+        <button class="level-card static-card" (click)="openLevelDialog(musicalTermsLevels())">
+            All Musical Terms
+        </button>
+
+        @for (level of musicalTermsLevels(); track level.id) {
+        <button class="level-card" (click)="openLevelDialog(level)">
+            {{ level.name }} Musical Terms
+        </button>
+        }
+    </div>
+</section>
+
+<section class="more-than-notes-section container">
+    <div class="more-than-notes-content">
+        <div class="content-left">
+            <h2 class="title">More Than Notes: <span class="underline"> How</span> Musical Terms Can Set You Apart at
+                Auditions</h2>
+
+            <div class="story-text">
+                <p>At a university audition in Texas, a professor asked a surprising question:</p>
+                <p class="quote">“What musical term best describes you as a person?”</p>
+
+                <p>The student paused, then answered:</p>
+                <p class="quote">“Sforzando — because I attack every opportunity with force.”</p>
+
+                <p>That one word made him unforgettable.</p>
+            </div>
+
+            <button class="read-article-btn">Read Complete Article</button>
+        </div>
+
+        <div class="content-right">
+            <img src="images/music-terms-article.png" alt="article-image">
+        </div>
+    </div>
+</section>

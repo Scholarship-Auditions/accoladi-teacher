@@ -86,7 +86,7 @@ export class ArticlesPage implements OnInit, OnDestroy {
 
         this.http
           .get<Article>(
-            `https://dev-platform.accoladi.com/api/content/public/articles/${params["id"]}/`
+            `https://platform.accoladi.com/api/content/public/articles/${params["id"]}/`
           )
           .subscribe({
             next: (response) => {

@@ -1,0 +1,104 @@
+.account-dialog-container {
+    padding: 3vw;
+    color: white;
+    position: relative;
+    background-image: url("/images/gradient-bg.png");
+    background-size: cover;
+    background-position: center;
+    border: 0.3vw solid var(--amber-color); // Yellow Border
+    border-radius: 2vw;
+
+    .close-btn {
+        position: absolute;
+        top: 1vw;
+        right: 1vw;
+        background: transparent;
+        border: none;
+        color: var(--amber-color);
+        cursor: pointer;
+
+        mat-icon {
+            font-size: 2vw;
+            width: 2vw;
+            height: 2vw;
+        }
+    }
+
+    .header {
+        margin-bottom: 2vw;
+
+        .logo {
+            height: 4vw; // Adjust based on actual logo ratio
+            width: auto;
+        }
+    }
+
+    .dialog-title {
+        text-align: center;
+        color: var(--amber-color);
+        font-size: 2.2vw;
+        font-weight: 800;
+        margin-bottom: 2vw;
+        line-height: 1.2;
+    }
+
+    .content {
+        font-size: 1.1vw;
+        line-height: 1.5;
+
+        .intro-text,
+        .role-text {
+            margin-bottom: 1.5vw;
+        }
+
+        .role-list {
+            margin-bottom: 2vw;
+            padding-left: 2vw;
+
+            li {
+                margin-bottom: 0.8vw;
+                list-style-type: disc;
+                color: white;
+
+                a {
+                    color: #0099cc; // Link Blue
+                    font-weight: 700;
+                    text-decoration: underline;
+
+                    &:hover {
+                        color: var(--amber-color);
+                    }
+                }
+            }
+        }
+
+        .target-text {
+            margin-bottom: 1vw;
+
+            strong {
+                font-weight: 800;
+            }
+        }
+
+        .action-container {
+            margin-top: 3vw;
+            text-align: center;
+
+            .continue-btn {
+                background-color: #0099cc; // Button Blue
+                color: var(--amber-color); // Button Text Yellow
+                border: none;
+                padding: 1vw 2vw;
+                font-size: 1.3vw;
+                font-weight: 800;
+                border-radius: 0.5vw;
+                cursor: pointer;
+                transition: opacity 0.3s;
+
+                &:hover {
+                    opacity: 0.9;
+                }
+            }
+        }
+    }
+}

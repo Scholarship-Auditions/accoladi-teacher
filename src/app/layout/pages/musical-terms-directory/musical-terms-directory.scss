@@ -1,0 +1,207 @@
+.musical-terms-directory {
+    padding: 2vw;
+
+    .header {
+        img {
+            width: 100%;
+        }
+    }
+
+    .intro-section {
+        margin: 4vw auto 0 auto;
+        color: var(--navy-800);
+
+        .intro-title {
+            font-size: 3.5vw;
+            font-weight: 900;
+            margin-bottom: 3vw;
+        }
+
+        .intro-grid {
+            display: flex;
+            gap: 4vw;
+
+            .intro-text {
+                flex: 1.2;
+                font-size: 1.3vw;
+                font-weight: 500;
+                line-height: 2.4vw;
+
+                p {
+                    margin-bottom: 2vw;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+
+            .levels-box {
+                flex: 0.8;
+                background-color: var(--navy-800);
+                color: var(--white-color);
+                padding: 3vw 2vw;
+                border-radius: 1vw;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                gap: 2vw;
+
+                .level-item {
+                    .level-title {
+                        font-size: 1.4vw;
+                        font-weight: 800;
+                        margin-bottom: 0.5vw;
+                        text-transform: uppercase;
+                    }
+
+                    .level-desc {
+                        font-size: 1vw;
+                        font-weight: 400;
+                        line-height: 1.4;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.marquee-container {
+    overflow: hidden;
+    padding: 1vw 0;
+    white-space: nowrap;
+    border-top: .5vw solid var(--amber-color);
+    border-bottom: .5vw solid var(--amber-color);
+
+    .marquee-content {
+        display: inline-block;
+        color: var(--blue-color);
+        font-size: 5vw;
+        font-weight: 700;
+        animation: marquee 60s linear infinite;
+        white-space: nowrap;
+        text-transform: uppercase;
+    }
+
+    @keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+}
+
+
+.term-levels-section {
+    margin: 4vw auto;
+    background-color: #FEF9D9; // Light yellow background
+    border: 0.2vw solid #AED9E9; // Light blue border
+    border-radius: 2vw;
+    padding: 3vw;
+
+    .term-levels-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2vw;
+
+        .level-card {
+            background-color: var(--navy-800);
+            color: var(--amber-color);
+            padding: 2vw;
+            border-radius: 1vw;
+            border: none;
+            font-size: 1.5vw;
+            font-weight: 700;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+            text-transform: capitalize;
+
+            &:hover {
+                transform: scale(1.02);
+            }
+        }
+    }
+}
+
+
+.more-than-notes-section {
+    margin: 4vw auto;
+
+    .more-than-notes-content {
+        display: flex;
+        border: 0.2vw solid var(--navy-800);
+        border-radius: 2vw;
+        overflow: hidden;
+        background-color: rgba(8, 149, 202, 0.1);
+
+        .content-left {
+            flex: 1;
+            padding: 3vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .title {
+                font-size: 2.5vw;
+                font-weight: 900;
+                color: var(--navy-800);
+                margin-bottom: 2vw;
+                line-height: 1.2;
+
+                .underline {
+                    text-decoration: underline;
+                }
+            }
+
+            .story-text {
+                font-size: 1.2vw;
+                color: var(--navy-700);
+                margin-bottom: 2vw;
+
+                p {
+                    margin-bottom: 1.5vw;
+                    line-height: 1.6;
+                    font-weight: 500;
+                }
+
+                .quote {
+                    font-style: italic;
+                    font-weight: 600;
+                }
+            }
+
+            .read-article-btn {
+                align-self: flex-start;
+                padding: 1vw 2vw;
+                border: 0.2vw solid var(--navy-800);
+                background: transparent;
+                color: var(--navy-800);
+                font-size: 1.2vw;
+                font-weight: 700;
+                border-radius: 0.5vw;
+                cursor: pointer;
+                transition: all 0.3s;
+
+                &:hover {
+                    background: var(--navy-800);
+                    color: var(--white-color);
+                }
+            }
+        }
+
+        .content-right {
+            flex: 1;
+            position: relative;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}

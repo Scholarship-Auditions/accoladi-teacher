@@ -1,0 +1,70 @@
+<div class="dialog-header">
+    <span class="instrument-name">{{ data.instrument }}</span>
+    <button mat-icon-button (click)="close()">
+        <span class="material-icons">close</span>
+    </button>
+</div>
+
+<div class="dialog-content">
+    <h1>{{ data.instrumentInfo.header }}</h1>
+
+    @if(data.instrumentInfo.commonlyRequested) {
+    <div class="subtitle-box">
+        {{ data.instrumentInfo.commonlyRequested }}
+    </div>
+    }
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Composer</th>
+                    <th>Work</th>
+                    <th>Movement/Section</th>
+                    <th>Measures</th>
+                    <th>Key Challenges</th>
+                    <th>Difficulty</th>
+                    <th>Score/Link</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (excerpt of data.excerpts; track $index) {
+                <tr>
+                    <td>{{ excerpt.composer }}</td>
+                    <td>{{ excerpt.work }}</td>
+                    <td>{{ excerpt.movementSection }}</td>
+                    <td>{{ excerpt.measures }}</td>
+                    <td>{{excerpt.keyChallenges }}</td>
+                    <td>
+                        <span class="badge" [ngClass]="excerpt.difficulty.toLowerCase()">
+                            {{ excerpt.difficulty }}
+                        </span>
+                    </td>
+                    <td>
+                        @if (excerpt.scoreLink) {
+                        <a [href]="excerpt.scoreLink" target="_blank">IMSLP</a>
+                        }
+                    </td>
+                    <td>{{ excerpt.notes }}</td>
+                </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+    @if(data.instrumentInfo.practiceTips) {
+    <div class="practice-tips">
+        <h2>Practice Tips</h2>
+        <ul>
+            @for (tip of getFormattedList(data.instrumentInfo.practiceTips); track $index) {
+            <li>{{ tip }}</li>
+            }
+        </ul>
+    </div>
+    }
+
+    @if(data.instrumentInfo.footnote) {
+    <div class="footer-note">{{data.instrumentInfo.footnote}}</div>
+    }

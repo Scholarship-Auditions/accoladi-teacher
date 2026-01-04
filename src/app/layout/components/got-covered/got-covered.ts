@@ -63,7 +63,7 @@ export class GotCovered implements OnInit {
 
   ngOnInit(): void {
     this.http
-      .get("https://dev-platform.accoladi.com/api/content/articles/")
+      .get("https://platform.accoladi.com/api/content/public/articles/")
       .subscribe((response) => {
         this.articles.set(response as ArticleResponse);
       });

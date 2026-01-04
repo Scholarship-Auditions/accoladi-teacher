@@ -1,0 +1,130 @@
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vw 1.5vw;
+    border-bottom: 2px solid var(--amber-color);
+
+    .instrument-name {
+        font-weight: 700;
+        font-size: 2vw;
+        color: var(--navy-800);
+    }
+}
+
+.dialog-content {
+    padding: 2vw;
+    overflow-y: auto;
+    max-height: calc(90vh - 4vw - 50px);
+
+    h1 {
+        color: var(--navy-800);
+        font-size: 2vw;
+        font-weight: 800;
+        margin-bottom: 1.5vw;
+    }
+
+    .subtitle-box {
+        background-color: #f2f2f2;
+        padding: 1vw;
+        border-radius: 0.5vw;
+        color: var(--navy-700);
+        font-weight: 600;
+        font-size: 1.2vw;
+        margin-bottom: 2vw;
+    }
+
+    .table-container {
+        margin-bottom: 2vw;
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 1vw;
+
+            th {
+                background-color: var(--blue-color);
+                color: white;
+                text-align: left;
+                padding: 0.8vw;
+                font-weight: 600;
+                border: 1px solid #e0e0e0;
+
+                &:first-child {
+                    border-top-left-radius: 0.5vw;
+                }
+
+                &:last-child {
+                    border-top-right-radius: 0.5vw;
+                }
+            }
+
+            td {
+                padding: 0.8vw;
+                border: 1px solid #e0e0e0;
+                vertical-align: top;
+                color: var(--navy-700);
+            }
+        }
+    }
+
+    .badge {
+        padding: 0.3vw 0.6vw;
+        border-radius: 0.3vw;
+        color: white;
+        font-size: 0.8vw;
+        font-weight: 600;
+        display: inline-block;
+
+        &.intermediate {
+            background-color: orange;
+        }
+
+        &.advanced {
+            background-color: #dc3545;
+        }
+
+        &.expert {
+            background-color: purple;
+        }
+    }
+
+    a {
+        color: var(--blue-color);
+        text-decoration: none;
+        font-weight: 600;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .practice-tips {
+        h2 {
+            color: var(--blue-color);
+            font-size: 1.3vw;
+            margin-bottom: 1vw;
+            font-weight: 700;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 1.5vw;
+
+            li {
+                color: var(--blue-color);
+                margin-bottom: 0.5vw;
+                font-size: 1vw;
+            }
+        }
+    }
+}
+
+.footer-note {
+    color: var(--navy-700);
+    font-size: 1vw;
+    margin-top: 2vw;
+    background-color: #f5f5db;
+    padding: 1vw;
+    font-weight: 600;
+}
