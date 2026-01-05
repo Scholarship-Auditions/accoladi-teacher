@@ -4,6 +4,12 @@
       <img src="/images/logo.png" alt="logo" />
     </a>
 
+    <div class="hamburger" (click)="toggleMenu()" [class.active]="isMenuOpen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
     <ul class="navbar-menu">
       <li>
         <a routerLink="/about" (click)="trackNavClick('About us')">About us</a>

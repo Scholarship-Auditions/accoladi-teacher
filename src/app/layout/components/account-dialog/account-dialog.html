@@ -1,53 +1,66 @@
 <div class="account-dialog-container">
-    <button class="close-btn" (click)="close()">
-        <mat-icon>close</mat-icon>
-    </button>
+  <button class="close-btn" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
 
-    <div class="header">
-        <img src="/images/logo.png" alt="Accoladi.com" class="logo">
+  <div class="header">
+    <img src="/images/logo.png" alt="Accoladi.com" class="logo" />
+  </div>
+
+  <h1 class="dialog-title">
+    Welcome to AccoladiTeacher.com<br />
+    We're Glad You're Here!
+  </h1>
+
+  <div class="content">
+    <p class="intro-text">
+      AccoladiTeacher.com is designed specifically for performing arts teachers,
+      giving you access to resources that help guide students and their families
+      through every step of the collegiate journey: from school selection and
+      applications to auditions, scholarships, and acceptance.
+    </p>
+
+    <p class="role-text">
+      While teachers are at the heart of this site, we also support students,
+      parents, collegiate and summer enrichment recruiters, and school district
+      fine arts directors. To ensure each community has a dedicated space, we've
+      created tailored websites:
+    </p>
+
+    <ul class="role-list">
+      <li>
+        <a href="https://accoladi.com" target="_blank">Accoladi.com</a> — for
+        performing arts students and their families
+      </li>
+      <li>
+        <a href="https://accoladirecruiter.com" target="_blank"
+          >AccoladiRecruiter.com</a
+        >
+        — for collegiate and enrichment recruiters
+      </li>
+
+      <li>
+        <a href="https://accoladifineartsdirector.com" target="_blank"
+          >AccoladiFineArtsDirector.com</a
+        >
+        — for school district fine arts directors
+      </li>
+    </ul>
+
+    <p class="target-text">
+      <strong>Students and parents:</strong> this is your home base, so please
+      continue registering here on Accoladi.com.
+    </p>
+
+    <p class="target-text">
+      <strong>Everyone else:</strong> begin your journey at the site tailored to
+      your role.
+    </p>
+
+    <div class="action-container">
+      <button class="continue-btn" (click)="continue()">
+        Continue to Registration
+      </button>
     </div>
-
-    <h1 class="dialog-title">
-        Welcome to Accoladi.com<br>
-        We're Glad You're Here!
-    </h1>
-
-    <div class="content">
-        <p class="intro-text">
-            Accoladi.com is for performing arts students and their families. We connect student artists with the
-            opportunities they deserve.
-        </p>
-
-        <p class="role-text">
-            We also support collegiate and summer enrichment recruiters, music teachers, and fine arts directors. To
-            make sure everyone finds the right home, we've created dedicated websites for each community:
-        </p>
-
-        <ul class="role-list">
-            <li>
-                <a href="https://accoladirecruiter.com" target="_blank">AccoladiRecruiter.com</a> — for collegiate and
-                enrichment recruiters
-            </li>
-            <li>
-                <a href="https://accoladiteacher.com" target="_blank">AccoladiTeacher.com</a> — for music teachers
-            </li>
-            <li>
-                <a href="https://accoladifineartsdirector.com" target="_blank">AccoladiFineArtsDirector.com</a> — for
-                school district fine arts directors
-            </li>
-        </ul>
-
-        <p class="target-text">
-            <strong>Students and parents:</strong> this is your home base, so please continue registering here on
-            Accoladi.com.
-        </p>
-
-        <p class="target-text">
-            <strong>Everyone else:</strong> begin your journey at the site tailored to your role.
-        </p>
-
-        <div class="action-container">
-            <button class="continue-btn" (click)="continue()">Continue to Registration</button>
-        </div>
-    </div>
+  </div>
 </div>
