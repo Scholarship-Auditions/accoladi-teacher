@@ -84,10 +84,8 @@
     @if (article()?.teachingMomentsHighschool ||
     article()?.teachingMomentsMiddleschool ||
     article()?.directorMomentsHighschool ||
-    article()?.directorMomentsMiddleschool ||
-    article()?.teachingMoment ||
+    article()?.directorMomentsMiddleschool || article()?.teachingMoment ||
     article()?.directorMoment ) {
-      
 
     <div class="moments-grid">
       @if (article()?.teachingMomentsHighschool) {
@@ -104,8 +102,7 @@
       </button>
       } @else {
       <div class="empty-cell"></div>
-      } 
-      @if (article()?.teachingMomentsMiddleschool) {
+      } @if (article()?.teachingMomentsMiddleschool) {
       <button
         class="grid-btn"
         (click)="
@@ -119,8 +116,7 @@
       </button>
       } @else {
       <div class="empty-cell"></div>
-      } 
-      @if (article()?.directorMomentsHighschool) {
+      } @if (article()?.directorMomentsHighschool) {
       <button
         class="grid-btn director-btn"
         (click)="
@@ -134,8 +130,7 @@
       </button>
       } @else {
       <div class="empty-cell"></div>
-      } 
-      @if (article()?.directorMomentsMiddleschool) {
+      } @if (article()?.directorMomentsMiddleschool) {
       <button
         class="grid-btn director-btn"
         (click)="
@@ -149,8 +144,7 @@
       </button>
       } @else {
       <div class="empty-cell"></div>
-      } 
-      @if (article()?.directorPodcast) {
+      } @if (article()?.directorPodcast) {
       <button
         class="grid-btn media-btn"
         (click)="openModal('Director Podcast', article()?.directorPodcast)"
@@ -159,8 +153,7 @@
       </button>
       } @else {
       <div class="empty-cell"></div>
-      } 
-      @if (article()?.directorVlog) {
+      } @if (article()?.directorVlog) {
       <button
         class="grid-btn media-btn"
         (click)="openModal('Director Vlog', article()?.directorVlog)"
@@ -169,8 +162,7 @@
       </button>
       } @else {
       <div class="empty-cell"></div>
-      }
-      @if (article()?.directorVlog) {
+      } @if (article()?.teachingMoment) {
       <button
         class="grid-btn media-btn"
         (click)="openModal('Teaching Moments', article()?.teachingMoment)"
@@ -179,8 +171,7 @@
       </button>
       } @else {
       <div class="empty-cell"></div>
-      }
-      @if (article()?.directorMoment) {
+      } @if (article()?.directorMoment) {
       <button
         class="grid-btn media-btn"
         (click)="openModal('Director Blog', article()?.directorMoment)"
