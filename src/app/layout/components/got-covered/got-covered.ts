@@ -24,6 +24,8 @@ export interface Article {
   teachingMomentsMiddleschool: string | null;
   directorMomentsHighschool: string | null;
   directorMomentsMiddleschool: string | null;
+  teachingMoment: string | null;
+  directorMoment: string | null;
   directorPodcast: string | null;
   directorVlog: string | null;
   glossary: string | null;

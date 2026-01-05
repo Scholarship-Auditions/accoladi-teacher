@@ -150,11 +150,6 @@
   }
 }
 
-// Article Image
-.article-image {
-  display: none; // Hide old structure if it exists
-}
-
 // Article Highlight
 .article-highlight {
   padding: 1.5vw 2vw;
@@ -200,18 +195,27 @@
 
     ul,
     ol {
-      margin-bottom: 1.5vw;
-      padding-left: 2vw;
+      margin-bottom: 1.5rem;
+      padding-left: 40px;
+      list-style-position: outside;
+    }
+
+    ul {
+      list-style-type: disc;
+    }
+
+    ol {
+      list-style-type: decimal;
     }
 
     li {
-      margin-bottom: 0.5vw;
+      margin-bottom: 0.5rem;
     }
 
     blockquote {
-      border-left: 0.25vw solid #007bff;
-      padding-left: 1.5vw;
-      margin: 2vw 0;
+      border-left: 4px solid #007bff;
+      padding-left: 1.5rem;
+      margin: 2rem 0;
       font-style: italic;
       color: #666;
     }
@@ -219,8 +223,13 @@
     img {
       max-width: 100%;
       height: auto;
-      border-radius: 0.375vw;
-      margin: 1.5vw 0;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    // Hide Quill Editor Artifacts
+    .ql-ui {
+      display: none !important;
     }
   }
 }
@@ -413,19 +422,102 @@
   }
 }
 
-// Responsive Design
-@media (max-width: 768px) {
+// ===========================================
+// RESPONSIVE DESIGN - All Screen Sizes
+// ===========================================
+
+// Large Desktop (1400px+)
+@media (min-width: 1400px) {
   .article-container {
-    max-width: 95vw;
-    padding: 1vw 0.5vw;
+    max-width: 1200px;
+    padding: 40px 20px;
+  }
+
+  .article-body .content {
+    font-size: 1.125rem;
+  }
+
+  .moments-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Desktop (1024px - 1399px)
+@media (min-width: 1024px) and (max-width: 1399px) {
+  .article-container {
+    max-width: 960px;
+    padding: 32px 16px;
+  }
+
+  .moments-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Tablet Landscape (768px - 1023px)
+@media (min-width: 768px) and (max-width: 1023px) {
+  .article-container {
+    padding: 24px 16px;
+  }
+
+  .article-image-container img {
+    max-height: 500px;
+  }
+
+  .article-title-box {
+    margin: -70px 30px 0 30px;
+    max-width: 85%;
+  }
+
+  .moments-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .grid-btn {
+    min-height: 120px;
+    font-size: 1.1rem;
+  }
+
+  .loading-state,
+  .error-state {
+    min-height: 300px;
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .article-body .content,
+  .teaching-moments .teaching-section div,
+  .director-moments .director-section div {
+    font-size: 1rem;
+  }
+
+  .article-highlight h3,
+  .teaching-moments h3,
+  .director-moments h3 {
+    font-size: 1.25rem;
+  }
+}
+
+// Tablet Portrait (600px - 767px)
+@media (min-width: 600px) and (max-width: 767px) {
+  .article-container {
+    padding: 20px 12px;
   }
 
   .article-header {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
   }
 
   .article-image-container {
-    border: 4px solid #0895ca;
+    border-width: 4px;
     border-radius: 12px;
 
     img {
@@ -434,12 +526,277 @@
   }
 
   .article-title-box {
-    margin: -60px 20px 0 20px; // Adjust for mobile
+    margin: -50px 20px 0 20px;
     padding: 16px;
+    max-width: calc(100% - 40px);
+
+    .article-meta {
+      gap: 8px;
+    }
+
+    .article-title {
+      font-size: 1.25rem;
+    }
+  }
+
+  .moments-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .grid-btn {
+    min-height: 110px;
+    padding: 16px;
+    font-size: 1rem;
+  }
+
+  .article-body,
+  .teaching-moments,
+  .director-moments,
+  .media-content,
+  .glossary,
+  .references,
+  .suggested-reading,
+  .footnote,
+  .article-footer {
+    padding: 20px 0;
+  }
+
+  .article-body .content {
+    font-size: 1rem;
+  }
+
+  .article-highlight {
+    padding: 16px;
+  }
+
+  .loading-state,
+  .error-state {
+    min-height: 250px;
+
+    .spinner {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  .modal-container {
+    width: 90%;
+    max-height: 85vh;
+  }
+}
+
+// Mobile Large (480px - 599px)
+@media (min-width: 480px) and (max-width: 599px) {
+  .article-container {
+    padding: 16px 10px;
+  }
+
+  .article-header {
+    margin-bottom: 24px;
+  }
+
+  .article-image-container {
+    border-width: 3px;
+    border-radius: 10px;
+
+    img {
+      max-height: 320px;
+    }
+  }
+
+  .article-title-box {
+    margin: -40px 15px 0 15px;
+    padding: 14px;
+    border-width: 3px;
 
     .article-meta {
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
+    }
+
+    .article-title {
+      font-size: 1.1rem;
+    }
+
+    .article-byline .author {
+      font-size: 0.875rem;
+    }
+  }
+
+  .moments-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .grid-btn {
+    min-height: 100px;
+    padding: 14px;
+    font-size: 1rem;
+  }
+
+  .article-body,
+  .teaching-moments,
+  .director-moments,
+  .media-content,
+  .glossary,
+  .references,
+  .suggested-reading,
+  .footnote,
+  .article-footer {
+    padding: 16px 0;
+  }
+
+  .article-body .content {
+    font-size: 0.95rem;
+
+    ul,
+    ol {
+      padding-left: 24px;
+    }
+  }
+
+  .article-highlight {
+    padding: 12px;
+    border-left-width: 3px;
+
+    h3 {
+      font-size: 1rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+    }
+  }
+
+  .teaching-moments,
+  .director-moments {
+    h3 {
+      font-size: 1.1rem;
+    }
+
+    h4 {
+      font-size: 1rem;
+    }
+
+    .teaching-section div,
+    .director-section div {
+      font-size: 0.95rem;
+    }
+  }
+
+  .loading-state,
+  .error-state {
+    min-height: 200px;
+
+    .spinner {
+      width: 32px;
+      height: 32px;
+      border-width: 3px;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+    }
+  }
+
+  .content-btn {
+    padding: 14px 24px;
+    font-size: 1.4rem;
+  }
+
+  .modal-container {
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .modal-header {
+    padding: 16px 20px;
+
+    h2 {
+      font-size: 1.25rem;
+    }
+  }
+
+  .modal-body {
+    padding: 20px;
+  }
+
+  .modal-footer {
+    padding: 16px 20px;
+    flex-direction: column;
+  }
+}
+
+// Mobile Small (< 480px)
+@media (max-width: 479px) {
+  .article-container {
+    padding: 12px 8px;
+  }
+
+  .article-header {
+    margin-bottom: 20px;
+  }
+
+  .article-image-container {
+    border-width: 3px;
+    border-radius: 8px;
+
+    img {
+      max-height: 250px;
+    }
+  }
+
+  .article-title-box {
+    margin: -30px 10px 0 10px;
+    padding: 12px;
+    border-width: 2px;
+    border-radius: 8px;
+
+    .article-meta {
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 8px;
+
+      .category {
+        padding: 3px 8px;
+        font-size: 0.7rem;
+      }
+
+      .publish-date {
+        font-size: 0.7rem;
+      }
+    }
+
+    .article-title {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .article-byline .author {
+      font-size: 0.8rem;
+    }
+  }
+
+  .moments-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 24px 0;
+  }
+
+  .grid-btn {
+    min-height: 80px;
+    padding: 12px;
+    font-size: 0.95rem;
+    border-width: 3px;
+    border-radius: 12px;
+
+    span {
+      font-size: 0.85rem;
     }
   }
 
@@ -452,20 +809,389 @@
   .suggested-reading,
   .footnote,
   .article-footer {
-    padding: 1.5vw 1vw;
+    padding: 12px 0;
+  }
+
+  .article-body .content {
+    font-size: 0.9rem;
+    line-height: 1.7;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    ul,
+    ol {
+      padding-left: 20px;
+      margin-bottom: 1rem;
+    }
+
+    li {
+      margin-bottom: 0.4rem;
+    }
+
+    blockquote {
+      padding-left: 1rem;
+      margin: 1rem 0;
+    }
   }
 
   .article-highlight {
-    padding: 1vw;
-  }
-}
+    padding: 10px;
+    border-left-width: 3px;
 
-@media (max-width: 480px) {
-  .article-title-box {
-    margin: -40px 15px 0 15px;
+    h3 {
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
 
-    .article-title {
-      font-size: 1.1rem;
+    p {
+      font-size: 0.9rem;
     }
   }
+
+  .teaching-moments,
+  .director-moments,
+  .media-content,
+  .glossary,
+  .references,
+  .suggested-reading,
+  .footnote {
+    h3 {
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    h4 {
+      font-size: 0.95rem;
+    }
+
+    div {
+      font-size: 0.9rem;
+    }
+  }
+
+  .article-footer .article-dates p {
+    font-size: 0.8rem;
+  }
+
+  .loading-state,
+  .error-state {
+    min-height: 180px;
+    padding: 20px;
+
+    .spinner {
+      width: 28px;
+      height: 28px;
+      border-width: 3px;
+      margin-bottom: 12px;
+    }
+
+    .error-icon {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
+  }
+
+  .section-buttons {
+    gap: 10px;
+    margin: 16px 0;
+  }
+
+  .content-btn {
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    border-radius: 12px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .modal-container {
+    width: 98%;
+    max-height: 92vh;
+    border-radius: 10px;
+  }
+
+  .modal-header {
+    padding: 14px 16px;
+
+    h2 {
+      font-size: 1.1rem;
+    }
+
+    .close-btn {
+      font-size: 1.5rem;
+    }
+  }
+
+  .modal-body {
+    padding: 16px;
+
+    ::ng-deep ul,
+    ::ng-deep ol {
+      padding-left: 20px !important;
+    }
+  }
+
+  .modal-footer {
+    padding: 14px 16px;
+    gap: 10px;
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+    text-align: center;
+  }
 }
+
+/* --- 3x2 GRID LAYOUT --- */
+.moments-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin: 40px 0;
+}
+
+.grid-btn {
+  background-color: #0895ca;
+  border: 4px solid #ffcb05;
+  color: #00274c;
+  border-radius: 16px;
+  padding: 20px;
+  font-size: 1.3rem;
+  font-weight: 800;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 100%;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.2;
+
+  span {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 5px;
+    display: block;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.empty-cell {
+  display: none;
+}
+
+/* --- GENERAL BUTTONS --- */
+.section-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.content-btn {
+  background-color: #00274C;
+      padding: 20px 36px;
+      border-radius: 16px;
+      color: #FFCB05;
+      font-size: 1.8rem;
+      font-family: 'Varsity', sans-serif;
+      font-weight: 900;
+      letter-spacing: 1px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      border: 4px solid #007BC7;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    background-color: #0895ca;
+    color: #fff;
+  }
+}
+
+.highlight-btn {
+  border-color: #ffcb05;
+  color: #00274c;
+  background: #fff9e6;
+  &:hover {
+    background: #ffcb05;
+  }
+}
+
+/* --- MODAL (UPDATED TO MATCH WEBFLOW) --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(4px);
+}
+
+.modal-container {
+  /* Your Webflow Styles applied here */
+  background-color: #ffcb05;
+  color: #00274c;
+  font-family: "Poppins", sans-serif;
+  border-radius: 12px;
+
+  width: 80%; /* Match Webflow */
+  max-width: 1200px;
+  max-height: 80vh; /* Match Webflow */
+
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  padding: 20px 30px;
+  border-bottom: 2px solid rgba(0, 39, 76, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h2 {
+    margin: 0;
+    color: #00274c;
+    font-size: 1.5rem;
+  }
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #00274c;
+    cursor: pointer;
+  }
+}
+
+.modal-body {
+  padding: 30px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  color: #00274c;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+
+  /* --- CRITICAL LIST FIX --- */
+  ::ng-deep ul,
+  ::ng-deep ol {
+    margin-bottom: 1.5rem;
+    padding-left: 40px !important; /* Push list right so bullets fit */
+    list-style-position: outside !important; /* Bullets hang to the left */
+    margin-left: 0;
+  }
+
+  ::ng-deep ul {
+    list-style-type: disc !important;
+  }
+  ::ng-deep ol {
+    list-style-type: decimal !important;
+  }
+
+  ::ng-deep li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Remove Quill's fake bullets (.ql-ui) so standard bullets work */
+  ::ng-deep .ql-ui {
+    display: none !important;
+  }
+
+  /* Content Styling */
+  ::ng-deep h2,
+  ::ng-deep h3,
+  ::ng-deep h4 {
+    color: #00274c;
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+  }
+
+  ::ng-deep p {
+    margin-bottom: 1rem;
+  }
+
+  ::ng-deep table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    border: 1px solid #00274c;
+  }
+  ::ng-deep td,
+  ::ng-deep th {
+    border: 1px solid #00274c;
+    padding: 10px;
+  }
+}
+
+.modal-footer {
+  padding: 20px 30px;
+  border-top: 2px solid rgba(0, 39, 76, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+}
+
+.action-btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  &.doc-btn,
+  &.pdf-btn {
+    background-color: #00274c;
+    color: #ffcb05;
+    &:hover {
+      background-color: #003a70;
+    }
+  }
+  &.close-action-btn {
+    background: transparent;
+    border: 2px solid #00274c;
+    color: #00274c;
+  }
+}
+

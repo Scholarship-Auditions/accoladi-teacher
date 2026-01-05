@@ -21,9 +21,6 @@
       <div class="article-title-box">
         <div class="article-meta">
           <span class="category">{{ article()?.category?.name }}</span>
-          <span class="publish-date">{{
-            article()?.publishedAt | date : "longDate"
-          }}</span>
         </div>
         <h1 class="article-title">{{ article()?.title }}</h1>
         <div class="article-byline">
@@ -47,98 +44,18 @@
       <div class="content" [innerHTML]="getSafeHtml(article()?.content)"></div>
     </div>
 
-    @if (article()?.teachingMomentsHighschool ||
-    article()?.teachingMomentsMiddleschool ||
-    article()?.directorMomentsHighschool ||
-    article()?.directorMomentsMiddleschool || article()?.directorPodcast ||
-    article()?.directorVlog) {
-
-    <div class="moments-grid">
-      @if (article()?.teachingMomentsHighschool) {
-      <button
-        class="grid-btn"
-        (click)="
-          openModal(
-            'Teaching Moment - High School',
-            article()?.teachingMomentsHighschool
-          )
-        "
-      >
-        Teaching Moment<br /><span>High School</span>
-      </button>
-      } @else {
-      <div class="empty-cell"></div>
-      } @if (article()?.teachingMomentsMiddleschool) {
-      <button
-        class="grid-btn"
-        (click)="
-          openModal(
-            'Teaching Moment - Middle School',
-            article()?.teachingMomentsMiddleschool
-          )
-        "
-      >
-        Teaching Moment<br /><span>Middle School</span>
-      </button>
-      } @else {
-      <div class="empty-cell"></div>
-      } @if (article()?.directorMomentsHighschool) {
-      <button
-        class="grid-btn director-btn"
-        (click)="
-          openModal(
-            'Director’s Blog - High School',
-            article()?.directorMomentsHighschool
-          )
-        "
-      >
-        Director Moment<br /><span>High School</span>
-      </button>
-      } @else {
-      <div class="empty-cell"></div>
-      } @if (article()?.directorMomentsMiddleschool) {
-      <button
-        class="grid-btn director-btn"
-        (click)="
-          openModal(
-            'Director’s Blog - Middle School',
-            article()?.directorMomentsMiddleschool
-          )
-        "
-      >
-        Director Moment<br /><span>Middle School</span>
-      </button>
-      } @else {
-      <div class="empty-cell"></div>
-      } @if (article()?.directorPodcast) {
-      <button
-        class="grid-btn media-btn"
-        (click)="openModal('Director Podcast', article()?.directorPodcast)"
-      >
-        Director<br /><span>Podcast</span>
-      </button>
-      } @else {
-      <div class="empty-cell"></div>
-      } @if (article()?.directorVlog) {
-      <button
-        class="grid-btn media-btn"
-        (click)="openModal('Director Vlog', article()?.directorVlog)"
-      >
-        Director<br /><span>Vlog</span>
-      </button>
-      } @else {
-      <div class="empty-cell"></div>
-      }
-    </div>
-    }
-
     <div class="section-buttons footer-buttons">
       @if (article()?.glossary) {
       <button
         class="content-btn"
         (click)="openModal('Glossary', article()?.glossary)"
       >
-        Glossary
+        <img
+          src="https://cdn.prod.website-files.com/6817b051f69dc64dbdb788c6/687071aa68a407c5ad921c6e_yellow%20man%20(1).png"
+          alt="Glossary Icon"
+          style="height: 64px; margin-right: 24px"
+        />
+        ARTICLE GLOSSARY
       </button>
       } @if (article()?.references) {
       <button
@@ -163,6 +80,118 @@
       </button>
       }
     </div>
+
+    @if (article()?.teachingMomentsHighschool ||
+    article()?.teachingMomentsMiddleschool ||
+    article()?.directorMomentsHighschool ||
+    article()?.directorMomentsMiddleschool ||
+    article()?.teachingMoment ||
+    article()?.directorMoment ) {
+      
+
+    <div class="moments-grid">
+      @if (article()?.teachingMomentsHighschool) {
+      <button
+        class="grid-btn"
+        (click)="
+          openModal(
+            'Teaching Moment - High School',
+            article()?.teachingMomentsHighschool
+          )
+        "
+      >
+        Teaching Moment<br /><span>High School</span>
+      </button>
+      } @else {
+      <div class="empty-cell"></div>
+      } 
+      @if (article()?.teachingMomentsMiddleschool) {
+      <button
+        class="grid-btn"
+        (click)="
+          openModal(
+            'Teaching Moment - Middle School',
+            article()?.teachingMomentsMiddleschool
+          )
+        "
+      >
+        Teaching Moment<br /><span>Middle School</span>
+      </button>
+      } @else {
+      <div class="empty-cell"></div>
+      } 
+      @if (article()?.directorMomentsHighschool) {
+      <button
+        class="grid-btn director-btn"
+        (click)="
+          openModal(
+            'Director’s Blog - High School',
+            article()?.directorMomentsHighschool
+          )
+        "
+      >
+        Director Blog<br /><span>High School</span>
+      </button>
+      } @else {
+      <div class="empty-cell"></div>
+      } 
+      @if (article()?.directorMomentsMiddleschool) {
+      <button
+        class="grid-btn director-btn"
+        (click)="
+          openModal(
+            'Director’s Blog - Middle School',
+            article()?.directorMomentsMiddleschool
+          )
+        "
+      >
+        Director Blog<br /><span>Middle School</span>
+      </button>
+      } @else {
+      <div class="empty-cell"></div>
+      } 
+      @if (article()?.directorPodcast) {
+      <button
+        class="grid-btn media-btn"
+        (click)="openModal('Director Podcast', article()?.directorPodcast)"
+      >
+        Director<br /><span>Podcast</span>
+      </button>
+      } @else {
+      <div class="empty-cell"></div>
+      } 
+      @if (article()?.directorVlog) {
+      <button
+        class="grid-btn media-btn"
+        (click)="openModal('Director Vlog', article()?.directorVlog)"
+      >
+        Director<br /><span>Vlog</span>
+      </button>
+      } @else {
+      <div class="empty-cell"></div>
+      }
+      @if (article()?.directorVlog) {
+      <button
+        class="grid-btn media-btn"
+        (click)="openModal('Teaching Moments', article()?.teachingMoment)"
+      >
+        Teaching Moments<br />
+      </button>
+      } @else {
+      <div class="empty-cell"></div>
+      }
+      @if (article()?.directorMoment) {
+      <button
+        class="grid-btn media-btn"
+        (click)="openModal('Director Blog', article()?.directorMoment)"
+      >
+        Director Blog<br />
+      </button>
+      } @else {
+      <div class="empty-cell"></div>
+      }
+    </div>
+    }
 
     <footer class="article-footer">
       <div class="article-dates">
