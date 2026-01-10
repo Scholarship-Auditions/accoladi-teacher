@@ -36,6 +36,15 @@
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
+            "allowedCommonJsDependencies": [
+              "canvg",
+              "core-js",
+              "raf",
+              "rgbcolor",
+              "file-saver",
+              "html2pdf.js",
+              "html-docx-js-typescript"
+            ],
             "assets": [
               {
                 "glob": "**/*",
@@ -59,8 +68,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "30kB",
-                  "maximumError": "25kB"
+                  "maximumWarning": "50kB",
+                  "maximumError": "75kB"
                 }
               ],
               "outputHashing": "all"

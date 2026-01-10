@@ -1,0 +1,396 @@
+<!-- Responsive Angular Template (using @if) -->
+@if (loadError) {
+<div class="college-detail-error">
+  <p>{{ loadError }}</p>
+  <button type="button" class="back-to-directory" (click)="navigateBack()">
+    <i class="pi pi-arrow-left" aria-hidden="true"></i>
+    <span>Back to Directory</span>
+  </button>
+</div>
+} @else { @if (!isLoading && college) {
+<div class="college-detail-container">
+  <button type="button" class="back-to-directory" (click)="navigateBack()">
+    <i class="pi pi-arrow-left" aria-hidden="true"></i>
+    <span>Back to Directory</span>
+  </button>
+  <!-- Header Section -->
+  <section class="header-section">
+    <div class="header-content">
+      <!-- Left Side: Logo and Compact Info -->
+      <div class="info-column">
+        <div class="logo-title-row">
+          @if (displayLogoUrl) {
+          <div class="logo-wrapper">
+            <img
+              [src]="displayLogoUrl"
+              [alt]="(college.name || 'School') + ' logo'"
+              class="school-logo"
+            />
+          </div>
+          } @else {
+          <div class="logo-placeholder">
+            <i class="pi pi-image"></i>
+          </div>
+          }
+
+          <div class="title-section">
+            <h1 class="school-name">{{ college.name || "" }}</h1>
+            <span class="institution-type">{{
+              college.type?.name || "Institution"
+            }}</span>
+          </div>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-header">
+              <i class="pi pi-map-marker"></i>
+              <span class="info-label">Address</span>
+            </div>
+            <div class="info-value">
+              {{ college.address1 || ""
+              }}<span>, {{ college.address2 || "" }}</span
+              ><br />
+              <span>{{ college.city || "" }}, </span>
+              <span>{{ college.state || "" }}</span>
+              <span>{{ college.postalCode || "" }}</span>
+            </div>
+            <div class="info-footer">
+              <a
+                [href]="college.website || ''"
+                target="_blank"
+                class="info-value link"
+              >
+                Visit Website <i class="pi pi-external-link"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-header">
+              <i class="pi pi-envelope"></i>
+              <span class="info-label">Admissions</span>
+            </div>
+            <a
+              [href]="'mailto:' + (college.admissionsEmail || '')"
+              class="info-value link"
+            >
+              {{ college.admissionsEmail || "" }}
+            </a>
+            <a
+              [href]="college.applicationUrl || ''"
+              target="_blank"
+              class="info-value link"
+            >
+              Visit Admissions Page<i class="pi pi-external-link"></i>
+            </a>
+          </div>
+
+          <div class="info-item">
+            <div class="info-header">
+              <i class="pi pi-globe"></i>
+              <span class="info-label">Music Department</span>
+            </div>
+            <a
+              [href]="college.musicUrl || ''"
+              target="_blank"
+              class="info-value link"
+            >
+              Visit Music Department page<i class="pi pi-external-link"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side: Video -->
+      <div class="video-column">
+        @if (sanitizedVideoUrl) {
+        <div class="video-container">
+          <iframe
+            [src]="sanitizedVideoUrl"
+            frameborder="0"
+            allowfullscreen
+            title="School Video"
+            loading="lazy"
+          ></iframe>
+        </div>
+        } @else {
+        <div class="video-placeholder">
+          <div class="placeholder-content">
+            <i class="pi pi-play-circle"></i>
+            <h3>Video Preview</h3>
+            <p>School of Music Promo</p>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Grid -->
+  <section class="main-content">
+    <div class="content-grid">
+      <!-- Left Column -->
+      <div class="left-column">
+        <div class="info-card">
+          <h2 class="card-title">STUDENT BODY</h2>
+          <div class="card-content">
+            <div class="info-item">
+              <span class="label">Total Population:</span>
+              <span class="value">{{ college.totalPopulation || "N/A" }}</span>
+            </div>
+            <div class="info-item">
+              <span class="label">Undergraduate Population:</span>
+              <span class="value">{{
+                college.undergraduatePopulation || "N/A"
+              }}</span>
+            </div>
+            <div class="info-item">
+              <span class="label">Graduate Population:</span>
+              <span class="value">{{
+                (college.totalPopulation || 0) -
+                  (college.undergraduatePopulation || 0)
+              }}</span>
+            </div>
+            <div class="info-item">
+              <span class="label">Ethnic Make-up:</span>
+            </div>
+
+            <!-- Pie Chart -->
+            <div class="ethnic-chart-container">
+              <div class="chart-wrapper">
+                <canvas
+                  #ethnicChart
+                  id="ethnicPieChart"
+                  width="200"
+                  height="200"
+                ></canvas>
+              </div>
+              <div class="chart-legend">
+                <div class="legend-item">
+                  <span
+                    class="legend-color"
+                    style="background-color: #ff6384"
+                  ></span>
+                  <span class="legend-label">Native/Alaskan</span>
+                </div>
+                <div class="legend-item">
+                  <span
+                    class="legend-color"
+                    style="background-color: #36a2eb"
+                  ></span>
+                  <span class="legend-label">Asian</span>
+                </div>
+                <div class="legend-item">
+                  <span
+                    class="legend-color"
+                    style="background-color: #ffce56"
+                  ></span>
+                  <span class="legend-label">Black/African American</span>
+                </div>
+                <div class="legend-item">
+                  <span
+                    class="legend-color"
+                    style="background-color: #4bc0c0"
+                  ></span>
+                  <span class="legend-label">Hispanic</span>
+                </div>
+                <div class="legend-item">
+                  <span
+                    class="legend-color"
+                    style="background-color: #9966ff"
+                  ></span>
+                  <span class="legend-label">White</span>
+                </div>
+                <div class="legend-item">
+                  <span
+                    class="legend-color"
+                    style="background-color: #ff9f40"
+                  ></span>
+                  <span class="legend-label">Pacific Islander</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Degrees -->
+        <div class="info-card">
+          <h2 class="card-title">TYPES OF DEGREES</h2>
+          <div class="card-content ensembles-content">
+            <div class="ensembles-scroll-container">
+              <div class="ensembles-list">
+                @for (degree of degreeChips; track $index) {
+                <div class="ensemble-item">
+                  {{ degree }}
+                </div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Middle Column -->
+      <div class="middle-column">
+        <div class="info-card">
+          <h2 class="card-title">ACCEPTANCE RATE</h2>
+          <div class="card-content">
+            <div class="rate-display">
+              <span class="percentage"
+                >{{ college.acceptanceRate || "N/A" }}%</span
+              >
+            </div>
+            <div class="divider"></div>
+            <h3 class="subsection-title">COST</h3>
+            <div class="cost-info">
+              <div class="cost-item">
+                <span class="label">In-State Tuition:</span>
+                <span class="value">{{ college.inStateTuition || "N/A" }}</span>
+              </div>
+              <div class="cost-item">
+                <span class="label">Out-of-State Tuition:</span>
+                <span class="value">{{
+                  college.outOfStateTuition || "N/A"
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h2 class="card-title">MAJORS</h2>
+          <div class="card-content ensembles-content">
+            <div class="ensembles-scroll-container">
+              <div class="ensembles-list">
+                @for (concentration of concentrationChips; track $index) {
+                <div class="ensemble-item">
+                  {{ concentration }}
+                </div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="right-column">
+        <div class="info-card">
+          <h2 class="card-title">DEADLINES</h2>
+          <div class="card-content">
+            <div class="deadline-item">
+              <span class="label">Application Deadline:</span>
+              <span class="value">{{
+                college.applicationDeadline || "N/A"
+              }}</span>
+            </div>
+            <div class="divider"></div>
+            <h3 class="subsection-title">AUDITION DATES</h3>
+            <div class="audition-dates">
+              @for (auditionLine of musicOrAuditionDeadlineLines; track $index)
+              {
+              <div class="deadline-item">
+                <span class="value">{{ auditionLine }}</span>
+              </div>
+              }
+              <a
+                [href]="college.musicOrAuditionDeadlineUrl || ''"
+                target="_blank"
+                class="info-value link"
+              >
+                Visit Auditions page<i class="pi pi-external-link"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h2 class="card-title">PERFORMANCE ENSEMBLES</h2>
+          <div class="card-content ensembles-content">
+            <div class="ensembles-scroll-container">
+              <div class="ensembles-list">
+                @for (ensemble of performingEnsembleChips; track $index) {
+                <div class="ensemble-item">
+                  {{ ensemble }}
+                </div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Media Section -->
+  @if (socialImages.length > 0) {
+  <section class="social-media-section">
+    <h2 class="section-title">SOCIAL MEDIA</h2>
+    <div class="social-grid">
+      @for (image of socialImages; track $index) {
+      <div class="social-card">
+        <img
+          [src]="image"
+          alt="College social media"
+          class="social-image"
+          (click)="openImageModal(image)"
+        />
+      </div>
+      }
+    </div>
+  </section>
+  }
+</div>
+} @else {
+<!-- Loading State -->
+<div class="college-detail-loading">
+  <div class="loading-back">
+    <div class="skeleton skeleton-button"></div>
+  </div>
+  <div class="loading-header">
+    <div class="skeleton skeleton-circle">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+    <div class="loading-header-text">
+      <div class="skeleton skeleton-text skeleton-text-lg">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+      <div class="skeleton skeleton-text skeleton-text-md">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+    </div>
+  </div>
+  <div class="loading-body">
+    <div class="loading-row">
+      <div class="skeleton skeleton-text" style="width: 70%">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+      <div class="skeleton skeleton-text" style="width: 50%">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+    </div>
+    <div class="loading-row">
+      <div class="skeleton skeleton-text" style="width: 80%">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+      <div class="skeleton skeleton-text" style="width: 55%">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+    </div>
+    <div class="loading-row">
+      <div class="skeleton skeleton-text" style="width: 90%">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+      <div class="skeleton skeleton-text" style="width: 60%">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+    </div>
+    <div class="loading-chart">
+      <div class="skeleton skeleton-chart">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+    </div>
+  </div>
+</div>
+} }

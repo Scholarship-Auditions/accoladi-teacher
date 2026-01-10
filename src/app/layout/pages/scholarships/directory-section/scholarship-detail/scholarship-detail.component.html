@@ -1,0 +1,223 @@
+@if (!isLoading && scholarship) {
+<div class="scholarship-detail-page">
+  @if (showBackButton) {
+  <div class="detail-header">
+    <button type="button" class="back-button" (click)="handleBack()">
+      <i class="pi pi-arrow-left" aria-hidden="true"></i>
+      <span>Back to Directory</span>
+    </button>
+  </div>
+  }
+
+  <!-- ===== Header Section ===== -->
+  <section class="scholarship-header">
+    <div class="header-content">
+      <!-- Left Column - Details -->
+      <div class="header-left">
+        <h1 class="scholarship-title">{{ scholarship.name }}</h1>
+
+        <div class="scholarship-badges mb-4">
+          @if (scholarship.isScholarship) {
+          <mat-chip class="badge-scholarship">Scholarship</mat-chip>
+          } @if (scholarship.isCompetition) {
+          <mat-chip class="badge-competition">Competition</mat-chip>
+          }
+        </div>
+
+        <div class="scholarship-info">
+          @if (scholarship.scholarshipTypes.length) {
+          <div class="info-row">
+            <span class="info-label">Scholarship Type</span>
+            <span class="info-value">
+              @for (stype of scholarship.scholarshipTypes; track $index; let
+              last = $last) {
+              <span>{{ stype.name }}@if (!last) {, }</span>
+              }
+            </span>
+          </div>
+          } @if (scholarship.deadline) {
+          <div class="info-row">
+            <span class="info-label">Deadline</span>
+            <span class="info-value">{{ scholarship.deadline }}</span>
+          </div>
+          } @if (scholarship.appliesTo) {
+          <div class="info-row">
+            <span class="info-label">Applies To</span>
+            <div class="info-chips">
+              @for (apt of appliesToChips; track $index) {
+              <mat-chip class="applies-chip">{{ apt }}</mat-chip>
+              }
+            </div>
+          </div>
+          }
+
+          <div class="info-row">
+            <span class="info-label">National Award</span>
+            <span class="info-value">{{
+              scholarship.isNational ? "YES" : "NO"
+            }}</span>
+          </div>
+        </div>
+
+        @if (scholarship.orgUrl) {
+        <a
+          mat-raised-button
+          color="primary"
+          class="website-button"
+          [href]="scholarship.orgUrl"
+          target="_blank"
+        >
+          View Website
+        </a>
+        }
+      </div>
+
+      <!-- Right Column - Award Cards -->
+      <div class="header-right">
+        @if (scholarship.awardAmountNotes) {
+        <div class="award-card">
+          <p class="award-label">Award Amount</p>
+          <p class="award-value">{{ scholarship.awardAmountNotes }}</p>
+        </div>
+        } @if (scholarship.numberOfAwards) {
+        <div class="award-card">
+          <p class="award-label">Number of Awards</p>
+          <p class="award-value">{{ scholarship.numberOfAwards }}</p>
+        </div>
+        } @if (scholarship.ageRangeNotes) {
+        <div class="award-card">
+          <p class="award-label">Age Range</p>
+          <p class="award-value">{{ scholarship.ageRangeNotes }}</p>
+        </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Content Section ===== -->
+  <section class="scholarship-content">
+    <div class="content-grid">
+      <!-- Main Content Area -->
+      <div class="content-main">
+        <!-- Additional Notes Card -->
+        <mat-card class="notes-card">
+          <mat-card-header>
+            <mat-card-title>Additional Notes</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              {{
+                scholarship.notes ||
+                  "No additional notes available on this scholarship"
+              }}
+            </p>
+          </mat-card-content>
+        </mat-card>
+
+        <!-- Disciplines Card -->
+        <mat-card class="disciplines-card">
+          <mat-card-header>
+            <mat-card-title>Disciplines</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            @if (disciplineChips.length) {
+            <div class="disciplines-chips">
+              @for (disc of disciplineChips; track $index) {
+              <mat-chip>{{ disc }}</mat-chip>
+              }
+            </div>
+            } @else {
+            <p class="no-data">No disciplines specified</p>
+            }
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <!-- Sidebar - Contact -->
+      <div class="content-sidebar">
+        <mat-card class="contact-card">
+          <mat-card-header>
+            <mat-card-title>Contact</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            @if (scholarship.orgContact) {
+            <div class="contact-section">
+              <div class="contact-label">Name</div>
+              <div class="contact-value">{{ scholarship.orgContact }}</div>
+            </div>
+            } @if (scholarship.address1 || scholarship.city ||
+            scholarship.state) {
+            <div class="contact-section">
+              <div class="contact-label">Address</div>
+              <div class="contact-value">
+                @if (scholarship.address1) {
+                <span>{{ scholarship.address1 }}, </span>
+                } @if (scholarship.address2) {
+                <span>{{ scholarship.address2 }}, </span>
+                } @if (scholarship.city) {
+                <span>{{ scholarship.city }}, </span>
+                } @if (scholarship.state) {
+                <span>{{ scholarship.state }} </span>
+                } @if (scholarship.postalCode) {
+                <span>{{ scholarship.postalCode }}</span>
+                } @if (scholarship.country) {
+                <div>{{ scholarship.country | uppercase }}</div>
+                }
+              </div>
+            </div>
+            } @if (scholarship.orgEmail) {
+            <div class="contact-section">
+              <div class="contact-label">Email</div>
+              <div class="contact-value">{{ scholarship.orgEmail }}</div>
+            </div>
+            } @if (scholarship.orgPhone) {
+            <div class="contact-section">
+              <div class="contact-label">Phone</div>
+              <div class="contact-value">{{ scholarship.orgPhone }}</div>
+            </div>
+            } @if (scholarship.orgUrl) {
+            <mat-divider></mat-divider>
+            <div class="contact-website">
+              <i class="pi pi-globe"></i>
+              <a [href]="scholarship.orgUrl" target="_blank">Visit website</a>
+            </div>
+            }
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </section>
+</div>
+} @else {
+<!-- ===== Loading Skeleton ===== -->
+<div class="scholarship-detail-loading">
+  <div class="loading-back">
+    <div class="skeleton skeleton-button"></div>
+  </div>
+  <div class="loading-header">
+    <div class="skeleton skeleton-title">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+    <div class="skeleton skeleton-badges">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+  </div>
+  <div class="loading-body">
+    <div class="loading-row">
+      <div class="skeleton skeleton-text" style="width: 70%">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+    </div>
+    <div class="loading-row">
+      <div class="skeleton skeleton-text" style="width: 60%">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+    </div>
+    <div class="loading-card">
+      <div class="skeleton skeleton-card">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+    </div>
+  </div>
+</div>
+}

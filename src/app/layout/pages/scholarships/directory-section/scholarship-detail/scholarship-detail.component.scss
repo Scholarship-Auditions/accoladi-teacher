@@ -1,0 +1,345 @@
+.scholarship-detail-page {
+  background-color: #fbbf24; // Yellow background
+  min-height: 100vh;
+  padding: 2rem;
+
+  .detail-header {
+    margin-bottom: 1.5rem;
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      border: none;
+      color: #3b82f6;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+
+      &:hover {
+        background: rgba(59, 130, 246, 0.12);
+        color: #2563eb;
+      }
+
+      i {
+        font-size: 14px;
+      }
+    }
+  }
+
+  // ===== Header Section =====
+  .scholarship-header {
+    margin-bottom: 2rem;
+
+    .header-content {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .header-left {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .scholarship-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #000;
+      margin-bottom: 1.5rem;
+    }
+
+    .scholarship-badges {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+
+      .badge-scholarship {
+        background-color: #6b7280 !important;
+        color: white !important;
+        font-size: 0.875rem;
+      }
+
+      .badge-competition {
+        background-color: #93c5fd !important;
+        color: white !important;
+        font-size: 0.875rem;
+      }
+    }
+
+    .scholarship-info {
+      margin-bottom: 1.5rem;
+
+      .info-row {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 0.75rem;
+        font-size: 1.125rem;
+        align-items: flex-start;
+
+        .info-label {
+          color: #3b82f6; // Blue
+          font-weight: 600;
+          min-width: 140px;
+        }
+
+        .info-value {
+          color: #000;
+        }
+
+        .info-chips {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.25rem;
+
+          .applies-chip {
+            font-size: 0.75rem;
+            height: 24px;
+          }
+        }
+      }
+    }
+
+    .website-button {
+      margin-top: 1rem;
+    }
+
+    .header-right {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .award-card {
+      background-color: #3b82f6; // Blue
+      color: white;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      text-align: center;
+      min-width: 200px;
+      flex: 1;
+
+      .award-label {
+        font-size: 0.875rem;
+        margin-bottom: 0.5rem;
+        opacity: 0.9;
+      }
+
+      .award-value {
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 0;
+      }
+    }
+  }
+
+  // ===== Content Section =====
+  .scholarship-content {
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 1.5rem;
+
+      @media (max-width: 1024px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .content-main {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      .mat-mdc-card {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .notes-card,
+      .disciplines-card {
+        ::ng-deep .mat-mdc-card-header {
+          background-color: #4b5563; // Gray
+          padding: 0.75rem 1rem;
+          margin: 0 -16px;
+          margin-bottom: 1rem;
+
+          .mat-mdc-card-title {
+            color: white;
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin: 0;
+          }
+        }
+
+        .mat-mdc-card-content {
+          color: #374151;
+          line-height: 1.6;
+        }
+      }
+
+      .disciplines-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .no-data {
+        color: #9ca3af;
+        font-style: italic;
+      }
+    }
+
+    .content-sidebar {
+      .contact-card {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+        ::ng-deep .mat-mdc-card-header {
+          background-color: #3b82f6; // Blue
+          padding: 0.75rem 1rem;
+          margin: 0 -16px;
+          margin-bottom: 1rem;
+
+          .mat-mdc-card-title {
+            color: white;
+            font-weight: bold;
+            font-size: 1.125rem;
+            margin: 0;
+          }
+        }
+      }
+
+      .contact-section {
+        margin-bottom: 1rem;
+
+        .contact-label {
+          color: #3b82f6;
+          font-size: 0.75rem;
+          font-weight: 600;
+          margin-bottom: 0.25rem;
+          text-transform: uppercase;
+        }
+
+        .contact-value {
+          color: #1f2937;
+          font-weight: 500;
+        }
+      }
+
+      .mat-divider {
+        margin: 1.5rem 0 1rem;
+      }
+
+      .contact-website {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding-top: 1rem;
+
+        i {
+          color: #3b82f6;
+        }
+
+        a {
+          color: #3b82f6;
+          font-weight: 600;
+          text-decoration: none;
+
+          &:hover {
+            color: #2563eb;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Loading skeleton styles
+.scholarship-detail-loading {
+  background-color: #fbbf24;
+  min-height: 100vh;
+  padding: 2rem;
+
+  .skeleton {
+    position: relative;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+
+    mat-progress-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      ::ng-deep .mat-mdc-progress-bar {
+        height: 100% !important;
+
+        .mdc-linear-progress__bar-inner {
+          border-top-width: 100% !important;
+        }
+      }
+    }
+  }
+
+  .loading-back {
+    margin-bottom: 1.5rem;
+
+    .skeleton-button {
+      width: 14rem;
+      height: 2.5rem;
+      border-radius: 6px;
+    }
+  }
+
+  .loading-header {
+    margin-bottom: 2rem;
+
+    .skeleton-title {
+      width: 60%;
+      height: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .skeleton-badges {
+      width: 30%;
+      height: 2rem;
+    }
+  }
+
+  .loading-body {
+    .loading-row {
+      margin-bottom: 1rem;
+
+      .skeleton-text {
+        height: 1.5rem;
+      }
+    }
+
+    .loading-card {
+      margin-top: 2rem;
+
+      .skeleton-card {
+        width: 100%;
+        height: 200px;
+        border-radius: 8px;
+      }
+    }
+  }
+}
+
+// Override Material button styles
+::ng-deep .scholarship-detail-page {
+  .mat-mdc-raised-button.mat-primary {
+    --mdc-protected-button-container-color: #3b82f6;
+    --mdc-protected-button-label-text-color: white;
+
+    &:hover {
+      --mdc-protected-button-container-color: #2563eb;
+    }
+  }
+}

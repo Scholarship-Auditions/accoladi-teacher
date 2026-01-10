@@ -1,0 +1,143 @@
+<section class="college-directory-wrapper">
+  <!-- MAP + SEARCH AREA -->
+  <div class="map-search-container">
+    <app-map-search
+      [terms]="terms"
+      [filters]="filters"
+      (searchPacket)="handleSearch($event)"
+    ></app-map-search>
+  </div>
+
+  <!-- SKELETON LOADING STATE -->
+  @if (isSearching()) {
+  <div class="table-wrapper loading-wrapper">
+    <p class="loading-message">Loading colleges…</p>
+    <div
+      class="loading-lines"
+      role="status"
+      aria-live="polite"
+      aria-busy="true"
+    >
+      @for (_ of loadingPlaceholders; track $index) {
+      <div
+        class="loading-line"
+        [style.animation-delay]="$index * 0.08 + 's'"
+      ></div>
+      }
+    </div>
+  </div>
+  }
+
+  <!-- DIRECTORY TABLE -->
+  @if (!isSearching() && !selectedCollege()) {
+  <div class="table-wrapper">
+    <div class="college-table">
+      <table mat-table [dataSource]="paginatedColleges()">
+        <!-- College Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>College</th>
+          <td mat-cell *matCellDef="let college">{{ college.name }}</td>
+        </ng-container>
+
+        <!-- Type Column -->
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef>Type</th>
+          <td mat-cell *matCellDef="let college">{{ college.type?.name }}</td>
+        </ng-container>
+
+        <!-- City Column -->
+        <ng-container matColumnDef="city">
+          <th mat-header-cell *matHeaderCellDef>City</th>
+          <td mat-cell *matCellDef="let college">{{ college.city }}</td>
+        </ng-container>
+
+        <!-- State Column -->
+        <ng-container matColumnDef="state">
+          <th mat-header-cell *matHeaderCellDef>State</th>
+          <td mat-cell *matCellDef="let college">{{ college.state }}</td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let college">
+            <button
+              mat-button
+              class="view-button"
+              (click)="gotoCollege(college)"
+            >
+              View
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <!-- Custom Paginator -->
+      <div class="custom-paginator">
+        <div class="paginator-current">
+          {{ paginationInfo() }}
+        </div>
+        <div class="paginator-controls">
+          <!-- Replace the buttons with Material icons -->
+          <button
+            class="paginator-button paginator-first"
+            [disabled]="!canGoPrevious()"
+            (click)="goToFirstPage()"
+            [class.p-disabled]="!canGoPrevious()"
+          >
+            <mat-icon>first_page</mat-icon>
+          </button>
+          <button
+            class="paginator-button paginator-prev"
+            [disabled]="!canGoPrevious()"
+            (click)="goToPreviousPage()"
+            [class.p-disabled]="!canGoPrevious()"
+          >
+            <mat-icon>chevron_left</mat-icon>
+          </button>
+          <div class="paginator-pages">
+            @for (page of getPageNumbers(); track page) {
+            <button
+              class="paginator-page"
+              [class.p-highlight]="page === pageIndex()"
+              (click)="goToPage(page)"
+            >
+              {{ page + 1 }}
+            </button>
+            }
+          </div>
+          <button
+            class="paginator-button paginator-next"
+            [disabled]="!canGoNext()"
+            (click)="goToNextPage()"
+            [class.p-disabled]="!canGoNext()"
+          >
+            <mat-icon>chevron_right</mat-icon>
+          </button>
+          <button
+            class="paginator-button paginator-last"
+            [disabled]="!canGoNext()"
+            (click)="goToLastPage()"
+            [class.p-disabled]="!canGoNext()"
+          >
+            <mat-icon>last_page</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+
+  <!-- COLLEGE DETAIL VIEW -->
+  @if (selectedCollege()) {
+  <div class="detail-wrapper">
+    <app-college-detail
+      [college]="selectedCollege()!"
+      (backToDirectory)="selectedCollege.set(null)"
+    ></app-college-detail>
+  </div>
+  }
+</section>
