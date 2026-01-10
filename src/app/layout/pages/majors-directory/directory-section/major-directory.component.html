@@ -1,0 +1,252 @@
+<div class="uploaded-majors-page">
+  <!-- Instructions Card -->
+  <div class="instructions-card">
+    <h2>Instructions for Using the Majors Directory</h2>
+    <ul>
+      <li>
+        <strong>Open the 'Majors' Dropdown:</strong> Start by selecting the
+        'Majors' dropdown menu to view all available fields of study.
+      </li>
+      <li>
+        <strong>Watch for Similar Names:</strong> Some majors are listed
+        side-by-side under different names but cover the same or closely related
+        areas. All schools offering that concentration will appear.
+      </li>
+      <li>
+        <strong>Search Other Ways:</strong> You can also search by the name of
+        the school or state to narrow results.
+      </li>
+      <li>
+        <strong>Scroll for More:</strong> Nine schools display at a time—scroll
+        down to see additional results.
+      </li>
+    </ul>
+    <p class="explore-text">
+      <strong>Explore Boldly:</strong> Click on listings, compare programs, and
+      note schools that match your goals.
+    </p>
+  </div>
+
+  <!-- Controls Container -->
+  <div class="controls-container">
+    <!-- Search and State Filter -->
+    <div class="filter-row">
+      <mat-form-field appearance="outline" class="search-field">
+        <mat-label>Search</mat-label>
+        <mat-icon matPrefix>search</mat-icon>
+        <input
+          matInput
+          placeholder="Search by university, city, or state"
+          [(ngModel)]="searchTerm"
+          (input)="onFilterChange()"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="filter-field">
+        <mat-label>Select a State</mat-label>
+        <mat-select
+          [(ngModel)]="selectedStates"
+          multiple
+          (selectionChange)="onFilterChange()"
+        >
+          @for (state of stateList; track state.code) {
+          <mat-option [value]="state.name">{{ state.name }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Degree Types and Majors Filter -->
+    <div class="filter-row">
+      <mat-form-field appearance="outline" class="filter-field">
+        <mat-label>Degree Types</mat-label>
+        <mat-select
+          [(ngModel)]="selectedDegreeIds"
+          multiple
+          (selectionChange)="onFilterChange()"
+        >
+          @for (degree of availableDegrees; track degree.id) {
+          <mat-option [value]="degree.id">{{ degree.name }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="filter-field">
+        <mat-label>Majors</mat-label>
+        <mat-select
+          [(ngModel)]="selectedMajorIds"
+          multiple
+          (selectionChange)="onFilterChange()"
+        >
+          @for (major of availableMajors; track major.id) {
+          <mat-option [value]="major.id">{{ major.name }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <button
+        mat-raised-button
+        color="primary"
+        class="search-button"
+        (click)="performSearch()"
+      >
+        <mat-icon>search</mat-icon>
+        Search
+      </button>
+
+      @if (searchTerm() || selectedDegreeIds().length > 0 ||
+      selectedMajorIds().length > 0 || selectedStates().length > 0) {
+      <button mat-raised-button class="clear-button" (click)="clearSearch()">
+        <mat-icon>clear</mat-icon>
+        Clear
+      </button>
+      }
+    </div>
+  </div>
+
+  <!-- Loading Indicator -->
+  @if (isLoading()) {
+  <div class="loading-indicator">
+    <mat-spinner></mat-spinner>
+    <p>Loading university information...</p>
+  </div>
+  }
+
+  <!-- University Cards -->
+  @if (!isLoading()) {
+  <div class="majors-cards-container">
+    @for (university of paginatedUniversities(); track university.name) {
+    <mat-card class="major-card">
+      <mat-card-header>
+        <mat-card-title class="university-name">
+          {{ university.name }}
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        @if (university.city || university.state) {
+        <p class="location">
+          <mat-icon>place</mat-icon>
+          {{ university.city }}, {{ university.state }}
+        </p>
+        }
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="openMajorsModal(university)"
+        >
+          <mat-icon>list</mat-icon>
+          View All Majors
+        </button>
+      </mat-card-actions>
+    </mat-card>
+    }
+  </div>
+
+  <!-- No Results -->
+  @if (paginatedUniversities().length === 0) {
+  <div class="no-results-message">
+    <div class="maintenance-notice">
+      <mat-icon class="maintenance-icon">construction</mat-icon>
+      <h3>Actively Updating University List</h3>
+      <p>
+        Sorry for the inconvenience if the university you are searching for is
+        not available in the list. We are actively collecting and updating the
+        university list.
+      </p>
+    </div>
+  </div>
+  }
+
+  <!-- Pagination -->
+  @if (totalRecords() > pageSize()) {
+  <div class="custom-paginator">
+    <div class="paginator-current">
+      {{ paginationInfo() }}
+    </div>
+    <div class="paginator-controls">
+      <button
+        mat-icon-button
+        [disabled]="!canGoPrevious()"
+        (click)="goToFirstPage()"
+      >
+        <mat-icon>first_page</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        [disabled]="!canGoPrevious()"
+        (click)="goToPreviousPage()"
+      >
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+      <div class="paginator-pages">
+        @for (page of getPageNumbers(); track page) {
+        <button
+          mat-button
+          class="paginator-page"
+          [class.active]="page === pageIndex()"
+          (click)="goToPage(page)"
+        >
+          {{ page + 1 }}
+        </button>
+        }
+      </div>
+      <button
+        mat-icon-button
+        [disabled]="!canGoNext()"
+        (click)="goToNextPage()"
+      >
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        [disabled]="!canGoNext()"
+        (click)="goToLastPage()"
+      >
+        <mat-icon>last_page</mat-icon>
+      </button>
+    </div>
+  </div>
+  } }
+
+  <!-- Majors Modal -->
+  @if (displayMajorsModal()) {
+  <div class="modal-overlay" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2>Majors Offered at {{ selectedUniversityForModal()?.name }}</h2>
+        <button mat-icon-button (click)="closeModal()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <div class="modal-body">
+        @if (selectedUniversityForModal(); as university) { @if
+        (objectKeys(university.programsByDegree).length > 0) {
+        <div class="degree-columns-container">
+          @for (degreeType of objectKeys(university.programsByDegree); track
+          degreeType) {
+          <div class="degree-column">
+            <h4>{{ degreeType }}</h4>
+            <ul>
+              @for (major of university.programsByDegree[degreeType]; track
+              major) {
+              <li>{{ major }}</li>
+              }
+            </ul>
+          </div>
+          }
+        </div>
+        } @else {
+        <p class="no-detailed-info">
+          <em>No detailed major information available.</em>
+        </p>
+        } }
+      </div>
+    </div>
+  </div>
+  }
+</div>

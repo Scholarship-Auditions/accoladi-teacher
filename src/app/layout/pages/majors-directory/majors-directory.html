@@ -1,5 +1,58 @@
 <section class="majors-section">
-    <div class="header">
-        <img src="/images/majors-heading.png" alt="Knowledge Center">
+  <div class="header">
+    <img src="/images/majors-heading.png" alt="Majors Directory" />
+  </div>
+
+  <div class="majors-grid">
+    <div
+      *ngFor="let major of majors"
+      [class]="'major-card ' + major.gridClass"
+      [class.static]="major.isStatic"
+    >
+      <div class="card-inner" *ngIf="!major.isStatic">
+        <div class="card-front">
+          <img [src]="major.image" [alt]="major.title" />
+          <div class="card-title">{{ major.title }}</div>
+        </div>
+        <div class="card-back">
+          <div class="description-container">
+            <p>{{ major.description }}</p>
+          </div>
+          <div class="card-title">{{ major.title }}</div>
+        </div>
+      </div>
+
+      <div class="static-content" *ngIf="major.isStatic">
+        <div class="description-container">
+          <p>{{ major.description }}</p>
+        </div>
+        <div class="card-title">{{ major.title }}</div>
+      </div>
     </div>
+  </div>
+</section>
+
+<div class="marquee-container">
+  <div class="marquee-content">
+    4,478 different music degree program majors in the United States; 25,860
+    music degrees awarded in 2025; 2.28 million working musicians in America;
+    $70,786 average annual wage for a U.S. musician; employment opportunity is
+    3.24% annual growth equaling 73,872 new positions opening each year; largest
+    employer of musicians is public, charter, and private schools, followed by
+    colleges, universities, and conservatories; largest employer of performing
+    musicians is the U.S. military; U.S. cities with the largest number of
+    professional musicians: Nashville, New York, Los Angeles, Atlanta, Boston,
+    Chicago, and Honolulu. &nbsp; &nbsp; &nbsp; 4,478 different music degree
+    program majors in the United States; 25,860 music degrees awarded in 2025;
+    2.28 million working musicians in America; $70,786 average annual wage for a
+    U.S. musician; employment opportunity is 3.24% annual growth equaling 73,872
+    new positions opening each year; largest employer of musicians is public,
+    charter, and private schools, followed by colleges, universities, and
+    conservatories; largest employer of performing musicians is the U.S.
+    military; U.S. cities with the largest number of professional musicians:
+    Nashville, New York, Los Angeles, Atlanta, Boston, Chicago, and Honolulu.
+  </div>
+</div>
+<section class="directory-results" aria-label="Interactive college directory">
+  <app-college-majors></app-college-majors>
 </section>
