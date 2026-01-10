@@ -1,52 +1,110 @@
 <section class="articles-section">
-    <div class="header">
-        <img src="/images/knowledge-central.png" alt="Knowledge Center">
-    </div>
+  <div class="header">
+    <img src="/images/knowledge-central.png" alt="Knowledge Center" />
+  </div>
 
-    <div class="content-section">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-content">
-                <h2 class="sidebar-title">Top 7 Questions Parents Ask About Majoring in Music</h2>
+  <div class="content-section">
+    <!-- Sidebar -->
+    <!-- <aside class="sidebar">
+      <div class="sidebar-content">
+        <h2 class="sidebar-title">
+          Top 7 Questions Parents Ask About Majoring in Music
+        </h2>
 
-                <div class="faq-accordion">
-                    @for (faq of faqs(); track $index; let index = $index) {
-                    <div class="faq-item">
-                        <button class="faq-question" (click)="toggleFaq(index)" [class.active]="faq.isOpen">
-                            <span>{{ faq.question }}</span>
-                            <span class="faq-icon">{{ faq.isOpen ? '×' : '+' }}</span>
-                        </button>
-                        <div class="faq-answer" [class.open]="faq.isOpen">
-                            <div class="faq-answer-content">
-                                <p>{{ faq.answer }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    }
-                </div>
+        <div class="faq-accordion">
+          @for (faq of faqs(); track $index; let index = $index) {
+          <div class="faq-item">
+            <button
+              class="faq-question"
+              (click)="toggleFaq(index)"
+              [class.active]="faq.isOpen"
+            >
+              <span>{{ faq.question }}</span>
+              <span class="faq-icon">{{ faq.isOpen ? "×" : "+" }}</span>
+            </button>
+            <div class="faq-answer" [class.open]="faq.isOpen">
+              <div class="faq-answer-content">
+                <p>{{ faq.answer }}</p>
+              </div>
             </div>
-        </aside>
-
-        <div class="articles-grid">
-            @for (article of articles(); track article.id) {
-            <div class="article-card">
-                <div class="article-image">
-                    <img [src]="article.image" [alt]="article.title">
-                </div>
-                <div class="article-content">
-                    <h3 class="article-title">{{ article.title }}</h3>
-                    <div class="article-description">
-                        <p>{{ article.byline }}</p>
-                    </div>
-                    <div class="category-badge">
-                        <span>{{ article.category.name }}</span>
-                    </div>
-                    <div class="read-more-btn">
-                        <a [routerLink]="['/article', article.id]" class="read-more-btn">{{ 'READ MORE' }}</a>
-                    </div>
-                </div>
-            </div>
-            }
+          </div>
+          }
         </div>
+      </div>
+    </aside> -->
+
+    <div class="articles-main-content">
+      <div class="search-filter-container">
+        <div class="search-box">
+          <input
+            type="text"
+            placeholder="Search articles, topics, or keywords..."
+            [formControl]="searchControl"
+          />
+          <span class="search-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+        </div>
+
+        <div class="categories-section">
+          <h3>Categories</h3>
+          <div class="chips-container">
+            <button
+              [class.active]="selectedCategory() === null"
+              (click)="selectCategory(null)"
+            >
+              All Categories
+            </button>
+            @for (cat of categories; track cat) {
+            <button
+              [class.active]="selectedCategory() === cat"
+              (click)="selectCategory(cat)"
+            >
+              {{ cat }}
+            </button>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="articles-grid">
+        @for (article of filteredArticles(); track article.id) {
+        <div class="article-card">
+          <div class="article-image">
+            <img [src]="article.image" [alt]="article.title" />
+          </div>
+          <div class="article-content">
+            <h3 class="article-title">{{ article.title }}</h3>
+            <div class="article-description">
+              <p>{{ article.byline }}</p>
+            </div>
+            <div class="category-badge">
+              <span>{{ article.category.name }}</span>
+            </div>
+            <div class="read-more-btn">
+              <a
+                [routerLink]="['/article', article.id]"
+                class="read-more-btn"
+                >{{ "READ MORE" }}</a
+              >
+            </div>
+          </div>
+        </div>
+        }
+      </div>
     </div>
+  </div>
 </section>

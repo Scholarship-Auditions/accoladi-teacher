@@ -6,6 +6,31 @@
     .excerpt-directory-container {
         margin: 0 auto;
 
+        .story-title {
+            font-size: 3.5vw;
+            font-weight: 900;
+            color: var(--navy-800);
+            margin-bottom: 1vw;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        .story-subtitle {
+            font-size: 2vw;
+            font-weight: 700;
+            color: var(--navy-800);
+            margin-bottom: 0.5vw;
+            text-align: center;
+        }
+
+        .story-role {
+            font-size: 1.2vw;
+            font-weight: 400;
+            color: var(--navy-800);
+            margin-bottom: 2vw;
+            text-align: center;
+        }
+
         .excerpt-layout {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
@@ -14,28 +39,6 @@
 
             // Story Column (Left)
             .story-column {
-                .story-title {
-                    font-size: 3.5vw;
-                    font-weight: 900;
-                    color: var(--navy-800);
-                    margin-bottom: 1vw;
-                    line-height: 1.2;
-                }
-
-                .story-subtitle {
-                    font-size: 2vw;
-                    font-weight: 700;
-                    color: var(--navy-800);
-                    margin-bottom: 0.5vw;
-                }
-
-                .story-role {
-                    font-size: 1.2vw;
-                    font-weight: 400;
-                    color: var(--navy-800);
-                    margin-bottom: 2vw;
-                }
-
                 .story-image {
                     width: 100%;
                     margin-bottom: 2vw;
@@ -64,7 +67,6 @@
             // Directory Column (Right)
             .directory-column {
                 .directory-box {
-                    margin-top: 16vw;
                     background: var(--amber-color);
                     border: 0.3vw solid var(--navy-800);
                     border-radius: 1.5vw;
@@ -198,7 +200,7 @@
 // New Section: Toscanini Photo with Story Text
 .toscanini-photo-section {
     width: 100vw;
-    padding: 4vw 0;
+    padding: 0vw 0vw 4vw 0vw;
     background: var(--white-color);
 
     .toscanini-container {

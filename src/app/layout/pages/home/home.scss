@@ -348,18 +348,16 @@
 
       .photo-container {
         margin-bottom: 2vw;
+        border: 5px solid #ffcb05;
 
         img {
           width: 100%;
-          max-width: 45vw;
-          height: auto;
+          max-width: 70vw;
+          height: 100%;
           border-radius: 1.5vw;
-          box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.15);
+          box-shadow: 0 1vw 2vw rgba(243, 240, 240, 0.15);
           transition: transform 0.3s ease;
-
-          &:hover {
-            transform: scale(1.02);
-          }
+          background-color: white;
         }
       }
 

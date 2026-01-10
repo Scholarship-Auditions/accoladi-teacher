@@ -14,6 +14,8 @@
     </div>
     }
 
+    @if(data.excerpts.length){
+
     <div class="table-container">
         <table>
             <thead>
@@ -53,6 +55,10 @@
             </tbody>
         </table>
     </div>
+
+    } @else {
+    <p class="coming-soon"> Content Coming Soon</p>
+    }
 
     @if(data.instrumentInfo.practiceTips) {
     <div class="practice-tips">

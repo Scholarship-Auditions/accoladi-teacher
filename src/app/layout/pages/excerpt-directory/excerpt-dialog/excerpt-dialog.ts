@@ -15,10 +15,7 @@ export class ExcerptDialog {
   constructor(
     public dialogRef: MatDialogRef<ExcerptDialog>,
     @Inject(MAT_DIALOG_DATA) public data: InstrumentExcerpts
-  ) {
-
-
-  }
+  ) { }
 
   close(): void {
     this.dialogRef.close();
