@@ -1,11 +1,9 @@
-import { Component } from '@angular/core';
-
+import { Component } from "@angular/core";
+import { ScholarshipDirectoryComponent } from "./directory-section/scholarship-directory.component";
 @Component({
-  selector: 'app-scholarships',
-  imports: [],
-  templateUrl: './scholarships.html',
-  styleUrl: './scholarships.scss'
+  selector: "app-scholarships",
+  imports: [ScholarshipDirectoryComponent],
+  templateUrl: "./scholarships.html",
+  styleUrl: "./scholarships.scss",
 })
-export class Scholarships {
-
-}
+export class Scholarships {}

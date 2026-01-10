@@ -1,0 +1,175 @@
+<section class="scholarship-directory-wrapper">
+  <div class="map-search-container">
+    <div class="directory-header">
+      <h1>Scholarship Directory</h1>
+      <p>Search and explore scholarship opportunities across the nation.</p>
+    </div>
+
+    <app-map-search (searchPacket)="handleSearch($event)"></app-map-search>
+  </div>
+
+  <!-- SKELETON LOADING STATE -->
+  @if (isLoading()) {
+  <div class="table-wrapper loading-wrapper">
+    <p class="loading-message">Loading scholarships…</p>
+    <div
+      class="loading-lines"
+      role="status"
+      aria-live="polite"
+      aria-busy="true"
+    >
+      @for (_ of loadingPlaceholders; track $index) {
+      <div
+        class="loading-line"
+        [style.animation-delay]="$index * 0.08 + 's'"
+      ></div>
+      }
+    </div>
+  </div>
+  }
+
+  <!-- SCHOLARSHIP TABLE -->
+  @if (!isLoading() && !selectedScholarship()) {
+  <div class="table-wrapper">
+    <div class="scholarship-table">
+      <table mat-table [dataSource]="paginatedScholarships()">
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let scholarship">{{ scholarship.name }}</td>
+        </ng-container>
+
+        <!-- Scholarship Types Column -->
+        <ng-container matColumnDef="scholarshipTypes">
+          <th mat-header-cell *matHeaderCellDef>Scholarship Types</th>
+          <td mat-cell *matCellDef="let scholarship">
+            <div class="scholarship-types">
+              @for (stype of scholarship.scholarshipTypes; track $index) {
+              <span class="stype">{{ stype.name }}</span>
+              }
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- State Column -->
+        <ng-container matColumnDef="state">
+          <th mat-header-cell *matHeaderCellDef>State</th>
+          <td mat-cell *matCellDef="let scholarship">
+            {{ scholarship.state }}
+          </td>
+        </ng-container>
+
+        <!-- Award Type Column -->
+        <ng-container matColumnDef="awardType">
+          <th mat-header-cell *matHeaderCellDef>Award Type</th>
+          <td mat-cell *matCellDef="let scholarship">
+            <mat-chip
+              [class]="
+                'award-chip award-chip-' + getAwardTypeSeverity(scholarship)
+              "
+            >
+              {{ getAwardTypeLabel(scholarship) }}
+            </mat-chip>
+          </td>
+        </ng-container>
+
+        <!-- Award Column -->
+        <ng-container matColumnDef="award">
+          <th mat-header-cell *matHeaderCellDef>Award</th>
+          <td mat-cell *matCellDef="let scholarship">
+            {{ scholarship.awardNotes || "N/A" }}
+          </td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let scholarship">
+            <button
+              mat-button
+              class="view-button"
+              (click)="gotoScholarship(scholarship)"
+            >
+              View
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <!-- Empty state -->
+      @if (totalRecords() === 0) {
+      <div class="empty-state">
+        <p>No scholarships found.</p>
+      </div>
+      }
+
+      <!-- Custom Paginator -->
+      @if (totalRecords() > 0) {
+      <div class="custom-paginator">
+        <div class="paginator-current">
+          {{ paginationInfo() }}
+        </div>
+        <div class="paginator-controls">
+          <button
+            class="paginator-button paginator-first"
+            [disabled]="!canGoPrevious()"
+            (click)="goToFirstPage()"
+            [class.p-disabled]="!canGoPrevious()"
+          >
+            <mat-icon>first_page</mat-icon>
+          </button>
+          <button
+            class="paginator-button paginator-prev"
+            [disabled]="!canGoPrevious()"
+            (click)="goToPreviousPage()"
+            [class.p-disabled]="!canGoPrevious()"
+          >
+            <mat-icon>chevron_left</mat-icon>
+          </button>
+          <div class="paginator-pages">
+            @for (page of getPageNumbers(); track page) {
+            <button
+              class="paginator-page"
+              [class.p-highlight]="page === pageIndex()"
+              (click)="goToPage(page)"
+            >
+              {{ page + 1 }}
+            </button>
+            }
+          </div>
+          <button
+            class="paginator-button paginator-next"
+            [disabled]="!canGoNext()"
+            (click)="goToNextPage()"
+            [class.p-disabled]="!canGoNext()"
+          >
+            <mat-icon>chevron_right</mat-icon>
+          </button>
+          <button
+            class="paginator-button paginator-last"
+            [disabled]="!canGoNext()"
+            (click)="goToLastPage()"
+            [class.p-disabled]="!canGoNext()"
+          >
+            <mat-icon>last_page</mat-icon>
+          </button>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+  }
+
+  <!-- SCHOLARSHIP DETAIL VIEW -->
+  @if (selectedScholarship()) {
+  <div class="detail-wrapper">
+    <app-scholarship-detail
+      [scholarship]="selectedScholarship()!"
+      (backToDirectory)="backToDirectory()"
+    ></app-scholarship-detail>
+  </div>
+  }
+</section>
