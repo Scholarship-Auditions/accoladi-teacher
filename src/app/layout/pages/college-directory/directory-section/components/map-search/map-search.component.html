@@ -2013,27 +2013,33 @@
               <mat-option class="all-states-option" value="">
                 All States
               </mat-option>
-              <mat-option
-                *ngFor="let state of stateValues"
-                [value]="state.abbreviation"
-              >
+              @for (state of stateValues; track state.abbreviation) {
+              <mat-option [value]="state.abbreviation">
                 {{ state.name }}
               </mat-option>
+              }
             </mat-select>
           </mat-form-field>
 
-          <button matButton label="Search" class="search-button" type="submit">
-            <i class="pi pi-search" style="font-size: 1rem"></i>
+          <button mat-raised-button class="search-button" type="submit">
+            <i
+              class="pi pi-search"
+              style="font-size: 1rem; margin-right: 0.5rem"
+            ></i>
+            Search
           </button>
 
           <button
-            matButton
-            label="Clear"
-            styleClass="clear-button"
+            mat-raised-button
+            class="clear-button"
             type="button"
             (click)="clearSearch()"
           >
-            <i class="pi pi-times px-2" style="font-size: 1rem"></i>
+            <i
+              class="pi pi-times"
+              style="font-size: 1rem; margin-right: 0.5rem"
+            ></i>
+            Clear
           </button>
         </div>
       </div>
